@@ -142,9 +142,7 @@ zen-reader/
         │   │   └── useArticles.ts
         │   ├── DashboardApp.tsx
         │   └── main.tsx
-        └── styles/
-            ├── theme-paper.css
-            └── theme-dark.css
+        └── ../index.css   (único CSS: Tailwind + tokens de tema)
 ```
 
 **Regla de dependencia:** `presentation` → `application` → `domain`. `infrastructure` implementa los `ports` definidos en `application`, nunca al revés. Ningún componente Preact importa Dexie directamente — siempre pasa por un use case.
@@ -228,24 +226,30 @@ db.version(1).stores({
 
 ### Paleta de colores
 
+> Los tokens viven en `src/index.css` bajo el prefijo `--zen-*` (se alternan
+> con las clases `theme-paper` / `theme-dark` sobre `<html>`). La UI los
+> consume **siempre vía utilidades de Tailwind** (`bg-paper`, `bg-canvas`,
+> `text-ink`, `text-muted`, `bg-accent`, `border-line`, `bg-card`, ...),
+> mapeadas en `@theme`; nunca con `var(--...)` inline en los componentes.
+
 **Tema "Papel" (estilo Kindle, por defecto):**
 ```css
---paper-bg: #F4F1EA;          /* fondo tono papel envejecido */
---paper-text: #2B2B2B;        /* texto casi negro, no negro puro (menos fatiga) */
---paper-text-secondary: #6B6558; /* metadatos, fechas, excerpt */
---paper-accent: #A0522D;      /* acento sepia/terracota, para links y botones activos */
---paper-border: #E0DCD1;      /* separadores sutiles */
---paper-card-bg: #FFFFFF;     /* tarjetas ligeramente más claras que el fondo */
+--zen-bg: #F4F1EA;             /* fondo tono papel envejecido → bg-paper */
+--zen-text: #2B2B2B;           /* texto casi negro, no negro puro (menos fatiga) */
+--zen-text-secondary: #6B6558; /* metadatos, fechas, excerpt */
+--zen-accent: #A0522D;         /* acento sepia/terracota, para links y botones activos */
+--zen-border: #E0DCD1;         /* separadores sutiles */
+--zen-card: #FFFFFF;           /* tarjetas ligeramente más claras que el fondo */
 ```
 
 **Tema "Oscuro técnico":**
 ```css
---dark-bg: #121212;           /* negro suave, no #000 puro */
---dark-text: #E0E0E0;         /* blanco roto, no blanco puro */
---dark-text-secondary: #9A9A9A;
---dark-accent: #5B8DEF;       /* azul frío, contraste técnico */
---dark-border: #2A2A2A;
---dark-card-bg: #1A1A1A;
+--zen-bg: #121212;             /* negro suave, no #000 puro */
+--zen-text: #E0E0E0;           /* blanco roto, no blanco puro */
+--zen-text-secondary: #9A9A9A;
+--zen-accent: #5B8DEF;         /* azul frío, contraste técnico */
+--zen-border: #2A2A2A;
+--zen-card: #1A1A1A;
 ```
 
 **Regla de contraste:** verificar que ambos temas cumplan WCAG AA mínimo (4.5:1 para texto normal) — especialmente el texto secundario sobre fondo, que suele fallar si se elige muy claro/oscuro.

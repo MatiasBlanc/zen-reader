@@ -6,20 +6,28 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build:firefox": "ZENREADER_TARGET=firefox vite build && rm -f dist/zen-reader.xpi && cd dist && zip -r zen-reader.xpi .",
     "preview": "vite preview"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.3",
+    "cuelume": "^0.2.1",
     "dexie": "^4.4.4",
     "preact": "^10.29.7",
+    "reicon-react": "^1.1.302",
     "zustand": "^5.0.14"
   },
   "devDependencies": {
     "@crxjs/vite-plugin": "^2.7.1",
     "@mozilla/readability": "^0.6.0",
     "@preact/preset-vite": "^2.10.6",
+    "@tailwindcss/typography": "^0.5.16",
+    "@types/chrome": "^0.2.5",
+    "@types/node": "^26.1.2",
     "dompurify": "^3.4.12",
+    "esbuild": "^0.28.1",
     "tailwindcss": "^4.3.3",
+    "typescript": "^7.0.2",
     "vite": "^8.2.0"
   }
 }

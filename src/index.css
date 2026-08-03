@@ -1,1 +1,125 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+  /* ── Tokens de tema ────────────────────────────────────────────────────────
+    El dashboard alterna las clases `.theme-paper` / `.theme-dark` en <html>.
+    Las utilidades generadas por `@theme` referencian estas variables, así que
+    cambiar la clase de tema repinta toda la interfaz sin JS adicional.
+    ──────────────────────────────────────────────────────────────────────── */
+
+:root,
+.theme-paper {
+  --zen-bg: #F4F1EA;
+  --zen-text: #2B2B2B;
+  --zen-text-secondary: #6B6558;
+  --zen-accent: #A0522D;
+  --zen-accent-hover: #8B4513;
+  --zen-border: #E0DCD1;
+  --zen-card: #FFFFFF;
+  --zen-surface: #E0DCD1;
+  --zen-reader: #FEFCF6;
+  --zen-heading: #1A1A1A;
+  --zen-danger: #C0392B;
+  --zen-success: #1F8A4D;
+  --zen-on-accent: #FEFEFE;
+  --zen-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+}
+
+.theme-dark {
+  --zen-bg: #121212;
+  --zen-text: #E0E0E0;
+  --zen-text-secondary: #9A9A9A;
+  --zen-accent: #5B8DEF;
+  --zen-accent-hover: #4A7BD6;
+  --zen-border: #2A2A2A;
+  --zen-card: #1A1A1A;
+  --zen-surface: #2F2F2F;
+  --zen-reader: #181818;
+  --zen-heading: #F0F0F0;
+  --zen-danger: #C24141;
+  --zen-success: #3FA96B;
+  --zen-on-accent: #FFFFFF;
+  --zen-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+}
+
+/* Utilidades de color del tema.
+   bg-canvas / bg-paper / text-ink / text-muted / bg-accent / border-line /
+   bg-card / bg-reader / text-heading / text-danger /
+   bg-accent-hover / bg-surface / text-on-accent */
+@theme {
+  --color-canvas: var(--zen-bg);
+  --color-paper: var(--zen-bg);
+  --color-ink: var(--zen-text);
+  --color-muted: var(--zen-text-secondary);
+  --color-accent: var(--zen-accent);
+  --color-accent-hover: var(--zen-accent-hover);
+  --color-line: var(--zen-border);
+  --color-card: var(--zen-card);
+  --color-surface: var(--zen-surface);
+  --color-reader: var(--zen-reader);
+  --color-heading: var(--zen-heading);
+  --color-danger: var(--zen-danger);
+  --color-success: var(--zen-success);
+  --color-on-accent: var(--zen-on-accent);
+
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+/* ── Estilos base globales ──────────────────────────────────────────────── */
+
+body {
+  margin: 0;
+  transition: background 280ms ease, color 280ms ease;
+}
+
+/* Scrollbars finos y discretos en listas y lector. */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-line) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 6px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--color-line);
+  border-radius: 3px;
+}
+
+/* ── Toast del popup ────────────────────────────────────────────────────
+   Animaciones de entrada/salida del toast interno (PopupApp). Se aplican
+   con `animation` inline; la clase solo respeta prefers-reduced-motion.
+   ───────────────────────────────────────────────────────────────────── */
+@keyframes zen-popup-toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes zen-popup-toast-out {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .zen-popup-toast {
+    animation: none !important;
+  }
+}

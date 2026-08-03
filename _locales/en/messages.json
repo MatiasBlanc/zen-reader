@@ -1,0 +1,81 @@
+{
+  "appName": {
+    "message": "ZenReader",
+    "description": "Extension name shown in the Chrome Web Store and toolbar."
+  },
+  "appDesc": {
+    "message": "Read web articles distraction-free. Private, local and minimal.",
+    "description": "Chrome Web Store extension description."
+  },
+  "clipCommand": {
+    "message": "Save current article",
+    "description": "Keyboard shortcut description for Ctrl+Shift+S."
+  },
+  "clip_success": {
+    "message": "Article saved",
+    "description": "Toast after successful clip."
+  },
+  "clip_failed": {
+    "message": "No article found on this page",
+    "description": "Toast after clip failure."
+  },
+  "clip_error": {
+    "message": "Failed to save",
+    "description": "Popup toast when saving fails."
+  },
+  "saving_page": {
+    "message": "Saving…",
+    "description": "Loading state of the popup button."
+  },
+  "loading_library": {
+    "message": "Loading library…",
+    "description": "Loading state of the popup counter."
+  },
+  "save_page": {
+    "message": "Save this page",
+    "description": "Popup button to clip the active tab."
+  },
+  "view_library": {
+    "message": "View library",
+    "description": "Popup button to open the library."
+  },
+  "pending_count": {
+    "message": "$COUNT$ pending",
+    "description": "Pending articles counter in the popup.",
+    "placeholders": {
+      "count": { "content": "$1" }
+    }
+  },
+  "mark_as_read": {
+    "message": "Mark as read",
+    "description": "Action on an article card."
+  },
+  "mark_as_unread": {
+    "message": "Move back to pending",
+    "description": "Action to unarchive an article."
+  },
+  "delete": {
+    "message": "Delete",
+    "description": "Action to permanently delete an article."
+  },
+  "back": {
+    "message": "Back",
+    "description": "Back button in reader view."
+  },
+  "reader_theme_paper": {
+    "message": "Paper theme",
+    "description": "Theme toggle tooltip."
+  },
+  "reader_theme_dark": {
+    "message": "Dark theme",
+    "description": "Theme toggle tooltip."
+  },
+  "no_articles": {
+    "message": "No saved articles",
+    "description": "Empty state message in the dashboard."
+  },
+  "confirm_delete": {
+    "message": "Delete this article?",
+    "description": "Delete confirmation dialog."
+  }
+}

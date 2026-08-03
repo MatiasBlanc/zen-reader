@@ -1,0 +1,81 @@
+{
+  "appName": {
+    "message": "ZenReader",
+    "description": "Nombre de la extensión mostrado en la Chrome Web Store y en la barra de herramientas."
+  },
+  "appDesc": {
+    "message": "Lee artículos web sin distracciones. Privado, local y minimalista.",
+    "description": "Descripción de la extensión en la Chrome Web Store."
+  },
+  "clipCommand": {
+    "message": "Guardar artículo actual",
+    "description": "Descripción del atajo de teclado Ctrl+Shift+S."
+  },
+  "clip_success": {
+    "message": "Artículo guardado",
+    "description": "Toast tras clip exitoso."
+  },
+  "clip_failed": {
+    "message": "No se detectó artículo en esta página",
+    "description": "Toast tras error de clip."
+  },
+  "clip_error": {
+    "message": "Error al guardar",
+    "description": "Toast del popup cuando falla el guardado."
+  },
+  "saving_page": {
+    "message": "Guardando…",
+    "description": "Estado de carga del botón del popup."
+  },
+  "loading_library": {
+    "message": "Cargando biblioteca…",
+    "description": "Estado de carga del contador del popup."
+  },
+  "save_page": {
+    "message": "Guardar esta página",
+    "description": "Botón del popup para clippear la pestaña activa."
+  },
+  "view_library": {
+    "message": "Ver biblioteca",
+    "description": "Botón del popup para abrir la biblioteca."
+  },
+  "pending_count": {
+    "message": "$COUNT$ pendientes",
+    "description": "Contador de artículos pendientes en el popup.",
+    "placeholders": {
+      "count": { "content": "$1" }
+    }
+  },
+  "mark_as_read": {
+    "message": "Marcar como leído",
+    "description": "Acción en una tarjeta de artículo."
+  },
+  "mark_as_unread": {
+    "message": "Volver a pendientes",
+    "description": "Acción para des-archivar un artículo."
+  },
+  "delete": {
+    "message": "Eliminar",
+    "description": "Acción de eliminar un artículo definitivamente."
+  },
+  "back": {
+    "message": "Volver",
+    "description": "Botón de volver a la lista desde el modo lector."
+  },
+  "reader_theme_paper": {
+    "message": "Tema papel",
+    "description": "Tooltip del toggle de tema."
+  },
+  "reader_theme_dark": {
+    "message": "Tema oscuro",
+    "description": "Tooltip del toggle de tema."
+  },
+  "no_articles": {
+    "message": "Sin artículos guardados",
+    "description": "Mensaje del estado vacío del dashboard."
+  },
+  "confirm_delete": {
+    "message": "¿Eliminar este artículo?",
+    "description": "Diálogo de confirmación de eliminación."
+  }
+}
