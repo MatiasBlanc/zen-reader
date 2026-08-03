@@ -99,6 +99,33 @@ Luego carga la extensión según tu navegador:
 
 > **Nota**: Firefox no carga extensiones temporales desde directorios sueltos por un bug conocido con `_locales`. Siempre empaquetar como `.xpi`.
 
+## Build Instructions (for AMO reviewers)
+
+### System Requirements
+
+- **OS**: Windows, macOS or Linux
+- **Node.js**: v20+ (https://nodejs.org)
+- **npm**: v10+ (included with Node.js)
+
+### Steps to reproduce the build
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/MatiasBlanc/zen-reader.git
+cd zen-reader
+
+# 2. Install dependencies
+npm install
+
+# 3. Build the extension (Chrome/Edge output in dist/)
+npm run build
+
+# 4. (Optional) Build for Firefox (output: dist/zen-reader.xpi)
+npm run build:firefox
+```
+
+The `dist/` folder contains the built extension. No code is minified.
+
 ## Roadmap
 
 - **V2:** tags manuales, búsqueda full-text, progreso de lectura, tiempo estimado de lectura, exportar a Markdown, importar desde Pocket/Instapaper, virtualización de listas.
