@@ -9,10 +9,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "preact": "^10.29.7"
+    "@tailwindcss/vite": "^4.3.3",
+    "dexie": "^4.4.4",
+    "preact": "^10.29.7",
+    "zustand": "^5.0.14"
   },
   "devDependencies": {
+    "@crxjs/vite-plugin": "^2.7.1",
+    "@mozilla/readability": "^0.6.0",
     "@preact/preset-vite": "^2.10.6",
+    "dompurify": "^3.4.12",
+    "tailwindcss": "^4.3.3",
     "vite": "^8.2.0"
   }
 }
