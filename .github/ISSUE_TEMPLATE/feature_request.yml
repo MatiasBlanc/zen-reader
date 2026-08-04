@@ -1,0 +1,51 @@
+name: "✨ Solicitud de feature"
+description: Propón una funcionalidad nueva. Nace como issue (con milestone), no como línea de un .md.
+title: "feat: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Gracias por proponer una feature. Antes de abrir:
+        - Revisa [docs/roadmap.md](../../docs/roadmap.md) para ver qué ya está planificado.
+        - Busca issues abiertos para no duplicar.
+        - Si la feature choca con la filosofía "100% local", explica cómo lo resuelve.
+  - type: input
+    id: milestone
+    attributes:
+      label: Versión objetivo
+      description: ¿En qué milestone encaja? (V2, V3, V4, sin fecha)
+      placeholder: "V2"
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problema que resuelve
+      description: Qué necesidad cubre y para quién. Contexto, no solución.
+    validations:
+      required: true
+  - type: textarea
+    id: solution
+    attributes:
+      label: Solución propuesta
+      description: Cómo lo implementarías a grandes rasgos y qué capas toca (domain / application / infrastructure / presentation).
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Criterios de aceptación
+      description: Checklist de qué debe cumplirse para considerar la feature completa (Definition of Done).
+      placeholder: |
+        - [ ] ...
+    validations:
+      required: true
+  - type: textarea
+    id: privacy
+    attributes:
+      label: Impacto en privacidad
+      description: ¿Afecta la filosofía 100% local? ¿Requiere permisos nuevos, peticiones de red o backend?
+      placeholder: "Sin impacto / requiere permiso X / necesita backend"
+    validations:
+      required: false

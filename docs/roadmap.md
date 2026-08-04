@@ -1,9 +1,10 @@
-# Features — ZenReader
+# Roadmap — ZenReader
 
-Documento de planificación interna. Lista completa de funcionalidades de V1
-y el roadmap de V2/V3/V4. No es documentación pública; el README solo enlaza aquí.
+Resumen del estado de features (V1) y planificación (V2/V3/V4).
 
-## Incluido en V1
+> **Cómo se trackea esto**: la fuente de verdad de las features son los **issues de GitHub** con sus **milestones**. Este documento es un resumen con enlaces. Si una feature aparece aquí sin enlace a issue, es que todavía está en estado *propuesta* — conviértela en issue usando el [feature request form](../.github/ISSUE_TEMPLATE/feature_request.yml) antes de implementarla.
+
+## V1 — Incluido en V1
 
 - Clipper de 1 clic desde el icono de la extensión
 - Atajo de teclado configurable para clippear
@@ -45,27 +46,29 @@ y el roadmap de V2/V3/V4. No es documentación pública; el README solo enlaza a
   (`window.confirm` + i18n `confirm_delete`); hoy eliminar solo existe dentro
   del lector. Mejora opcional: reemplazar el nativo por un modal con estilo
 
-## Explícitamente fuera de la V1 (V2/V3/V4)
+## Fuera de la V1 (V2/V3/V4)
+
+> Cada feature de esta lista debería tener su issue con milestone. El checkbox indica si ya se convirtió en issue. Crea los que falten con el [feature request form](../.github/ISSUE_TEMPLATE/feature_request.yml).
 
 ### Pronto (extensión chica de V1)
 
-- 3 temas de lectura (Focus / Calm / Night) en vez de los 2 actuales
+- [ ] 3 temas de lectura (Focus / Calm / Night) en vez de los 2 actuales
 
 ### V2
 
-- Tags, carpetas, colecciones
-- Búsqueda full-text (índice en Dexie, busca dentro del contenido) — el filtro
+- [ ] Tags, carpetas, colecciones
+- [ ] Búsqueda full-text (índice en Dexie, busca dentro del contenido) — el filtro
   simple por título ya está en V1
-- Destacador / resaltados (highlights)
-- Exportar a Markdown
-- Importar desde Pocket/Instapaper
-- Bulk actions (marcar / archivar / eliminar varios artículos a la vez)
+- [ ] Destacador / resaltados (highlights)
+- [ ] Exportar a Markdown
+- [ ] Importar desde Pocket/Instapaper
+- [ ] Bulk actions (marcar / archivar / eliminar varios artículos a la vez)
 
 ### V3
 
-- Resumen con IA local (on-device) o API key propia (BYOK), con aviso
+- [ ] Resumen con IA local (on-device) o API key propia (BYOK), con aviso
   explícito de privacidad
-- Auto-tagging asistido
+- [ ] Auto-tagging asistido
 - Cualquier otra funcionalidad de IA (chat con artículo, etc.)
 
 ### V4

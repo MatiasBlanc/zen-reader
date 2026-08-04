@@ -1,7 +1,8 @@
 # Contribuir a ZenReader
 
 ¡Gracias por querer contribuir! ZenReader es un proyecto pequeño y amigable
-para primeras contribuciones. Antes de empezar, lee esto (son 2 minutos).
+para primeras contribuciones. Antes de empezar, lee esto (son 2 minutos) y el
+índice de documentación en [`docs/README.md`](docs/README.md).
 
 ## Cómo empezar
 
@@ -10,7 +11,10 @@ para primeras contribuciones. Antes de empezar, lee esto (son 2 minutos).
 3. Crea una rama con nombre descriptivo: `git checkout -b fix/sidebar-mobile`.
 4. Para probar en Chrome/Edge: `npm run dev`. Para Firefox/Zen:
    `npm run build:watch` + `web-ext run -s dist`.
-5. Abre un **Pull Request** hacia `main` cuando estés listo.
+5. Detalle del entorno, debugging y build para AMO en
+   [`docs/development.md`](docs/development.md).
+6. Abre un **Pull Request** hacia `main` cuando estés listo (usa la
+   [plantilla de PR](.github/PULL_REQUEST_TEMPLATE.md)).
 
 ## Convenciones de código
 
@@ -33,6 +37,18 @@ para primeras contribuciones. Antes de empezar, lee esto (son 2 minutos).
 - Mensajes en **español**, imperativo, sujeto de máx. 72 caracteres.
 - Un cambio lógico por commit. Ejemplo: `feat: agregar export a Markdown`.
 
+## Features nuevas (roadmap en issues, no en .md)
+
+El roadmap vive en **issues de GitHub con milestones** (V2, V3, V4), no en un
+markdown. Si quieres proponer o implementar una feature:
+
+1. Abre un issue con el [feature request form](.github/ISSUE_TEMPLATE/feature_request.yml):
+   problema, solución, criterios de aceptación e impacto en privacidad.
+2. Revisa [`docs/roadmap.md`](docs/roadmap.md) para ver qué ya está planificado
+   y qué estado tiene (propuesta / en curso).
+3. Si la feature es una decisión de arquitectura, documenta el porqué en un
+   [ADR](docs/decisions/README.md) dentro del mismo PR.
+
 ## Issues
 
 - Si es tu primera contribución, busca issues con la etiqueta
@@ -40,6 +56,8 @@ para primeras contribuciones. Antes de empezar, lee esto (son 2 minutos).
 - Comenta en el issue que lo vas a tomar para evitar trabajo duplicado.
 - Sin cambios de comportamiento no solicitados: si encuentras un bug al pasar,
   abre un issue en vez de arreglarlo de paso en tu PR.
+- Los bugs se reportan con el [bug report form](.github/ISSUE_TEMPLATE/bug_report.yml).
+  Las vulnerabilidades **nunca** se reportan como issue público; ver [`SECURITY.md`](SECURITY.md).
 
 ## Pull Requests
 

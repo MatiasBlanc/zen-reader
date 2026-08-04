@@ -15,7 +15,23 @@ Pocket cerró en julio de 2025. Omnivore cerró en noviembre de 2024. El mercado
 
 ## Funcionalidades
 
-Lista completa de funcionalidades de V1 y roadmap de V2/V3/V4 en [`docs/features.md`](docs/features.md).
+Estado de V1 y roadmap de V2/V3/V4 (trackeado en issues de GitHub) en [`docs/roadmap.md`](docs/roadmap.md).
+
+## Documentación
+
+La documentación del proyecto está indexada en [`docs/README.md`](docs/README.md):
+
+| Documento | Contenido |
+|---|---|
+| [docs/roadmap.md](docs/roadmap.md) | Features de V1 y plan V2/V3/V4, enlazado a issues y milestones |
+| [docs/architecture.md](docs/architecture.md) | Arquitectura del código, capa por capa |
+| [docs/development.md](docs/development.md) | Entorno de desarrollo, debugging y build para AMO |
+| [docs/decisions/](docs/decisions/) | ADRs — decisiones de arquitectura con contexto |
+| [docs/spec/v1.md](docs/spec/v1.md) | Spec histórica de desarrollo de la V1 (detalle de arquitectura, modelo de datos, paleta, criterios de aceptación) |
+
+## Contribuir
+
+Lee [`CONTRIBUTING.md`](CONTRIBUTING.md) antes de abrir tu primer PR. Para proponer una feature usa el [feature request form](.github/ISSUE_TEMPLATE/feature_request.yml): nace como issue con milestone, no como línea de un markdown.
 
 ## Stack tecnológico
 
@@ -48,7 +64,7 @@ src/
 
 Regla: ningún componente de `presentation/` accede a Dexie directamente — siempre pasa por un caso de uso de `application/`.
 
-Ver `docs/zenreader-spec-v1.md` para el detalle completo de arquitectura, modelo de datos, paleta de colores, tipografía y criterios de aceptación.
+Ver [`docs/spec/v1.md`](docs/spec/v1.md) para el detalle completo de arquitectura, modelo de datos, paleta de colores, tipografía y criterios de aceptación.
 
 ## Desarrollo
 
@@ -90,32 +106,9 @@ Luego carga la extensión según tu navegador:
 
 > **Nota**: Firefox no carga extensiones temporales desde directorios sueltos por un bug conocido con `_locales`. Siempre empaquetar como `.xpi`.
 
-## Build Instructions (for AMO reviewers)
+## Build para revisores de AMO
 
-### System Requirements
-
-- **OS**: Windows, macOS or Linux
-- **Node.js**: v20+ (https://nodejs.org)
-- **npm**: v10+ (included with Node.js)
-
-### Steps to reproduce the build
-
-```bash
-# 1. Clone the repository
-git clone https://github.com/MatiasBlanc/zen-reader.git
-cd zen-reader
-
-# 2. Install dependencies
-npm install
-
-# 3. Build the extension (Chrome/Edge output in dist/)
-npm run build
-
-# 4. (Optional) Build for Firefox (output: dist/zen-reader.xpi)
-npm run build:firefox
-```
-
-The `dist/` folder contains the built extension. No code is minified.
+Instrucciones de build reproducibles (requisitos de sistema y pasos) en [`docs/development.md`](docs/development.md#build-para-revisores-de-amo-firefox-add-ons).
 
 
 ## Licencia
