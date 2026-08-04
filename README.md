@@ -128,8 +128,19 @@ The `dist/` folder contains the built extension. No code is minified.
 
 ## Roadmap
 
-- **V2:** tags manuales, búsqueda full-text, progreso de lectura, tiempo estimado de lectura, exportar a Markdown, importar desde Pocket/Instapaper, virtualización de listas.
-- **V3:** resumen con Chrome Summarizer API (local, on-device), auto-tagging asistido, integración opcional con IA externa (BYOK) con aviso explícito de privacidad.
+- **Pronto (extensión chica de V1):** 3 temas de lectura (Focus / Calm / Night) en vez de los 2 actuales.
+- **V2:**
+  - Tags manuales
+  - Destacador (resaltar texto en el lector)
+  - Búsqueda full-text
+  - Export a Markdown
+  - Bulk actions (marcar / archivar / eliminar varios artículos a la vez)
+- **V3:**
+  - Resumen con IA local (on-device) o API key propia (BYOK), con aviso explícito de privacidad
+  - Auto-tagging asistido
+- **V4:** RSS feeds — fase propia por el peso de permisos que añade.
+
+Backlog sin fecha: sonido ambiente (Sound), progreso de lectura, importar desde Pocket/Instapaper, virtualización de listas.
 
 ## Licencia
 
