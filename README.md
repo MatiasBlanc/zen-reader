@@ -64,7 +64,9 @@ src/
 
 Regla: ningún componente de `presentation/` accede a Dexie directamente — siempre pasa por un caso de uso de `application/`.
 
-Ver [`docs/spec/v1.md`](docs/spec/v1.md) para el detalle completo de arquitectura, modelo de datos, paleta de colores, tipografía y criterios de aceptación.
+> Estas reglas **se verifican automáticamente** con `dependency-cruiser` (`npm run arch`, corre en CI): un PR que las rompa falla. El grafo de dependencias vive en `docs/architecture-graph.md` y se regenera con `npm run arch:graph`.
+
+Ver [`docs/architecture.md`](docs/architecture.md) para el mapa de capas y [`docs/spec/v1.md`](docs/spec/v1.md) para la spec histórica de la V1.
 
 ## Desarrollo
 

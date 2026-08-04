@@ -9,7 +9,8 @@
 | [README](../README.md) | Usuarios y devs nuevos | Qué es ZenReader, stack, cómo ejecutarlo |
 | [CONTRIBUTING](../CONTRIBUTING.md) | Contribuidores | Flujo de trabajo para abrir tu primer PR |
 | [development.md](development.md) | Contribuidores | Entorno de desarrollo, debugging, build para AMO |
-| [architecture.md](architecture.md) | Devs | Explicación capa por capa de `src/` |
+| [architecture.md](architecture.md) | Devs | Mapa de capas y reglas de dependencia (**verificadas en CI** con dependency-cruiser) |
+| [architecture-graph.md](architecture-graph.md) | Devs | Grafo de dependencias generado (`npm run arch:graph`) — no editar a mano |
 | [roadmap.md](roadmap.md) | Todos | Features de V1 y plan V2/V3/V4 (resumen enlazado a Issues) |
 | [decisions/](decisions/) | Devs | ADRs — decisiones de arquitectura con contexto |
 | [spec/v1.md](spec/v1.md) | Devs (histórico) | Spec original de desarrollo de la V1 |

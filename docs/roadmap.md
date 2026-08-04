@@ -83,3 +83,15 @@ Resumen del estado de features (V1) y planificación (V2/V3/V4).
 - Sync entre dispositivos — ⚠️ choca con la filosofía "100% local, el
   contenido nunca sale del dispositivo": si entra, definir primero el modelo
   de privacidad (cifrado, qué se sincroniza)
+
+## Deuda técnica de arquitectura
+
+Violaciones de la regla "presentation no toca infrastructure" detectadas al
+activar la verificación con dependency-cruiser (ADR-0003). Están permitidas
+en `.dependency-cruiser.cjs` (`pathNot`) hasta que se refactoricen. **No añadir
+excepciones nuevas sin abrir un issue.**
+
+- [ ] `content-script.tsx` usa `readability.parser` sin port — fix: extraer
+  `parser.port.ts` e implementarlo en `infrastructure`
+- [ ] `dashboard/store.ts` instancia `ChromeToastNotifier` directo — fix:
+  inyectarlo vía el container (`di/container.ts`)

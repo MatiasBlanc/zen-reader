@@ -16,6 +16,8 @@ Cómo configurar el entorno, ejecutar la extensión, depurar y empaquetar. Compl
 | `npm run build` | Build de producción (Chrome/Edge) en `dist/` |
 | `npm run build:firefox` | Build + empaquetado `.xpi` en `dist/zen-reader.xpi` |
 | `npm run preview` | Previsualiza el build de producción |
+| `npm run arch` | Verifica las reglas de arquitectura (dependency-cruiser) — corre en CI |
+| `npm run arch:graph` | Regenera `docs/architecture-graph.md` (grafo mermaid) |
 
 ## Entorno de desarrollo
 
