@@ -125,15 +125,15 @@ export function ReaderView() {
   return (
     <div class="flex h-full flex-col">
       {/* ── Barra de herramientas ─────────────────────────────────── */}
-      <div class="flex shrink-0 items-center justify-between border-b border-line bg-reader px-5 py-2">
-        <div class="flex items-center gap-2">
-          <span class="text-xs text-muted opacity-70">{extractDomain(article.url)}</span>
+      <div class="flex shrink-0 items-center justify-between gap-2 border-b border-line bg-reader px-4 py-2 sm:px-5">
+        <div class="min-w-0 flex-1">
+          <span class="block truncate text-xs text-muted opacity-70">{extractDomain(article.url)}</span>
         </div>
 
-        <div class="flex items-center gap-2">
+        <div class="flex shrink-0 items-center gap-1 sm:gap-2">
           <ThemeToggle />
           <button
-            class="inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-[13px] font-medium text-muted transition-colors hover:bg-line hover:text-ink"
+            class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center gap-1.5 rounded-md px-3 py-1.5 text-[13px] font-medium text-muted transition-colors hover:bg-line hover:text-ink sm:min-h-0 sm:min-w-0"
             onClick={handleArchive}
             title={article.isArchived
               ? chrome.i18n.getMessage('mark_as_unread') || 'Volver a pendientes'
@@ -142,7 +142,7 @@ export function ReaderView() {
             {article.isArchived ? <Undo size={16} /> : <Check size={16} />}
           </button>
           <button
-            class="inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-[13px] font-medium text-danger transition-colors hover:bg-danger hover:text-on-accent"
+            class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center gap-1.5 rounded-md px-3 py-1.5 text-[13px] font-medium text-danger transition-colors hover:bg-danger hover:text-on-accent sm:min-h-0 sm:min-w-0"
             onClick={handleDelete}
             title={chrome.i18n.getMessage('delete') || 'Eliminar'}
           >
@@ -153,7 +153,7 @@ export function ReaderView() {
 
       {/* ── Contenido del artículo ───────────────────────────────── */}
       <div class="flex-1 overflow-y-auto overflow-x-hidden">
-        <article class="mx-auto max-w-[680px] px-10 pb-12 pt-8">
+        <article class="mx-auto max-w-[680px] px-5 pb-12 pt-8 sm:px-10">
           <h1 class="mb-6 text-[1.75rem] font-bold leading-[1.25] tracking-tight text-heading">
             {article.title}
           </h1>
@@ -162,27 +162,27 @@ export function ReaderView() {
         </article>
 
         {/* ── Navegación inferior ────────────────────────────────── */}
-        <div class="mt-4 flex items-center justify-center gap-3 border-t border-line px-10 py-6">
+        <div class="mt-4 flex flex-wrap items-center justify-center gap-3 border-t border-line px-4 py-6 sm:px-10">
           <button
-            class="inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-[13px] font-medium text-muted transition-colors hover:bg-line hover:text-ink"
+            class="inline-flex min-h-[44px] items-center gap-1.5 rounded-md px-3 py-1.5 text-[13px] font-medium text-muted transition-colors hover:bg-line hover:text-ink sm:min-h-0"
             onClick={navigateToPrev}
             title="Anterior (k)"
           >
-            <ArrowLeft size={15} /> Anterior
+            <ArrowLeft size={15} /> <span class="hidden sm:inline">Anterior</span>
           </button>
           <button
-            class="inline-flex items-center gap-1.5 rounded-md bg-accent px-3 py-1.5 text-[13px] font-medium text-on-accent transition-opacity hover:opacity-90"
+            class="inline-flex min-h-[44px] items-center gap-1.5 rounded-md bg-accent px-3 py-1.5 text-[13px] font-medium text-on-accent transition-opacity hover:opacity-90 sm:min-h-0"
             onClick={() => { archiveArticle(article.id, true); navigateToNext(); }}
             title="Marcar leído y siguiente (Enter)"
           >
-            <Check size={15} /> Leído, siguiente
+            <Check size={15} /> <span class="hidden sm:inline">Leído, siguiente</span>
           </button>
           <button
-            class="inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-[13px] font-medium text-muted transition-colors hover:bg-line hover:text-ink"
+            class="inline-flex min-h-[44px] items-center gap-1.5 rounded-md px-3 py-1.5 text-[13px] font-medium text-muted transition-colors hover:bg-line hover:text-ink sm:min-h-0"
             onClick={navigateToNext}
             title="Siguiente (j)"
           >
-            Siguiente <ArrowRight size={15} />
+            <span class="hidden sm:inline">Siguiente</span> <ArrowRight size={15} />
           </button>
         </div>
       </div>

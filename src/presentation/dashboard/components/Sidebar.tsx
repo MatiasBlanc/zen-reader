@@ -47,7 +47,9 @@ export function Sidebar({ pending, archived, loading, collapsed }: SidebarProps)
   return (
     <aside
       class={`shrink-0 border-r border-line bg-bg transition-[width] duration-300 ease-in-out ${
-        collapsed ? 'w-11' : 'w-[280px]'
+        collapsed
+          ? 'w-11'
+          : 'absolute inset-y-0 left-0 z-20 w-[280px] shadow-xl md:static md:z-auto md:shadow-none'
       }`}
     >
       {collapsed ? (

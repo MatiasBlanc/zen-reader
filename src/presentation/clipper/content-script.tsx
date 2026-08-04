@@ -111,7 +111,7 @@ const TOAST_CSS = `
   display: flex;
   align-items: center;
   gap: 10px;
-  max-width: 320px;
+  max-width: min(320px, calc(100vw - 32px));
   padding: 12px 18px;
   border-radius: 10px;
   background: var(--toast-bg, #FEFEFE);

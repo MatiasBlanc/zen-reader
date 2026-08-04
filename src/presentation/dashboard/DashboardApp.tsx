@@ -21,6 +21,7 @@ export function DashboardApp() {
   const readerArticleId = useAppStore((s) => s.readerArticleId);
   const openReader = useAppStore((s) => s.openReader);
   const sidebarCollapsed = useAppStore((s) => s.sidebarCollapsed);
+  const toggleSidebar = useAppStore((s) => s.toggleSidebar);
   const autoSelected = useRef(false);
 
   // Cargar preferencias al montar.
@@ -50,7 +51,15 @@ export function DashboardApp() {
   const hasArticles = pending.length > 0 || archived.length > 0;
 
   return (
-    <div class="flex h-screen overflow-hidden">
+    <div class="relative flex h-dvh overflow-hidden">
+      {/* Backdrop del drawer en móvil: cierra la barra lateral al tocar el lector. */}
+      {!sidebarCollapsed && (
+        <div
+          class="absolute inset-0 z-10 bg-black/25 md:hidden"
+          onClick={toggleSidebar}
+          aria-hidden="true"
+        />
+      )}
       {/* ── Barra lateral (comprimible) ──────────────────────────────── */}
       <Sidebar
         pending={pending}

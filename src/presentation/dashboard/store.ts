@@ -62,7 +62,7 @@ export const useAppStore = create<AppState>((set) => ({
   soundPlayer: app.soundPlayer,
 
   /* ── Layout ──────────────────────────────────────────────────────────── */
-  sidebarCollapsed: false,
+  sidebarCollapsed: isMobileViewport(),
   toggleSidebar: () =>
     set((state) => ({ sidebarCollapsed: !state.sidebarCollapsed })),
 
@@ -101,6 +101,11 @@ export const useAppStore = create<AppState>((set) => ({
 
   /* ── Lector ──────────────────────────────────────────────────────────── */
   openReader: async (id: string) => {
+    // En móvil, abrir un artículo pliega la barra lateral: el lector
+    // se queda con todo el ancho disponible.
+    if (isMobileViewport()) {
+      set({ sidebarCollapsed: true });
+    }
     set({ readerArticleId: id, readerArticle: null, readerLoading: true });
     try {
       const article = await app.library.getArticle(id);
@@ -131,3 +136,18 @@ export const useAppStore = create<AppState>((set) => ({
     set({ preferences: prefs });
   },
 }));
+
+/**
+ * ¿Viewport móvil (<768px)?
+ * Se usa para auto-plegar la barra lateral en pantallas pequeñas.
+ */
+function isMobileViewport(): boolean {
+  return window.matchMedia('(max-width: 767.98px)').matches;
+}
+
+// Sincroniza el estado plegado de la barra lateral con cambios de viewport
+// (rotación del dispositivo, cambio de tamaño de ventana, etc.).
+const mobileQuery = window.matchMedia('(max-width: 767.98px)');
+mobileQuery.addEventListener('change', (e) => {
+  useAppStore.setState({ sidebarCollapsed: e.matches });
+});

@@ -66,7 +66,7 @@ export function PopupApp() {
   }, []);
 
   return (
-    <div class="relative flex w-[320px] select-none flex-col bg-canvas p-4 text-ink antialiased">
+    <div class="relative flex w-[320px] max-w-full select-none flex-col bg-canvas p-4 text-ink antialiased">
       <header class="flex items-center gap-2.5">
         <span
           class="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-accent text-on-accent shadow-sm"

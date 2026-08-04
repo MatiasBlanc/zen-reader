@@ -21,7 +21,7 @@ export function ThemeToggle() {
   return (
     <button
       onClick={handleToggle}
-      class={`relative inline-flex h-7 w-12 cursor-pointer items-center rounded-full border-0 transition-colors duration-200 ${isDark ? 'bg-accent' : 'bg-line'}`}
+      class={`relative inline-flex h-8 w-14 cursor-pointer items-center rounded-full border-0 transition-colors duration-200 ${isDark ? 'bg-accent' : 'bg-line'}`}
       title={isDark
         ? chrome.i18n.getMessage('reader_theme_paper') || 'Tema papel'
         : chrome.i18n.getMessage('reader_theme_dark') || 'Tema oscuro'}
@@ -29,7 +29,7 @@ export function ThemeToggle() {
       aria-checked={isDark}
     >
       <span
-        class={`absolute left-0.5 top-0.5 h-6 w-6 rounded-full bg-white shadow-md transition-transform duration-200 ${isDark ? 'translate-x-5' : 'translate-x-0'}`}
+        class={`absolute left-0.5 top-0.5 h-7 w-7 rounded-full bg-white shadow-md transition-transform duration-200 ${isDark ? 'translate-x-6' : 'translate-x-0'}`}
       />
       <span class="sr-only">
         {isDark
