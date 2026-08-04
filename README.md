@@ -13,18 +13,9 @@ Pocket cerró en julio de 2025. Omnivore cerró en noviembre de 2024. El mercado
 - **Minimalista** — sin organización compleja, sin feature bloat
 - **Rápido** — carga instantánea, cero impacto en RAM durante la navegación normal
 
-## Funcionalidades (V1)
+## Funcionalidades
 
-- [ ] Clipper de 1 clic + atajo de teclado
-- [ ] Limpieza de contenido con Readability.js (sin menús, ads ni trackers)
-- [ ] Toast de confirmación no intrusivo
-- [ ] Dashboard/New Tab con artículos pendientes y leídos
-- [ ] Modo lector con tema papel (estilo Kindle) y tema oscuro técnico
-- [ ] Marcar como leído / archivar / eliminar
-- [ ] Persistencia local con IndexedDB (sin límite de tamaño)
-- [ ] Español / Inglés
-
-Fuera de alcance de la V1 (ver roadmap): tags, búsqueda, export a Markdown, progreso de lectura, IA.
+Lista completa de funcionalidades de V1 y roadmap de V2/V3/V4 en [`docs/features.md`](docs/features.md).
 
 ## Stack tecnológico
 
@@ -126,21 +117,6 @@ npm run build:firefox
 
 The `dist/` folder contains the built extension. No code is minified.
 
-## Roadmap
-
-- **Pronto (extensión chica de V1):** 3 temas de lectura (Focus / Calm / Night) en vez de los 2 actuales.
-- **V2:**
-  - Tags manuales
-  - Destacador (resaltar texto en el lector)
-  - Búsqueda full-text
-  - Export a Markdown
-  - Bulk actions (marcar / archivar / eliminar varios artículos a la vez)
-- **V3:**
-  - Resumen con IA local (on-device) o API key propia (BYOK), con aviso explícito de privacidad
-  - Auto-tagging asistido
-- **V4:** RSS feeds — fase propia por el peso de permisos que añade.
-
-Backlog sin fecha: sonido ambiente (Sound), progreso de lectura, importar desde Pocket/Instapaper, virtualización de listas.
 
 ## Licencia
 
