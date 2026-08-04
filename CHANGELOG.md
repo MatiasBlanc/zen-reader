@@ -22,4 +22,4 @@ Todas las versiones notables de ZenReader. Formato basado en
   enlazado a issues.
 - Templates de issues (feature request y bug report) y de pull requests.
 - Verificación de arquitectura en CI con dependency-cruiser (`npm run arch`)
-  y grafo de dependencias generado (`npm run arch:graph`) — ADR-0003.
+  — ADR-0003.

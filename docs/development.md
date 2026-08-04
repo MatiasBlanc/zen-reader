@@ -17,7 +17,6 @@ Cómo configurar el entorno, ejecutar la extensión, depurar y empaquetar. Compl
 | `npm run build:firefox` | Build + empaquetado `.xpi` en `dist/zen-reader.xpi` |
 | `npm run preview` | Previsualiza el build de producción |
 | `npm run arch` | Verifica las reglas de arquitectura (dependency-cruiser) — corre en CI |
-| `npm run arch:graph` | Regenera `docs/architecture-graph.md` (grafo mermaid) |
 
 ## Entorno de desarrollo
 
@@ -71,7 +70,7 @@ src/
 └── presentation/    # UI en Preact: clipper, popup, dashboard
 ```
 
-Regla de dependencias: `presentation → application → domain`; `infrastructure` implementa los `ports`. Detalle completo en [architecture.md](architecture.md).
+Regla de dependencias: `presentation → application → domain`; `infrastructure` implementa los `ports`. Las decisiones de arquitectura y las excepciones conocidas se documentan en [docs/decisions/](decisions/README.md) (ADRs) y se verifican con `npm run arch`.
 
 ## Testing
 

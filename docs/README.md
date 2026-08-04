@@ -9,8 +9,6 @@
 | [README](../README.md) | Usuarios y devs nuevos | Qué es ZenReader, stack, cómo ejecutarlo |
 | [CONTRIBUTING](../CONTRIBUTING.md) | Contribuidores | Flujo de trabajo para abrir tu primer PR |
 | [development.md](development.md) | Contribuidores | Entorno de desarrollo, debugging, build para AMO |
-| [architecture.md](architecture.md) | Devs | Mapa de capas y reglas de dependencia (**verificadas en CI** con dependency-cruiser) |
-| [architecture-graph.md](architecture-graph.md) | Devs | Grafo de dependencias generado (`npm run arch:graph`) — no editar a mano |
 | [roadmap.md](roadmap.md) | Todos | Features de V1 y plan V2/V3/V4 (resumen enlazado a Issues) |
 | [decisions/](decisions/) | Devs | ADRs — decisiones de arquitectura con contexto |
 | [spec/v1.md](spec/v1.md) | Devs (histórico) | Spec original de desarrollo de la V1 |
@@ -29,6 +27,6 @@ Las decisiones importantes (por qué Clean Architecture, por qué inyección baj
 
 ## Rutas de lectura recomendadas
 
-- **Primer día en el repo**: README → CONTRIBUTING → docs/development.md → docs/architecture.md
-- **Vas a implementar una feature**: docs/architecture.md → ADRs relevantes → issue de la feature (criterios de aceptación)
+- **Primer día en el repo**: README → CONTRIBUTING → docs/development.md → ADRs (`docs/decisions/`)
+- **Vas a implementar una feature**: ADRs relevantes → issue de la feature (criterios de aceptación)
 - **Vas a proponer una feature**: issue form + docs/roadmap.md para ver qué ya está planificado

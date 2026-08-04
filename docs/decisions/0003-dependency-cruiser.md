@@ -1,4 +1,4 @@
-# 0003 — Verificar la arquitectura con dependency-cruiser; docs estables
+# 0003 — Verificar la arquitectura con dependency-cruiser
 
 - **Estado**: Aceptado
 - **Fecha**: 2025-08
@@ -16,19 +16,22 @@ y la realidad divergen, y nadie se entera hasta que alguien lee ambos.
 
 ## Decisión
 
-Se decidió invertir el modelo: **verificar en vez de describir**, con tres
+Se decidió invertir el modelo: **verificar en vez de describir**, con dos
 niveles complementarios:
 
 1. **Reglas verificables en CI** — `dependency-cruiser` (`.dependency-cruiser.cjs`)
    declara las reglas de capas (domain aislado, application sin infraestructura,
    presentation/background solo vía `di/container.ts`) y `npm run arch` las
    ejecuta. Un PR que rompa las capas **falla el CI** (workflow `.github/workflows/ci.yml`).
-2. **Docs de alto nivel estables** — `docs/architecture.md` describe solo lo
-   que cambia poco (capas, flujos, reglas) y enlaza un **grafo de dependencias
-   generado** con `npm run arch:graph` (mermaid). El detalle por archivo vive en
-   los JSDoc del código, cerca del código.
-3. **Decisiones en ADRs** — los cambios de arquitectura se registran en
-   `docs/decisions/`, no reescribiendo el mapa.
+2. **Decisiones en ADRs** — los cambios de arquitectura se registran en
+   `docs/decisions/`, no reescribiendo un mapa.
+
+**Sin doc de arquitectura dedicado**: se probó mantener `docs/architecture.md`
+con el mapa de capas y un grafo generado, pero se descartó poco después por
+redundante — duplicaba el mapa breve del README y la spec histórica
+(`docs/spec/v1.md`), y seguía exigiendo mantenimiento manual. El conocimiento
+de arquitectura queda en tres lugares que no se desincronizan: las **reglas
+verificables**, los **ADRs** y los **JSDoc del código**.
 
 ## Alternativas consideradas
 
@@ -45,7 +48,8 @@ niveles complementarios:
 **Positivas**
 
 - La regla de capas se hace cumplir de verdad: violarla rompe el CI.
-- El doc ya no puede desincronizarse en lo esencial; el grafo se regenera.
+- Sin doc de arquitectura que mantener: la fuente de verdad son las reglas,
+  los ADRs y el código.
 - La deuda técnica existente quedó visibilizada y rastreada (ver roadmap).
 
 **Negativas**

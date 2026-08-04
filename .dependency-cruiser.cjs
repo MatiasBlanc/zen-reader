@@ -2,7 +2,7 @@
  * Configuración de dependency-cruiser: verifica las reglas de capas de la
  * Clean Architecture en CI. Si alguien rompe una regla, `npm run arch` falla.
  *
- * Capas (ver docs/architecture.md y docs/decisions/0001-clean-architecture.md):
+ * Capas (ver docs/decisions/0001-clean-architecture.md):
  *   domain → application → presentation/background
  *   infrastructure implementa los ports; solo el composition root
  *   (di/container.ts) se importa desde fuera de infrastructure.

@@ -8,8 +8,7 @@
     "build": "vite build",
     "build:firefox": "ZENREADER_TARGET=firefox vite build && rm -f dist/zen-reader.xpi && cd dist && zip -r zen-reader.xpi .",
     "preview": "vite preview",
-    "arch": "depcruise src --config",
-    "arch:graph": "depcruise src --config --output-type mermaid > docs/architecture-graph.md"
+    "arch": "depcruise src --config"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.3",

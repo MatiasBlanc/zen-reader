@@ -24,7 +24,6 @@ La documentación del proyecto está indexada en [`docs/README.md`](docs/README.
 | Documento | Contenido |
 |---|---|
 | [docs/roadmap.md](docs/roadmap.md) | Features de V1 y plan V2/V3/V4, enlazado a issues y milestones |
-| [docs/architecture.md](docs/architecture.md) | Arquitectura del código, capa por capa |
 | [docs/development.md](docs/development.md) | Entorno de desarrollo, debugging y build para AMO |
 | [docs/decisions/](docs/decisions/) | ADRs — decisiones de arquitectura con contexto |
 | [docs/spec/v1.md](docs/spec/v1.md) | Spec histórica de desarrollo de la V1 (detalle de arquitectura, modelo de datos, paleta, criterios de aceptación) |
@@ -64,9 +63,9 @@ src/
 
 Regla: ningún componente de `presentation/` accede a Dexie directamente — siempre pasa por un caso de uso de `application/`.
 
-> Estas reglas **se verifican automáticamente** con `dependency-cruiser` (`npm run arch`, corre en CI): un PR que las rompa falla. El grafo de dependencias vive en `docs/architecture-graph.md` y se regenera con `npm run arch:graph`.
+> Estas reglas **se verifican automáticamente** con `dependency-cruiser` (`npm run arch`, corre en CI): un PR que las rompa falla.
 
-Ver [`docs/architecture.md`](docs/architecture.md) para el mapa de capas y [`docs/spec/v1.md`](docs/spec/v1.md) para la spec histórica de la V1.
+Las decisiones de arquitectura se documentan en [`docs/decisions/`](docs/decisions/README.md) (ADRs); la spec histórica de la V1 está en [`docs/spec/v1.md`](docs/spec/v1.md).
 
 ## Desarrollo
 
