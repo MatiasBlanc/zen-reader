@@ -1,0 +1,16 @@
+{
+  "name": "Zen Reader",
+  "short_name": "ZenReader",
+  "description": "Lector web minimalista, local y sin distracciones",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F9F7F2",
+  "theme_color": "#954D28",
+  "icons": [
+    {
+      "src": "/icons/icon-128.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    }
+  ]
+}

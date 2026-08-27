@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://zen-reader.madeinchile.tech/sitemap.xml

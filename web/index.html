@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- Primary Meta Tags -->
+  <title>Zen Reader — Tu santuario de lectura web local, privado y sin distracciones</title>
+  <meta name="title" content="Zen Reader — Tu santuario de lectura web local, privado y sin distracciones" />
+  <meta name="description" content="Extensión minimalista 'read-it-later' para Zen Browser, Firefox y Chrome. Guarda artículos con un clic y léelos sin anuncios ni distracciones. 100% local, offline, sin cuentas y sin servidores." />
+  <meta name="keywords" content="Zen Reader, alternativa a Pocket, alternativa a Omnivore, read it later open source, leer despues offline, lector web minimalista, extension zen browser, extension chrome leer despues, extension firefox read it later, local-first reader, lector sin publicidad, Wallabag alternative, Readwise Reader alternative, privacidad en la lectura" />
+  <meta name="author" content="Matias Blanc — Made in Chile Tech" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <link rel="canonical" href="https://zen-reader.madeinchile.tech/" />
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" sizes="128x128" href="/icons/icon-128.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="theme-color" content="#954D28" />
+
+  <!-- Open Graph / Facebook / LinkedIn -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://zen-reader.madeinchile.tech/" />
+  <meta property="og:site_name" content="Zen Reader" />
+  <meta property="og:title" content="Zen Reader — Lectura web sin ruido, 100% local y sin servidores" />
+  <meta property="og:description" content="Guarda artículos con un clic y léelos sin ruido, anuncios ni muros de cookies. Alternativa open-source a Pocket y Omnivore. Privado por diseño." />
+  <meta property="og:image" content="https://zen-reader.madeinchile.tech/icons/icon-128.png" />
+  <meta property="og:locale" content="es_ES" />
+
+  <!-- Twitter / X -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://zen-reader.madeinchile.tech/" />
+  <meta property="twitter:title" content="Zen Reader — Tu santuario de lectura web local y sin distracciones" />
+  <meta property="twitter:description" content="Extensión read-it-later 100% local y offline. Sin servidores, sin cuentas, sin publicidad. Alternativa open-source a Pocket y Omnivore." />
+  <meta property="twitter:image" content="https://zen-reader.madeinchile.tech/icons/icon-128.png" />
+
+  <!-- Preconnect & Typography Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="./src/style.css" />
+
+  <!-- Structured Data: SoftwareApplication & WebSite -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "SoftwareApplication",
+        "name": "Zen Reader",
+        "headline": "Santuario de lectura web local, privado y sin distracciones",
+        "description": "Extensión de navegador minimalista de tipo read-it-later. Guarda artículos con un clic y léelos después offline, 100% local, sin cuentas y sin backend.",
+        "applicationCategory": "BrowserApplication",
+        "operatingSystem": "Zen Browser, Firefox, Google Chrome, Microsoft Edge, Brave",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "url": "https://zen-reader.madeinchile.tech/",
+        "author": {
+          "@type": "Person",
+          "name": "Matias Blanc",
+          "url": "https://github.com/MatiasBlanc"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Made in Chile Tech",
+          "url": "https://madeinchile.tech"
+        },
+        "license": "https://opensource.org/licenses/MIT",
+        "featureList": [
+          "100% Local y Offline con IndexedDB",
+          "Sin cuentas ni registro obligatorio",
+          "Cero servidores ni telemetría",
+          "Motor Mozilla Readability para eliminar publicidad y popups",
+          "Atajo de teclado instantáneo Alt+Shift+S",
+          "Temas Papel, Sepia y Noche OLED",
+          "Compatible con Zen Browser, Firefox, Chrome, Brave y Edge"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://zen-reader.madeinchile.tech/#website",
+        "url": "https://zen-reader.madeinchile.tech/",
+        "name": "Zen Reader",
+        "description": "Lector web minimalista, local y sin distracciones",
+        "inLanguage": "es"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "¿Por qué surge Zen Reader como alternativa a Pocket y Omnivore?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Pocket cerró en julio de 2025 y Omnivore en noviembre de 2024. La mayoría de alternativas actuales son de pago mensual recurrente o exigen auto-hospedar servidores complejos. Zen Reader ofrece una solución definitiva: 100% local en tu navegador, sin costes, sin backend y sin riesgo de cierre."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Mis datos o artículos se envían a servidores externos?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Absolutamente no. Zen Reader funciona bajo la filosofía 'Local-First' radical. Los artículos procesados y tu biblioteca se almacenan exclusivamente en el almacenamiento IndexedDB de tu propio navegador. No hay servidores de Zen Reader, no hay analíticas y tus datos nunca salen de tu ordenador."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Funciona sin conexión a internet (offline)?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Sí. Una vez guardado el artículo, el contenido completo sanitizado y su estructura quedan persistidos en tu navegador. Puedes abrir Zen Reader y leer todos tus artículos en un avión, tren o en cualquier lugar sin conexión."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Es compatible con Zen Browser y otros navegadores?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Sí, está especialmente optimizado y diseñado para Zen Browser y Mozilla Firefox, así como para todos los navegadores basados en Chromium: Google Chrome, Brave, Arc y Microsoft Edge mediante Manifest V3."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Es gratis y de código abierto (Open Source)?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Sí, Zen Reader es software libre licenciado bajo MIT. El código fuente completo está disponible de forma transparente en GitHub para ser auditado, contribuido o compilado por cualquier persona."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body class="antialiased selection:bg-[#954D28]/15 selection:text-[#954D28]">
+
+  <!-- Reading Progress Bar -->
+  <div id="global-progress-bar" class="fixed top-0 left-0 h-0.5 bg-zen-accent z-50 transition-all duration-150 ease-out" style="width: 0%;"></div>
+
+  <!-- Announcement Bar -->
+  <aside aria-label="Aviso de filosofía local-first" class="bg-zen-subtle border-b border-zen text-xs py-2 px-4 text-center text-zen-secondary font-medium">
+    <div class="max-w-6xl mx-auto flex items-center justify-center gap-2">
+      <span class="inline-block w-2 h-2 rounded-full bg-zen-accent animate-pulse"></span>
+      <span><strong>Pocket cerró. Omnivore cerró.</strong> Zen Reader es para siempre: 100% local, sin servidores y sin suscripciones.</span>
+      <a href="#comparativa" class="underline underline-offset-2 hover:text-zen-accent transition-colors font-semibold ml-1">Ver comparativa &rarr;</a>
+    </div>
+  </aside>
+
+  <!-- Navigation Bar -->
+  <header class="sticky top-0 z-40 backdrop-blur-md bg-zen-canvas/90 border-b border-zen transition-colors duration-300">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <!-- Logo -->
+      <a href="/" class="flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-zen-accent rounded-lg p-1">
+        <div class="w-8 h-8 rounded-full overflow-hidden flex items-center justify-center bg-zen-subtle border border-zen p-1 group-hover:scale-105 transition-transform">
+          <svg class="w-full h-full text-zen-accent" viewBox="0 0 500 500" fill="none">
+            <path d="M401.583 175.476C400.467 172.058 394.63 161.453 392.656 158.175C382.494 141.324 371.059 131.088 355.933 119.451C334.917 103.284 316.595 94.1396 290.737 87.5626C249.527 77.0803 205.629 86.0246 169.531 107.811C134.849 129.374 109.09 166.326 99.1291 205.673C92.8879 230.326 94.0645 246.55 98.372 270.464C102.361 292.612 107.337 303.675 119.333 322.987C136.41 350.479 160.224 370.458 189.688 383.644C196.799 386.774 207.277 388.807 214.945 390.041C220.827 391.03 226.757 391.713 232.71 392.094C248.667 393.047 259.477 392.119 269.511 407.537C272.306 411.884 272.892 417.846 271.447 422.797C263.014 449.807 216.96 442.152 196.598 436.464C189.123 434.377 181.882 432.092 174.974 428.858C86.8651 387.598 38.9014 291.04 65.1757 196.443C78.6292 147.655 110.925 106.194 154.971 81.167C197.216 57.4186 250.809 49.0704 297.713 62.2178C327.223 70.363 354.204 85.8002 376.163 107.104C379.608 110.468 385.247 115.855 387.465 119.804C386.561 119.509 381.851 114.681 380.325 113.517C371.162 106.533 363.629 99.9196 354.01 93.3563L353.168 94.3122C391.25 122.417 418.08 160.81 425.568 208.071C426.099 211.408 427.463 221.825 427.422 225.012C427.986 228.271 428.309 235.124 427.571 238.316L426.924 238.054L427.666 237.934L427.704 237.736L426.849 237.389C426.787 236.19 426.584 233.573 426.655 232.497C420.464 185.454 398.539 143.185 362.12 112.86C360.158 111.229 358.226 109.587 356.244 107.981L354.735 109.132C375.217 125.464 393.95 150.273 403.013 174.898L401.583 175.476Z" fill="currentColor"/>
+            <path d="M441.657 234C444.723 286.11 427.15 337.33 392.749 376.548C367.357 405.319 337.718 423.213 301.871 435.866C294.833 438.352 286.203 439.215 280.294 441.46C278.408 441.855 274.279 443.382 272 444C274.265 442.465 276.891 440.958 279.253 439.535C290.851 431.405 302.72 422.425 311.588 411.254C323.212 396.609 332.365 378.491 335.624 359.991C337.179 351.08 337.66 342.016 337.059 332.992C336.868 330.071 334.771 315.836 337.506 314.472C343.593 311.439 352.598 312.124 359.26 310.407C400.399 301.016 430.001 275.149 441.657 234Z" fill="currentColor"/>
+          </svg>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="font-bold text-lg tracking-tight text-zen-primary font-editorial">Zen Reader</span>
+          <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-zen-subtle border border-zen text-zen-secondary font-semibold">v2.0</span>
+        </div>
+      </a>
+
+      <!-- Center Links -->
+      <nav class="hidden md:flex items-center gap-6 text-sm text-zen-secondary font-medium">
+        <a href="#filosofia" class="hover:text-zen-accent transition-colors">Filosofía</a>
+        <a href="#simulador" class="hover:text-zen-accent transition-colors">Simulador</a>
+        <a href="#comparativa" class="hover:text-zen-accent transition-colors">Comparativa</a>
+        <a href="#instalacion" class="hover:text-zen-accent transition-colors">Instalación</a>
+        <a href="#faq" class="hover:text-zen-accent transition-colors">FAQ</a>
+      </nav>
+
+      <!-- Right Actions: Theme Selector & GitHub -->
+      <div class="flex items-center gap-3">
+        <!-- Theme Controls -->
+        <div class="flex items-center p-1 bg-zen-subtle border border-zen rounded-full text-xs" role="group" aria-label="Selector de tema">
+          <button data-theme-btn="paper" aria-label="Tema Papel" class="px-2.5 py-1 rounded-full text-zen-secondary hover:text-zen-primary transition-all text-[11px] font-medium" title="Tema Papel">
+            Papel
+          </button>
+          <button data-theme-btn="sepia" aria-label="Tema Sepia" class="px-2.5 py-1 rounded-full text-zen-secondary hover:text-zen-primary transition-all text-[11px] font-medium" title="Tema Sepia">
+            Sepia
+          </button>
+          <button data-theme-btn="dark" aria-label="Tema Oscuro" class="px-2.5 py-1 rounded-full text-zen-secondary hover:text-zen-primary transition-all text-[11px] font-medium" title="Tema Noche OLED">
+            Noche
+          </button>
+        </div>
+
+        <!-- GitHub Repo Link -->
+        <a href="https://github.com/MatiasBlanc/zen-reader" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-zen bg-zen-surface text-xs font-semibold text-zen-primary hover:border-zen-accent hover:text-zen-accent transition-all zen-shadow">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path></svg>
+          <span>GitHub</span>
+        </a>
+
+        <!-- CTA Direct -->
+        <a href="#instalacion" class="inline-flex items-center justify-center px-4 py-1.5 rounded-full bg-zen-accent text-white font-semibold text-xs hover:bg-zen-accent-hover transition-colors shadow-sm">
+          Instalar
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="relative pt-20 pb-20 md:pt-28 md:pb-28 overflow-hidden zen-pattern border-b border-zen">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 text-center relative z-10">
+        
+        <!-- Zen Pill Badge -->
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zen-subtle border border-zen text-xs font-semibold text-zen-secondary mb-8 zen-shadow">
+          <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+          <span>Alternativa libre y local a Pocket & Omnivore</span>
+          <span class="text-zen-muted">•</span>
+          <span class="text-zen-accent font-mono font-bold">100% Offline</span>
+        </div>
+
+        <!-- Main Title -->
+        <h1 class="text-4xl sm:text-6xl md:text-7xl font-bold font-editorial tracking-tight text-zen-primary max-w-4xl mx-auto leading-[1.08] mb-6">
+          Lee sin ruido.<br/>
+          <span class="italic text-zen-accent font-normal">Guarda con un solo clic.</span>
+        </h1>
+
+        <!-- Subtitle with strong keywords -->
+        <p class="text-lg sm:text-xl text-zen-secondary max-w-2xl mx-auto leading-relaxed mb-10 font-normal">
+          El santuario <em>read-it-later</em> minimalista que respeta tu mente. Guarda artículos para leer después sin anuncios, muros de cookies ni telemetría.
+          <strong>100% local en tu navegador</strong>, sin cuentas y sin servidores en la nube.
+        </p>
+
+        <!-- CTA Action Buttons -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-xl mx-auto mb-14">
+          <a href="#instalacion" class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full bg-zen-accent text-white font-semibold text-sm hover:bg-zen-accent-hover transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+            <span>Instalar para Zen Browser / Firefox</span>
+          </a>
+          <a href="#instalacion" class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-full bg-zen-surface border border-zen text-zen-primary font-semibold text-sm hover:border-zen-accent hover:text-zen-accent transition-all zen-shadow">
+            <svg class="w-5 h-5 text-zen-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+            <span>Para Chrome & Edge</span>
+          </a>
+        </div>
+
+        <!-- Trust & Philosophy Matrix -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto text-left">
+          <div class="p-4 rounded-xl bg-zen-surface border border-zen zen-shadow">
+            <div class="text-2xl font-bold font-editorial text-zen-accent mb-0.5">0 KB</div>
+            <div class="text-xs text-zen-secondary font-medium">En servidores externos. Cero nube.</div>
+          </div>
+          <div class="p-4 rounded-xl bg-zen-surface border border-zen zen-shadow">
+            <div class="text-2xl font-bold font-editorial text-zen-accent mb-0.5">100%</div>
+            <div class="text-xs text-zen-secondary font-medium">Local First (IndexedDB seguro).</div>
+          </div>
+          <div class="p-4 rounded-xl bg-zen-surface border border-zen zen-shadow">
+            <div class="text-2xl font-bold font-editorial text-zen-accent mb-0.5">0</div>
+            <div class="text-xs text-zen-secondary font-medium">Cuentas, logins ni correos pedidos.</div>
+          </div>
+          <div class="p-4 rounded-xl bg-zen-surface border border-zen zen-shadow">
+            <div class="text-2xl font-bold font-editorial text-zen-accent mb-0.5">&lt; 50ms</div>
+            <div class="text-xs text-zen-secondary font-medium">Carga instantánea. Cero impacto RAM.</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- INTERACTIVE SIMULATOR (THE A/B WOW MOMENT) -->
+    <section id="simulador" class="py-20 bg-zen-subtle border-b border-zen">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6">
+        
+        <div class="text-center max-w-2xl mx-auto mb-12">
+          <span class="text-xs font-mono uppercase tracking-widest text-zen-accent font-semibold">Simulador Interactivo</span>
+          <h2 class="text-3xl sm:text-4xl font-bold font-editorial text-zen-primary mt-2 mb-4">
+            La web saturada vs. Tu santuario Zen
+          </h2>
+          <p class="text-zen-secondary text-sm sm:text-base leading-relaxed">
+            La web moderna está repleta de banners de cookies, modales invasivos, anuncios parpadeantes y tipografía claustrofóbica. Observa la diferencia de leer con Zen Reader.
+          </p>
+
+          <!-- Interactive View Switcher Tabs -->
+          <div class="inline-flex items-center p-1.5 mt-6 rounded-full bg-zen-surface border border-zen zen-shadow text-xs" role="tablist">
+            <button id="sim-btn-chaos" role="tab" aria-selected="false" class="px-5 py-2 rounded-full transition-all text-zen-muted font-medium hover:text-zen-primary">
+              🚫 Web Típica (Ruidosa)
+            </button>
+            <button id="sim-btn-zen" role="tab" aria-selected="true" class="px-5 py-2 rounded-full transition-all bg-zen-surface font-semibold zen-shadow text-zen-primary border border-zen/50">
+              ✨ Zen Reader (Puro)
+            </button>
+          </div>
+        </div>
+
+        <!-- Simulator Mock Window Frame -->
+        <div id="zen-simulator" class="rounded-2xl border border-zen bg-zen-surface zen-shadow-lg overflow-hidden transition-all duration-300">
+          
+          <!-- Browser Header Bar -->
+          <div class="flex items-center justify-between px-4 py-3 border-b border-zen bg-zen-subtle">
+            <div class="flex items-center gap-2">
+              <span class="w-3 h-3 rounded-full bg-rose-400/80"></span>
+              <span class="w-3 h-3 rounded-full bg-amber-400/80"></span>
+              <span class="w-3 h-3 rounded-full bg-emerald-400/80"></span>
+            </div>
+
+            <!-- Address Bar Mock -->
+            <div class="flex-1 max-w-md mx-4 px-3 py-1 rounded-md bg-zen-surface border border-zen text-xs text-zen-secondary font-mono truncate flex items-center justify-between">
+              <span class="flex items-center gap-1 text-zen-muted">
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                https://pensamientoprofundo.org/el-arte-del-enfoque
+              </span>
+              <span class="text-[10px] text-zen-accent font-semibold">HTTPS</span>
+            </div>
+
+            <!-- Browser Action Button Mock -->
+            <div class="flex items-center gap-2">
+              <button id="sim-action-clean" class="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-zen-accent text-white text-[11px] font-semibold hover:bg-zen-accent-hover transition-colors" title="Activar Zen Reader">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                <span>Limpiar</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- VIEW 1: THE CHAOTIC WEB (DEFAULT HIDDEN BY SCRIPT, INITIALLY DISPLAYED BASED ON DEFAULT) -->
+          <div id="sim-view-chaos" class="p-6 md:p-10 relative overflow-hidden bg-white text-gray-900 hidden min-h-[440px]">
+            <!-- Simulated Fake Cookie Notice Banner -->
+            <div class="absolute bottom-4 left-4 right-4 z-20 p-3.5 rounded-lg bg-gray-900 text-white text-xs shadow-2xl flex flex-col sm:flex-row items-center justify-between gap-3 border border-gray-700">
+              <div class="flex items-center gap-2">
+                <span>🍪 Usamos 48 rastreadores y cookies para medir cada uno de tus clics y vender publicidad personalizada.</span>
+              </div>
+              <div class="flex gap-2 shrink-0">
+                <button class="px-3 py-1 bg-gray-700 rounded text-[11px] hover:bg-gray-600">Configurar (24 clics)</button>
+                <button class="px-3 py-1 bg-amber-500 text-black font-bold rounded text-[11px]">Aceptar todo</button>
+              </div>
+            </div>
+
+            <!-- Fake Newsletter Popup in Center Top -->
+            <div class="mb-6 p-4 rounded-lg bg-yellow-50 border-2 border-dashed border-yellow-400 text-center animate-bounce">
+              <span class="text-xs font-bold text-yellow-900">🚨 ¡ESPERA! ANTES DE LEER: SUSCRÍBETE A NUESTRA NEWSLETTER DIARIA (¡SÓLO HOY!)</span>
+              <div class="mt-2 flex max-w-sm mx-auto gap-2">
+                <input type="email" placeholder="tu-email@gmail.com" class="border p-1 text-xs rounded flex-1" disabled />
+                <button class="bg-red-600 text-white text-xs px-3 py-1 rounded font-bold">Suscribirme</button>
+              </div>
+            </div>
+
+            <!-- Content with Sidebar & Ads -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div class="md:col-span-2 space-y-3">
+                <span class="text-[10px] uppercase font-bold text-blue-600 tracking-wider">Productividad &bull; 8 min de lectura &bull; Patrocinado</span>
+                <h3 class="text-2xl font-bold font-sans tracking-tight text-gray-900">
+                  El arte del enfoque profundo en la era de la saturación digital
+                </h3>
+
+                <!-- Fake In-Article Banner Ad -->
+                <div class="p-3 bg-gray-100 border border-gray-300 text-center rounded my-2">
+                  <span class="text-[9px] text-gray-500 uppercase block font-semibold">Publicidad recomendada por algoritmo</span>
+                  <div class="text-xs font-bold text-blue-700 underline">¿Quieres perder 10 kilos durmiendo? Los dentistas odian este truco</div>
+                </div>
+
+                <p class="text-xs leading-relaxed text-gray-700">
+                  En un mundo hiperconectado, mantener la concentración durante más de quince minutos parece un milagro casi inalcanzable. Las notificaciones incesantes, los algoritmos de recomendación adictivos y el ruido visual omnipresente...
+                </p>
+                <p class="text-xs leading-relaxed text-gray-700">
+                  Fragmentan nuestro pensamiento de formas invisibles pero devastadoras. Para recuperar la lucidez intelectual es imperativo despojarnos de la necesidad de estímulo continuo.
+                </p>
+              </div>
+
+              <!-- Fake Cluttered Sidebar -->
+              <div class="space-y-4">
+                <div class="p-4 bg-gray-50 border rounded text-xs">
+                  <h4 class="font-bold text-gray-800 mb-2">Artículos Virales</h4>
+                  <ul class="space-y-2 text-[11px] text-blue-600 underline">
+                    <li>10 celebridades que no creerás cómo lucen hoy</li>
+                    <li>Invierte $200 y gana millones según expertos</li>
+                    <li>Este gadget secreto está agotándose en tu ciudad</li>
+                  </ul>
+                </div>
+                <div class="p-4 bg-purple-50 border border-purple-200 rounded text-center text-xs">
+                  <span class="font-bold text-purple-900 block">DESCARGA NUESTRA APP</span>
+                  <span class="text-[10px] text-purple-700">Para continuar leyendo este artículo</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- VIEW 2: ZEN READER VIEW (ACTIVE BY DEFAULT) -->
+          <div id="sim-view-zen" class="p-8 sm:p-12 bg-zen-surface relative min-h-[440px]">
+            
+            <!-- Zen Control Bar inside reader -->
+            <div class="flex items-center justify-between pb-6 mb-8 border-b border-zen text-xs text-zen-secondary font-medium">
+              <div class="flex items-center gap-3">
+                <span class="inline-flex items-center gap-1 text-zen-accent font-semibold">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                  <span>4 min de lectura</span>
+                </span>
+                <span class="text-zen-muted">&bull;</span>
+                <span>Guardado hoy</span>
+                <span class="text-zen-muted">&bull;</span>
+                <span class="px-2 py-0.5 rounded bg-zen-tag text-zen-tag text-[10px] font-mono font-medium">Offline</span>
+              </div>
+
+              <!-- Font Size Adjustment Simulator Controls -->
+              <div class="flex items-center gap-2">
+                <span class="text-zen-muted text-[11px]">Tipografía:</span>
+                <button id="sim-font-minus" class="w-6 h-6 rounded border border-zen bg-zen-subtle hover:bg-zen-surface flex items-center justify-center font-bold text-xs text-zen-primary transition-colors" title="Reducir fuente">-</button>
+                <span id="sim-font-size" class="font-mono text-[11px] w-8 text-center text-zen-secondary">100%</span>
+                <button id="sim-font-plus" class="w-6 h-6 rounded border border-zen bg-zen-subtle hover:bg-zen-surface flex items-center justify-center font-bold text-xs text-zen-primary transition-colors" title="Aumentar fuente">+</button>
+              </div>
+            </div>
+
+            <!-- Zen Article Content -->
+            <article id="sim-zen-content" class="max-w-2xl mx-auto space-y-6 text-zen-primary transition-all duration-200">
+              <header class="space-y-3">
+                <h3 class="text-3xl sm:text-4xl font-editorial font-bold tracking-tight text-zen-primary leading-tight">
+                  El arte del enfoque profundo en la era de la saturación digital
+                </h3>
+                <p class="text-xs sm:text-sm text-zen-secondary italic font-editorial">
+                  Por Pensamiento Profundo &bull; Fuente original preservada localmente
+                </p>
+              </header>
+
+              <div class="space-y-4 text-base sm:text-lg leading-relaxed font-editorial text-zen-primary/95">
+                <p>
+                  En un mundo hiperconectado, mantener la concentración durante más de quince minutos parece un milagro casi inalcanzable. Las notificaciones incesantes, los algoritmos de recomendación diseñados para secuestrar la dopamina y el ruido visual omnipresente fragmentan nuestro pensamiento de formas sutiles pero devastadoras.
+                </p>
+                <blockquote class="pl-4 border-l-2 border-zen-accent italic text-zen-secondary my-4 text-base font-editorial">
+                  "La simplicidad no es la falta de elementos, sino la presencia de la calma absoluta y el propósito sin distracciones."
+                </blockquote>
+                <p>
+                  Para recuperar la lucidez intelectual, es imperativo despojarnos de la necesidad de estimulación continua. Leer sin anuncios, sin popups de cookies que bloquean la pantalla y sin banners parpadeantes no es un lujo estético: es un acto de higiene mental indispensable para comprender en profundidad.
+                </p>
+              </div>
+            </article>
+
+            <!-- Zen Reading Footer -->
+            <div class="mt-12 pt-6 border-t border-zen text-center">
+              <div class="inline-flex items-center gap-2 text-xs text-zen-muted font-medium">
+                <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span>Artículo guardado en el almacenamiento local de tu navegador (IndexedDB)</span>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="text-center mt-6">
+          <p class="text-xs text-zen-muted">
+            Tip: Puedes alternar entre <strong>Web Típica</strong> y <strong>Zen Reader</strong> usando los botones superiores para sentir el alivio mental instantáneo.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PHILOSOPHY & CORE PILLARS -->
+    <section id="filosofia" class="py-20 md:py-28 border-b border-zen">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span class="text-xs font-mono uppercase tracking-widest text-zen-accent font-semibold">Filosofía & Principios</span>
+          <h2 class="text-3xl sm:text-5xl font-bold font-editorial text-zen-primary mt-2 mb-4">
+            Construido para durar.<br/>
+            Diseñado para la calma.
+          </h2>
+          <p class="text-zen-secondary text-base leading-relaxed">
+            Tras el cierre sucesivo de servicios como Pocket y Omnivore, decidimos crear una herramienta que no pueda desaparecer jamás: una extensión autónoma que vive en tu navegador, sin costes ocultos ni servidores que mantener.
+          </p>
+        </div>
+
+        <!-- 6 Pillars Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          
+          <!-- Pillar 1 -->
+          <div class="p-7 rounded-2xl bg-zen-surface border border-zen zen-shadow hover:border-zen-accent/60 transition-all flex flex-col justify-between">
+            <div>
+              <div class="w-10 h-10 rounded-xl bg-zen-subtle border border-zen flex items-center justify-center text-zen-accent mb-5">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2 1.5 3 3.5 3h9c2 0 3.5-1 3.5-3V7c0-2-1.5-3-3.5-3h-9C5.5 4 4 5 4 7zM9 12h6M9 16h4"></path></svg>
+              </div>
+              <h3 class="text-xl font-bold font-editorial text-zen-primary mb-2">100% Local y Offline</h3>
+              <p class="text-sm text-zen-secondary leading-relaxed font-normal">
+                Tus artículos se persisten en <strong>IndexedDB nativo</strong> con almacenamiento ilimitado. No dependes de servidores externos que puedan quebrar o perder tus lecturas.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-zen text-xs font-mono text-zen-accent font-semibold">
+              IndexedDB &bull; Sin Cloud
+            </div>
+          </div>
+
+          <!-- Pillar 2 -->
+          <div class="p-7 rounded-2xl bg-zen-surface border border-zen zen-shadow hover:border-zen-accent/60 transition-all flex flex-col justify-between">
+            <div>
+              <div class="w-10 h-10 rounded-xl bg-zen-subtle border border-zen flex items-center justify-center text-zen-accent mb-5">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+              </div>
+              <h3 class="text-xl font-bold font-editorial text-zen-primary mb-2">Privacidad por Diseño</h3>
+              <p class="text-sm text-zen-secondary leading-relaxed font-normal">
+                El contenido de lo que lees nunca sale de tu equipo. <strong>Cero telemetría, cero analítica de terceros</strong>, cero cookies y cero venta de patrones de lectura.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-zen text-xs font-mono text-zen-accent font-semibold">
+              Zero Telemetry &bull; 100% Privado
+            </div>
+          </div>
+
+          <!-- Pillar 3 -->
+          <div class="p-7 rounded-2xl bg-zen-surface border border-zen zen-shadow hover:border-zen-accent/60 transition-all flex flex-col justify-between">
+            <div>
+              <div class="w-10 h-10 rounded-xl bg-zen-subtle border border-zen flex items-center justify-center text-zen-accent mb-5">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+              </div>
+              <h3 class="text-xl font-bold font-editorial text-zen-primary mb-2">Motor Readability Puro</h3>
+              <p class="text-sm text-zen-secondary leading-relaxed font-normal">
+                Usa el motor de Mozilla Readability para diseccionar artículos, preservando tipografía limpia, imágenes clave y subtítulos, mientras expulsa el 100% de la basura publicitaria.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-zen text-xs font-mono text-zen-accent font-semibold">
+              Mozilla Readability &bull; DOMPurify
+            </div>
+          </div>
+
+          <!-- Pillar 4 -->
+          <div class="p-7 rounded-2xl bg-zen-surface border border-zen zen-shadow hover:border-zen-accent/60 transition-all flex flex-col justify-between">
+            <div>
+              <div class="w-10 h-10 rounded-xl bg-zen-subtle border border-zen flex items-center justify-center text-zen-accent mb-5">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+              </div>
+              <h3 class="text-xl font-bold font-editorial text-zen-primary mb-2">Clipper Instantáneo</h3>
+              <p class="text-sm text-zen-secondary leading-relaxed font-normal">
+                Presiona <kbd class="px-2 py-0.5 bg-zen-subtle border border-zen rounded font-mono text-xs font-bold text-zen-primary">Alt + Shift + S</kbd> o pulsa el icono. Guardado en segundo plano en menos de 50 milisegundos con notificación no invasiva.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-zen text-xs font-mono text-zen-accent font-semibold">
+              Atajo configurable &bull; Cero latencia
+            </div>
+          </div>
+
+          <!-- Pillar 5 -->
+          <div class="p-7 rounded-2xl bg-zen-surface border border-zen zen-shadow hover:border-zen-accent/60 transition-all flex flex-col justify-between">
+            <div>
+              <div class="w-10 h-10 rounded-xl bg-zen-subtle border border-zen flex items-center justify-center text-zen-accent mb-5">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+              </div>
+              <h3 class="text-xl font-bold font-editorial text-zen-primary mb-2">Diseñado para Zen Browser</h3>
+              <p class="text-sm text-zen-secondary leading-relaxed font-normal">
+                Inspirado en la filosofía y estética de <strong>Zen Browser</strong>. Compatible de forma nativa con Firefox, Chrome, Brave, Arc y Microsoft Edge bajo Manifest V3.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-zen text-xs font-mono text-zen-accent font-semibold">
+              Zen Browser &bull; Firefox &bull; Chromium
+            </div>
+          </div>
+
+          <!-- Pillar 6 -->
+          <div class="p-7 rounded-2xl bg-zen-surface border border-zen zen-shadow hover:border-zen-accent/60 transition-all flex flex-col justify-between">
+            <div>
+              <div class="w-10 h-10 rounded-xl bg-zen-subtle border border-zen flex items-center justify-center text-zen-accent mb-5">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+              </div>
+              <h3 class="text-xl font-bold font-editorial text-zen-primary mb-2">Clean Architecture & MIT</h3>
+              <p class="text-sm text-zen-secondary leading-relaxed font-normal">
+                Arquitectura limpia de 4 capas desacopladas, verificada con <code>dependency-cruiser</code> en CI. Sin sorpresas, código 100% auditable y libre para siempre.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-zen text-xs font-mono text-zen-accent font-semibold">
+              Licencia MIT &bull; Clean Architecture
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SEO COMPARATIVE MATRIX: ZEN READER VS POCKET VS OMNIVORE VS READWISE -->
+    <section id="comparativa" class="py-20 md:py-28 bg-zen-subtle border-b border-zen">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6">
+        
+        <div class="text-center max-w-3xl mx-auto mb-14">
+          <span class="text-xs font-mono uppercase tracking-widest text-zen-accent font-semibold">Análisis Comparativo</span>
+          <h2 class="text-3xl sm:text-5xl font-bold font-editorial text-zen-primary mt-2 mb-4">
+            ¿Por qué Zen Reader frente a otras alternativas?
+          </h2>
+          <p class="text-zen-secondary text-base leading-relaxed">
+            El mercado de aplicaciones <em>read-it-later</em> quedó fracturado tras los cierres de Pocket y Omnivore. Aquí tienes una comparativa honesta y técnica de las opciones disponibles hoy.
+          </p>
+        </div>
+
+        <!-- Comparison Table -->
+        <div class="rounded-2xl border border-zen bg-zen-surface zen-shadow overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-sm border-collapse">
+              <thead>
+                <tr class="border-b border-zen bg-zen-subtle text-xs uppercase font-mono tracking-wider text-zen-secondary">
+                  <th class="p-4 sm:p-5 font-bold">Criterio</th>
+                  <th class="p-4 sm:p-5 font-bold text-zen-accent bg-zen-accent-light/50 border-x border-zen">Zen Reader</th>
+                  <th class="p-4 sm:p-5 font-medium">Pocket (RIP 2025)</th>
+                  <th class="p-4 sm:p-5 font-medium">Omnivore (RIP 2024)</th>
+                  <th class="p-4 sm:p-5 font-medium">Readwise Reader</th>
+                  <th class="p-4 sm:p-5 font-medium">Wallabag</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-zen text-zen-secondary">
+                <!-- Row 1 -->
+                <tr class="hover:bg-zen-subtle/50 transition-colors">
+                  <td class="p-4 sm:p-5 font-semibold text-zen-primary">Precio mensual</td>
+                  <td class="p-4 sm:p-5 font-bold text-emerald-600 bg-zen-accent-light/30 border-x border-zen">100% Gratis</td>
+                  <td class="p-4 sm:p-5 text-zen-muted line-through">$5 / mes</td>
+                  <td class="p-4 sm:p-5 text-zen-muted line-through">Gratis (Cerró)</td>
+                  <td class="p-4 sm:p-5 text-rose-500 font-medium">~$12 / mes</td>
+                  <td class="p-4 sm:p-5">Gratis (Self-host)</td>
+                </tr>
+                <!-- Row 2 -->
+                <tr class="hover:bg-zen-subtle/50 transition-colors">
+                  <td class="p-4 sm:p-5 font-semibold text-zen-primary">Cuenta obligatoria</td>
+                  <td class="p-4 sm:p-5 font-bold text-emerald-600 bg-zen-accent-light/30 border-x border-zen">No (0 registros)</td>
+                  <td class="p-4 sm:p-5">Sí (Firefox/Google)</td>
+                  <td class="p-4 sm:p-5">Sí (Email)</td>
+                  <td class="p-4 sm:p-5">Sí (Cuenta Readwise)</td>
+                  <td class="p-4 sm:p-5">Sí (Servidor propio)</td>
+                </tr>
+                <!-- Row 3 -->
+                <tr class="hover:bg-zen-subtle/50 transition-colors">
+                  <td class="p-4 sm:p-5 font-semibold text-zen-primary">Dependencia de Servidor Cloud</td>
+                  <td class="p-4 sm:p-5 font-bold text-emerald-600 bg-zen-accent-light/30 border-x border-zen">Ninguna (100% Local)</td>
+                  <td class="p-4 sm:p-5 text-rose-500">Servidores centrales</td>
+                  <td class="p-4 sm:p-5 text-rose-500">Servidores centrales</td>
+                  <td class="p-4 sm:p-5 text-rose-500">Servidores centrales</td>
+                  <td class="p-4 sm:p-5 text-amber-600">Requiere tu VPS</td>
+                </tr>
+                <!-- Row 4 -->
+                <tr class="hover:bg-zen-subtle/50 transition-colors">
+                  <td class="p-4 sm:p-5 font-semibold text-zen-primary">Lectura 100% Offline</td>
+                  <td class="p-4 sm:p-5 font-bold text-emerald-600 bg-zen-accent-light/30 border-x border-zen">Sí (IndexedDB)</td>
+                  <td class="p-4 sm:p-5">Parcial (App móvil)</td>
+                  <td class="p-4 sm:p-5">Parcial</td>
+                  <td class="p-4 sm:p-5">Sí (Cache PWA)</td>
+                  <td class="p-4 sm:p-5">Depende de apps</td>
+                </tr>
+                <!-- Row 5 -->
+                <tr class="hover:bg-zen-subtle/50 transition-colors">
+                  <td class="p-4 sm:p-5 font-semibold text-zen-primary">Código Abierto (Open Source)</td>
+                  <td class="p-4 sm:p-5 font-bold text-emerald-600 bg-zen-accent-light/30 border-x border-zen">Sí (Licencia MIT)</td>
+                  <td class="p-4 sm:p-5 text-rose-500">Propietario cerrado</td>
+                  <td class="p-4 sm:p-5">AGPL-3.0 (Cerró)</td>
+                  <td class="p-4 sm:p-5 text-rose-500">Propietario cerrado</td>
+                  <td class="p-4 sm:p-5">MIT</td>
+                </tr>
+                <!-- Row 6 -->
+                <tr class="hover:bg-zen-subtle/50 transition-colors">
+                  <td class="p-4 sm:p-5 font-semibold text-zen-primary">Facilidad de puesta en marcha</td>
+                  <td class="p-4 sm:p-5 font-bold text-emerald-600 bg-zen-accent-light/30 border-x border-zen">10 segundos (Instalar y leer)</td>
+                  <td class="p-4 sm:p-5">Cerrado</td>
+                  <td class="p-4 sm:p-5">Cerrado</td>
+                  <td class="p-4 sm:p-5">Rápida con tarjeta</td>
+                  <td class="p-4 sm:p-5 text-rose-500">Compleja (Docker/SQL)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="mt-8 p-4 rounded-xl bg-zen-surface border border-zen flex items-center justify-between text-xs text-zen-secondary">
+          <span>¿Por qué pagar $12/mes o administrar servidores Docker si solo quieres guardar artículos y leerlos en paz?</span>
+          <a href="#instalacion" class="font-bold text-zen-accent hover:underline shrink-0 ml-4">Empieza con Zen Reader &rarr;</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS (3 SIMPLE ZEN STEPS) -->
+    <section class="py-20 md:py-28 border-b border-zen">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6">
+        
+        <div class="text-center max-w-2xl mx-auto mb-16">
+          <span class="text-xs font-mono uppercase tracking-widest text-zen-accent font-semibold">Flujo de Trabajo</span>
+          <h2 class="text-3xl sm:text-4xl font-bold font-editorial text-zen-primary mt-2 mb-4">
+            Cómo funciona: Simplicidad en 3 pasos
+          </h2>
+          <p class="text-zen-secondary text-base">
+            Cero configuración inicial. Instalas la extensión y estás listo para navegar con serenidad.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+          
+          <!-- Step 1 -->
+          <div class="p-6 rounded-2xl bg-zen-surface border border-zen zen-shadow text-center relative">
+            <div class="w-12 h-12 rounded-full bg-zen-accent text-white flex items-center justify-center font-editorial font-bold text-xl mx-auto mb-5 shadow-sm">
+              1
+            </div>
+            <h3 class="text-lg font-bold font-editorial text-zen-primary mb-2">Descubre un artículo</h3>
+            <p class="text-xs sm:text-sm text-zen-secondary leading-relaxed">
+              Estás en Twitter, Hacker News, Reddit o tu periódico favorito y encuentras un ensayo largo que quieres leer con calma.
+            </p>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="p-6 rounded-2xl bg-zen-surface border border-zen zen-shadow text-center relative">
+            <div class="w-12 h-12 rounded-full bg-zen-accent text-white flex items-center justify-center font-editorial font-bold text-xl mx-auto mb-5 shadow-sm">
+              2
+            </div>
+            <h3 class="text-lg font-bold font-editorial text-zen-primary mb-2">Guarda con un atajo</h3>
+            <p class="text-xs sm:text-sm text-zen-secondary leading-relaxed">
+              Presiona <kbd class="px-2 py-0.5 rounded bg-zen-subtle border border-zen font-mono text-xs font-bold text-zen-primary">Alt + Shift + S</kbd> o haz clic en el icono. El artículo se sanitiza y guarda localmente.
+            </p>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="p-6 rounded-2xl bg-zen-surface border border-zen zen-shadow text-center relative">
+            <div class="w-12 h-12 rounded-full bg-zen-accent text-white flex items-center justify-center font-editorial font-bold text-xl mx-auto mb-5 shadow-sm">
+              3
+            </div>
+            <h3 class="text-lg font-bold font-editorial text-zen-primary mb-2">Lee en tu santuario</h3>
+            <p class="text-xs sm:text-sm text-zen-secondary leading-relaxed">
+              Abre tu biblioteca personal, desconéctate de internet si quieres, elige tu tema preferido (Papel, Sepia, Noche) y disfruta de la lectura.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- INSTALLATION & DOWNLOAD SECTION -->
+    <section id="instalacion" class="py-20 md:py-28 bg-zen-subtle border-b border-zen">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+        
+        <div class="max-w-2xl mx-auto mb-12">
+          <span class="text-xs font-mono uppercase tracking-widest text-zen-accent font-semibold">Instalación Directa</span>
+          <h2 class="text-3xl sm:text-5xl font-bold font-editorial text-zen-primary mt-2 mb-4">
+            Comienza a leer en paz hoy
+          </h2>
+          <p class="text-zen-secondary text-base leading-relaxed">
+            Instala la extensión en tu navegador favorito en menos de un minuto.
+          </p>
+        </div>
+
+        <!-- Download Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left mb-12">
+          
+          <!-- Firefox / Zen Browser Card -->
+          <div class="p-8 rounded-2xl bg-zen-surface border border-zen zen-shadow flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-xs font-mono font-bold px-2.5 py-1 rounded bg-zen-tag text-zen-tag">Recomendado</span>
+                <span class="text-xs text-zen-muted font-mono">v2.0.0 &bull; Manifest V3</span>
+              </div>
+              <h3 class="text-2xl font-bold font-editorial text-zen-primary mb-2">Zen Browser & Firefox</h3>
+              <p class="text-xs sm:text-sm text-zen-secondary leading-relaxed mb-6 font-normal">
+                Diseñado para integrarse armónicamente con la interfaz de Zen Browser y Firefox. Cero impacto de memoria y soporte offline total.
+              </p>
+            </div>
+            
+            <div class="space-y-3">
+              <a href="https://github.com/MatiasBlanc/zen-reader/releases" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center gap-2 py-3 px-5 rounded-xl bg-zen-accent text-white font-semibold text-xs hover:bg-zen-accent-hover transition-colors shadow-sm">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                <span>Descargar para Firefox / Zen (.xpi)</span>
+              </a>
+              <div class="text-[11px] text-zen-muted text-center font-mono">
+                En about:debugging &rarr; Cargar complemento temporal
+              </div>
+            </div>
+          </div>
+
+          <!-- Chrome / Brave / Edge Card -->
+          <div class="p-8 rounded-2xl bg-zen-surface border border-zen zen-shadow flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-xs font-mono font-bold px-2.5 py-1 rounded bg-zen-subtle text-zen-secondary">Chromium</span>
+                <span class="text-xs text-zen-muted font-mono">v2.0.0 &bull; Manifest V3</span>
+              </div>
+              <h3 class="text-2xl font-bold font-editorial text-zen-primary mb-2">Chrome, Brave, Edge & Arc</h3>
+              <p class="text-xs sm:text-sm text-zen-secondary leading-relaxed mb-6 font-normal">
+                Compatible con todos los navegadores basados en Chromium. Service Worker ultraligero y sincronización fluida en segundo plano.
+              </p>
+            </div>
+
+            <div class="space-y-3">
+              <a href="https://github.com/MatiasBlanc/zen-reader/releases" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center gap-2 py-3 px-5 rounded-xl bg-zen-surface border border-zen text-zen-primary font-semibold text-xs hover:border-zen-accent hover:text-zen-accent transition-colors zen-shadow">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                <span>Descargar paquete Chromium (.zip)</span>
+              </a>
+              <div class="text-[11px] text-zen-muted text-center font-mono">
+                En chrome://extensions &rarr; Modo desarrollador &rarr; Cargar
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Developer Section: Git Clone -->
+        <div class="p-6 rounded-2xl bg-zen-surface border border-zen text-left max-w-2xl mx-auto zen-shadow">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-xs font-bold font-mono text-zen-secondary uppercase">¿Prefieres compilar desde el código fuente?</span>
+            <span class="text-[10px] text-emerald-600 font-semibold font-mono">Open Source (MIT)</span>
+          </div>
+          <div class="flex items-center justify-between p-3 rounded-lg bg-zen-subtle border border-zen font-mono text-xs text-zen-primary overflow-x-auto">
+            <code>git clone https://github.com/MatiasBlanc/zen-reader.git</code>
+            <button data-copy="git clone https://github.com/MatiasBlanc/zen-reader.git" class="ml-4 shrink-0 px-2.5 py-1 rounded bg-zen-surface border border-zen text-[11px] font-semibold text-zen-secondary hover:text-zen-primary transition-colors" title="Copiar comando">
+              Copiar
+            </button>
+          </div>
+          <div class="mt-3 flex items-center justify-between text-xs text-zen-muted">
+            <span>npm install &bull; npm run build</span>
+            <a href="https://github.com/MatiasBlanc/zen-reader" target="_blank" rel="noopener noreferrer" class="font-semibold text-zen-accent hover:underline">Ver repositorio en GitHub &rarr;</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FAQ SECTION (SCHEMA OPTIMIZED) -->
+    <section id="faq" class="py-20 md:py-28 border-b border-zen">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6">
+        
+        <div class="text-center max-w-2xl mx-auto mb-16">
+          <span class="text-xs font-mono uppercase tracking-widest text-zen-accent font-semibold">Preguntas Frecuentes</span>
+          <h2 class="text-3xl sm:text-5xl font-bold font-editorial text-zen-primary mt-2 mb-4">
+            Todo lo que necesitas saber
+          </h2>
+          <p class="text-zen-secondary text-base leading-relaxed">
+            Claridad absoluta, sin letra pequeña ni sorpresas técnicas.
+          </p>
+        </div>
+
+        <div class="space-y-4">
+          
+          <!-- FAQ 1 -->
+          <details class="faq-item group p-6 rounded-2xl bg-zen-surface border border-zen zen-shadow transition-all" open>
+            <summary class="flex items-center justify-between cursor-pointer font-editorial font-bold text-lg text-zen-primary">
+              <span>¿Qué motivó la creación de Zen Reader tras el cierre de Pocket y Omnivore?</span>
+              <span class="w-6 h-6 rounded-full bg-zen-subtle border border-zen flex items-center justify-center text-xs text-zen-accent group-open:rotate-180 transition-transform">
+                &darr;
+              </span>
+            </summary>
+            <div class="mt-4 text-sm text-zen-secondary leading-relaxed font-normal pt-3 border-t border-zen">
+              Pocket anunció su cierre definitivo en julio de 2025 tras años de abandono. Omnivore cerró sus servidores en noviembre de 2024 tras ser adquirido. El mercado quedó dominado por herramientas de suscripción recurrente de $10-$15/mes o plataformas que exigen auto-hospedar servidores complejos. Zen Reader apuesta por el extremo opuesto: una herramienta que no depende de ningún servidor, instalable en 10 segundos y garantizada para durar para siempre porque corre 100% en tu máquina.
+            </div>
+          </details>
+
+          <!-- FAQ 2 -->
+          <details class="faq-item group p-6 rounded-2xl bg-zen-surface border border-zen zen-shadow transition-all">
+            <summary class="flex items-center justify-between cursor-pointer font-editorial font-bold text-lg text-zen-primary">
+              <span>¿Dónde se guardan mis artículos y cómo se protege mi privacidad?</span>
+              <span class="w-6 h-6 rounded-full bg-zen-subtle border border-zen flex items-center justify-center text-xs text-zen-accent group-open:rotate-180 transition-transform">
+                &darr;
+              </span>
+            </summary>
+            <div class="mt-4 text-sm text-zen-secondary leading-relaxed font-normal pt-3 border-t border-zen">
+              Tus artículos se guardan de forma local e íntegra en la base de datos <strong>IndexedDB</strong> de tu propio navegador. Ningún dato viaja a servidores externos: no hay backend, no hay telemetría, no hay analíticas ni rastreo de URLs. Tu historial de lectura es exclusivamente tuyo y permanece en tu disco.
+            </div>
+          </details>
+
+          <!-- FAQ 3 -->
+          <details class="faq-item group p-6 rounded-2xl bg-zen-surface border border-zen zen-shadow transition-all">
+            <summary class="flex items-center justify-between cursor-pointer font-editorial font-bold text-lg text-zen-primary">
+              <span>¿Funciona verdaderamente offline cuando no tengo conexión a internet?</span>
+              <span class="w-6 h-6 rounded-full bg-zen-subtle border border-zen flex items-center justify-center text-xs text-zen-accent group-open:rotate-180 transition-transform">
+                &darr;
+              </span>
+            </summary>
+            <div class="mt-4 text-sm text-zen-secondary leading-relaxed font-normal pt-3 border-t border-zen">
+              Sí, totalmente. Al momento de guardar un artículo con el clipper, Zen Reader extrae el texto, títulos, subtítulos e imágenes principales, los sanitiza y los almacena localmente. Puedes abrir el dashboard de Zen Reader en un avión o en un refugio de montaña sin internet y leer tu biblioteca sin problema.
+            </div>
+          </details>
+
+          <!-- FAQ 4 -->
+          <details class="faq-item group p-6 rounded-2xl bg-zen-surface border border-zen zen-shadow transition-all">
+            <summary class="flex items-center justify-between cursor-pointer font-editorial font-bold text-lg text-zen-primary">
+              <span>¿Qué navegadores son compatibles y por qué se destaca Zen Browser?</span>
+              <span class="w-6 h-6 rounded-full bg-zen-subtle border border-zen flex items-center justify-center text-xs text-zen-accent group-open:rotate-180 transition-transform">
+                &darr;
+              </span>
+            </summary>
+            <div class="mt-4 text-sm text-zen-secondary leading-relaxed font-normal pt-3 border-t border-zen">
+              Zen Reader está construido sobre los estándares universales de Manifest V3. Es compatible con <strong>Zen Browser, Mozilla Firefox, Google Chrome, Brave, Microsoft Edge y Arc</strong>. Compartimos la visión de Zen Browser de una web calmada, estética y centrada en la privacidad del usuario.
+            </div>
+          </details>
+
+          <!-- FAQ 5 -->
+          <details class="faq-item group p-6 rounded-2xl bg-zen-surface border border-zen zen-shadow transition-all">
+            <summary class="flex items-center justify-between cursor-pointer font-editorial font-bold text-lg text-zen-primary">
+              <span>¿Hay algún límite en la cantidad de artículos que puedo guardar?</span>
+              <span class="w-6 h-6 rounded-full bg-zen-subtle border border-zen flex items-center justify-center text-xs text-zen-accent group-open:rotate-180 transition-transform">
+                &darr;
+              </span>
+            </summary>
+            <div class="mt-4 text-sm text-zen-secondary leading-relaxed font-normal pt-3 border-t border-zen">
+              La extensión solicita el permiso nativo <code>unlimitedStorage</code>, lo que significa que el límite de almacenamiento es únicamente el espacio libre disponible en tu disco duro. Puedes guardar miles de artículos sin pagar ningún plan ni preocuparte por cuotas artificiales.
+            </div>
+          </details>
+
+          <!-- FAQ 6 -->
+          <details class="faq-item group p-6 rounded-2xl bg-zen-surface border border-zen zen-shadow transition-all">
+            <summary class="flex items-center justify-between cursor-pointer font-editorial font-bold text-lg text-zen-primary">
+              <span>¿Cómo está construido técnicamente el proyecto?</span>
+              <span class="w-6 h-6 rounded-full bg-zen-subtle border border-zen flex items-center justify-center text-xs text-zen-accent group-open:rotate-180 transition-transform">
+                &darr;
+              </span>
+            </summary>
+            <div class="mt-4 text-sm text-zen-secondary leading-relaxed font-normal pt-3 border-t border-zen">
+              Zen Reader sigue los principios de <strong>Clean Architecture</strong> con cuatro capas estrictas (Dominio, Aplicación, Infraestructura y Presentación). El frontend utiliza Preact y Tailwind CSS, el empaquetador es Vite, y la arquitectura se verifica en cada commit de CI mediante <code>dependency-cruiser</code> para evitar acoplamientos indeseados.
+            </div>
+          </details>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ZEN MANIFESTO & FINAL CTA -->
+    <section class="py-20 md:py-28 zen-pattern text-center border-b border-zen relative">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 relative z-10">
+        
+        <div class="w-16 h-16 rounded-full bg-zen-subtle border border-zen flex items-center justify-center text-zen-accent mx-auto mb-6 enso-breathe p-3">
+          <svg class="w-full h-full text-zen-accent" viewBox="0 0 500 500" fill="none">
+            <path d="M401.583 175.476C400.467 172.058 394.63 161.453 392.656 158.175C382.494 141.324 371.059 131.088 355.933 119.451C334.917 103.284 316.595 94.1396 290.737 87.5626C249.527 77.0803 205.629 86.0246 169.531 107.811C134.849 129.374 109.09 166.326 99.1291 205.673C92.8879 230.326 94.0645 246.55 98.372 270.464C102.361 292.612 107.337 303.675 119.333 322.987C136.41 350.479 160.224 370.458 189.688 383.644C196.799 386.774 207.277 388.807 214.945 390.041C220.827 391.03 226.757 391.713 232.71 392.094C248.667 393.047 259.477 392.119 269.511 407.537C272.306 411.884 272.892 417.846 271.447 422.797C263.014 449.807 216.96 442.152 196.598 436.464C189.123 434.377 181.882 432.092 174.974 428.858C86.8651 387.598 38.9014 291.04 65.1757 196.443C78.6292 147.655 110.925 106.194 154.971 81.167C197.216 57.4186 250.809 49.0704 297.713 62.2178C327.223 70.363 354.204 85.8002 376.163 107.104C379.608 110.468 385.247 115.855 387.465 119.804C386.561 119.509 381.851 114.681 380.325 113.517C371.162 106.533 363.629 99.9196 354.01 93.3563L353.168 94.3122C391.25 122.417 418.08 160.81 425.568 208.071C426.099 211.408 427.463 221.825 427.422 225.012C427.986 228.271 428.309 235.124 427.571 238.316L426.924 238.054L427.666 237.934L427.704 237.736L426.849 237.389C426.787 236.19 426.584 233.573 426.655 232.497C420.464 185.454 398.539 143.185 362.12 112.86C360.158 111.229 358.226 109.587 356.244 107.981L354.735 109.132C375.217 125.464 393.95 150.273 403.013 174.898L401.583 175.476Z" fill="currentColor"/>
+            <path d="M441.657 234C444.723 286.11 427.15 337.33 392.749 376.548C367.357 405.319 337.718 423.213 301.871 435.866C294.833 438.352 286.203 439.215 280.294 441.46C278.408 441.855 274.279 443.382 272 444C274.265 442.465 276.891 440.958 279.253 439.535C290.851 431.405 302.72 422.425 311.588 411.254C323.212 396.609 332.365 378.491 335.624 359.991C337.179 351.08 337.66 342.016 337.059 332.992C336.868 330.071 334.771 315.836 337.506 314.472C343.593 311.439 352.598 312.124 359.26 310.407C400.399 301.016 430.001 275.149 441.657 234Z" fill="currentColor"/>
+          </svg>
+        </div>
+
+        <h2 class="text-3xl sm:text-5xl font-bold font-editorial text-zen-primary mb-4">
+          Recupera la paz al leer en la web.
+        </h2>
+        <p class="text-zen-secondary text-base sm:text-lg mb-8 leading-relaxed">
+          Sin cuentas. Sin servidores. Sin publicidad. Solo tú y las ideas que importan.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="#instalacion" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-zen-accent text-white font-semibold text-sm hover:bg-zen-accent-hover transition-all shadow-md">
+            Instalar Zen Reader Gratis
+          </a>
+          <a href="https://github.com/MatiasBlanc/zen-reader" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-zen-surface border border-zen text-zen-primary font-semibold text-sm hover:border-zen-accent hover:text-zen-accent transition-all zen-shadow">
+            <span>Explorar Código en GitHub</span>
+            <span class="text-amber-500">★</span>
+          </a>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="py-12 bg-zen-canvas text-zen-secondary text-xs border-t border-zen">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+      
+      <!-- Brand & Copyright -->
+      <div class="flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left">
+        <div class="flex items-center gap-2">
+          <div class="w-6 h-6 rounded-full bg-zen-subtle border border-zen flex items-center justify-center p-1">
+            <svg class="w-full h-full text-zen-accent" viewBox="0 0 500 500" fill="none"><path d="M401.583 175.476C400.467 172.058 394.63 161.453 392.656 158.175C382.494 141.324 371.059 131.088 355.933 119.451C334.917 103.284 316.595 94.1396 290.737 87.5626C249.527 77.0803 205.629 86.0246 169.531 107.811C134.849 129.374 109.09 166.326 99.1291 205.673C92.8879 230.326 94.0645 246.55 98.372 270.464C102.361 292.612 107.337 303.675 119.333 322.987C136.41 350.479 160.224 370.458 189.688 383.644C196.799 386.774 207.277 388.807 214.945 390.041C220.827 391.03 226.757 391.713 232.71 392.094C248.667 393.047 259.477 392.119 269.511 407.537C272.306 411.884 272.892 417.846 271.447 422.797C263.014 449.807 216.96 442.152 196.598 436.464C189.123 434.377 181.882 432.092 174.974 428.858C86.8651 387.598 38.9014 291.04 65.1757 196.443C78.6292 147.655 110.925 106.194 154.971 81.167C197.216 57.4186 250.809 49.0704 297.713 62.2178C327.223 70.363 354.204 85.8002 376.163 107.104C379.608 110.468 385.247 115.855 387.465 119.804C386.561 119.509 381.851 114.681 380.325 113.517C371.162 106.533 363.629 99.9196 354.01 93.3563L353.168 94.3122C391.25 122.417 418.08 160.81 425.568 208.071C426.099 211.408 427.463 221.825 427.422 225.012C427.986 228.271 428.309 235.124 427.571 238.316L426.924 238.054L427.666 237.934L427.704 237.736L426.849 237.389C426.787 236.19 426.584 233.573 426.655 232.497C420.464 185.454 398.539 143.185 362.12 112.86C360.158 111.229 358.226 109.587 356.244 107.981L354.735 109.132C375.217 125.464 393.95 150.273 403.013 174.898L401.583 175.476Z" fill="currentColor"/></svg>
+          </div>
+          <span class="font-bold text-zen-primary font-editorial text-sm">Zen Reader</span>
+        </div>
+        <span>&bull;</span>
+        <span>Creado con atención y serenidad por <a href="https://madeinchile.tech" target="_blank" rel="noopener noreferrer" class="font-semibold text-zen-primary hover:text-zen-accent transition-colors underline underline-offset-2">Made in Chile Tech</a></span>
+      </div>
+
+      <!-- Links -->
+      <div class="flex items-center gap-6 text-zen-muted font-medium">
+        <a href="https://github.com/MatiasBlanc/zen-reader" target="_blank" rel="noopener noreferrer" class="hover:text-zen-primary transition-colors">GitHub</a>
+        <a href="https://github.com/MatiasBlanc/zen-reader/blob/develop/LICENSE" target="_blank" rel="noopener noreferrer" class="hover:text-zen-primary transition-colors">Licencia MIT</a>
+        <a href="https://github.com/MatiasBlanc/zen-reader/blob/develop/PRIVACY.md" target="_blank" rel="noopener noreferrer" class="hover:text-zen-primary transition-colors">Privacidad</a>
+        <a href="https://github.com/MatiasBlanc/zen-reader/blob/develop/CHANGELOG.md" target="_blank" rel="noopener noreferrer" class="hover:text-zen-primary transition-colors">Changelog</a>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Main JavaScript -->
+  <script type="module" src="./src/main.ts"></script>
+</body>
+</html>

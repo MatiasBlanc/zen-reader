@@ -48,20 +48,27 @@ Lee [`CONTRIBUTING.md`](CONTRIBUTING.md) antes de abrir tu primer PR. Para propo
 
 Entorno: Manifest V3, compatible con Chrome, Edge y Firefox/Zen Browser.
 
-## Arquitectura
+## Estructura del Proyecto
+
+El repositorio está organizado como un monorepo:
+
+- **[`app/`](app/)**: Código fuente de la extensión de navegador (Manifest V3, Clean Architecture, Preact + Tailwind).
+- **[`web/`](web/)**: Landing page oficial de alta velocidad y optimizada para SEO ([`zen-reader.madeinchile.tech`](https://zen-reader.madeinchile.tech/)).
+
+## Arquitectura de la extensión (`app/`)
 
 Clean Architecture con 4 capas, dependencias apuntando siempre hacia adentro:
 
 ```
-src/
+app/src/
 ├── domain/          # entidades y funciones puras, sin dependencias externas
 ├── application/      # casos de uso y contratos (ports)
-├── infrastructure/  # adaptadores: Dexie, Readability, notificaciones
+├── infrastructure/  # adaptadores: IndexedDB, Readability, notificaciones
 ├── background/       # service worker (orquestación de eventos)
 └── presentation/     # UI en Preact: clipper, popup, dashboard
 ```
 
-Regla: ningún componente de `presentation/` accede a Dexie directamente — siempre pasa por un caso de uso de `application/`.
+Regla: ningún componente de `presentation/` accede al almacenamiento directamente — siempre pasa por un caso de uso de `application/`.
 
 > Estas reglas **se verifican automáticamente** con `dependency-cruiser` (`npm run arch`, corre en CI): un PR que las rompa falla.
 
@@ -72,22 +79,20 @@ Las decisiones de arquitectura se documentan en [`docs/decisions/`](docs/decisio
 ```bash
 npm install
 
-# Para Chrome/Edge (Vite Dev Server con HMR)
-npm run dev
+# ── Extensión (app) ──
+npm run dev:app       # Vite Dev Server con HMR (Chrome/Edge)
+npm run build:app     # Compilar extensión en app/dist
+npm run build:firefox # Empaquetar .xpi para Firefox / Zen Browser
+npm run arch          # Verificar arquitectura con dependency-cruiser
 
-# Para Firefox / Zen Browser (Build Watch + web-ext)
-# Terminal 1: Recompila dist/ al guardar cambios
-npm run build:watch
-
-# Terminal 2: Inicia Firefox con hot reload usando web-ext
-web-ext run -s dist
+# ── Landing Page (web) ──
+npm run dev:web       # Vite Dev Server para la landing page
+npm run build:web     # Compilar landing page estática en web/dist
 ```
-
-El comando `dev` inicia Vite en modo watch con HMR para navegadores basados en Chromium. Para **Firefox**, debido al soporte de Manifest V3 y HMR, se recomienda usar `npm run build:watch` en combinación con `web-ext run -s dist`.
 
 ## Build y carga en el navegador
 
-Para probar la extensión empaquetada:
+Para compilar todo el proyecto:
 
 ```bash
 npm run build

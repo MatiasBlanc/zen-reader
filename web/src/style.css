@@ -1,0 +1,179 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --zen-bg: #F9F7F2;
+    --zen-bg-subtle: #F2ECE1;
+    --zen-surface: #FFFFFF;
+    --zen-surface-raised: #FFFFFF;
+    --zen-border: #E5DFC8;
+    --zen-border-subtle: #EDE8DD;
+    --zen-text: #1C1917;
+    --zen-text-secondary: #655E53;
+    --zen-text-muted: #8F877B;
+    --zen-accent: #954D28;
+    --zen-accent-hover: #7E3E1E;
+    --zen-accent-light: #F6EBE5;
+    --zen-accent-ring: rgba(149, 77, 40, 0.2);
+    --zen-tag-bg: #EFE8DA;
+    --zen-tag-text: #5A4736;
+    --zen-shadow: 0 4px 20px -2px rgba(45, 35, 20, 0.05);
+    --zen-shadow-lg: 0 20px 30px -10px rgba(45, 35, 20, 0.08);
+  }
+
+  html.sepia {
+    --zen-bg: #F4EFEB;
+    --zen-bg-subtle: #EBE1D7;
+    --zen-surface: #FAF6F0;
+    --zen-surface-raised: #FFFFFF;
+    --zen-border: #DFD3C3;
+    --zen-border-subtle: #E8DFD2;
+    --zen-text: #2D2118;
+    --zen-text-secondary: #6B5749;
+    --zen-text-muted: #947F6F;
+    --zen-accent: #8E4423;
+    --zen-accent-hover: #733417;
+    --zen-accent-light: #F5EAE2;
+    --zen-accent-ring: rgba(142, 68, 35, 0.2);
+    --zen-tag-bg: #E8DCCF;
+    --zen-tag-text: #50392A;
+    --zen-shadow: 0 4px 20px -2px rgba(40, 25, 15, 0.06);
+    --zen-shadow-lg: 0 20px 30px -10px rgba(40, 25, 15, 0.09);
+  }
+
+  html.dark {
+    --zen-bg: #0E0E10;
+    --zen-bg-subtle: #161619;
+    --zen-surface: #17171B;
+    --zen-surface-raised: #1F1F24;
+    --zen-border: #282830;
+    --zen-border-subtle: #212128;
+    --zen-text: #F1EFEA;
+    --zen-text-secondary: #A6A39A;
+    --zen-text-muted: #737067;
+    --zen-accent: #C27D56;
+    --zen-accent-hover: #D4906B;
+    --zen-accent-light: #2A1F18;
+    --zen-accent-ring: rgba(194, 125, 86, 0.25);
+    --zen-tag-bg: #232228;
+    --zen-tag-text: #D5BDB0;
+    --zen-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.35);
+    --zen-shadow-lg: 0 20px 30px -10px rgba(0, 0, 0, 0.5);
+  }
+}
+
+body {
+  background-color: var(--zen-bg);
+  color: var(--zen-text);
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  transition: background-color 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow-x: hidden;
+}
+
+.font-editorial {
+  font-family: 'Newsreader', Georgia, Cambria, 'Times New Roman', Times, serif;
+}
+
+.bg-zen-canvas {
+  background-color: var(--zen-bg);
+}
+
+.bg-zen-subtle {
+  background-color: var(--zen-bg-subtle);
+}
+
+.bg-zen-surface {
+  background-color: var(--zen-surface);
+}
+
+.bg-zen-surface-raised {
+  background-color: var(--zen-surface-raised);
+}
+
+.border-zen {
+  border-color: var(--zen-border);
+}
+
+.border-zen-subtle {
+  border-color: var(--zen-border-subtle);
+}
+
+.text-zen-primary {
+  color: var(--zen-text);
+}
+
+.text-zen-secondary {
+  color: var(--zen-text-secondary);
+}
+
+.text-zen-muted {
+  color: var(--zen-text-muted);
+}
+
+.text-zen-accent {
+  color: var(--zen-accent);
+}
+
+.bg-zen-accent {
+  background-color: var(--zen-accent);
+}
+
+.bg-zen-accent-light {
+  background-color: var(--zen-accent-light);
+}
+
+.bg-zen-tag {
+  background-color: var(--zen-tag-bg);
+}
+
+.text-zen-tag {
+  color: var(--zen-tag-text);
+}
+
+.zen-shadow {
+  box-shadow: var(--zen-shadow);
+}
+
+.zen-shadow-lg {
+  box-shadow: var(--zen-shadow-lg);
+}
+
+/* Subtle dot/sand grain texture */
+.zen-pattern {
+  background-image: radial-gradient(rgba(149, 77, 40, 0.08) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+html.dark .zen-pattern {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+}
+
+/* Enso rotation animation */
+@keyframes enso-breathe {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 0.92;
+  }
+  50% {
+    transform: scale(1.02) rotate(1deg);
+    opacity: 1;
+  }
+}
+
+.enso-breathe {
+  animation: enso-breathe 8s ease-in-out infinite;
+}
+
+/* Smooth details/summary accordion transition */
+details > summary {
+  list-style: none;
+}
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Selection */
+::selection {
+  background-color: var(--zen-accent-light);
+  color: var(--zen-accent);
+}
