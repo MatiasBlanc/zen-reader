@@ -6,7 +6,7 @@ import { ReaderView } from './components/ReaderView';
 import { BookOpen } from '../icons';
 
 /**
- * Dashboard principal de ZenReader.
+ * Dashboard principal de Zen Reader.
  * Layout de dos paneles:
  *  - Izquierda: barra lateral con listado de artículos (scroll).
  *  - Derecha: panel lector con el artículo seleccionado.
@@ -42,20 +42,18 @@ export function DashboardApp() {
     const root = document.documentElement;
     root.classList.remove('theme-paper', 'theme-dark');
     root.classList.add(`theme-${preferences.theme}`);
-    // El fondo y el color del body se aplican con utilidades del tema
-    // (bg-paper / text-ink) en lugar de var() inline: las utilidades
-    // resuelven contra los tokens --zen-* que cambian con la clase de tema.
-    document.body.classList.add('bg-paper', 'text-ink');
+    document.body.style.backgroundColor = 'var(--zen-bg)';
+    document.body.style.color = 'var(--zen-text)';
   }, [preferences.theme]);
 
   const hasArticles = pending.length > 0 || archived.length > 0;
 
   return (
-    <div class="relative flex h-dvh overflow-hidden">
+    <div class="dashboard-root">
       {/* Backdrop del drawer en móvil: cierra la barra lateral al tocar el lector. */}
       {!sidebarCollapsed && (
         <div
-          class="absolute inset-0 z-10 bg-black/25 md:hidden"
+          class="dashboard-backdrop"
           onClick={toggleSidebar}
           aria-hidden="true"
         />
@@ -69,7 +67,7 @@ export function DashboardApp() {
       />
 
       {/* ── Panel lector ─────────────────────────────────────────────── */}
-      <main class="h-full min-w-0 flex-1 overflow-hidden bg-reader">
+      <main class="dashboard-main">
         {!hasArticles && !loading ? (
           <EmptyState />
         ) : (
@@ -85,14 +83,14 @@ export function DashboardApp() {
 /** Se muestra cuando no hay ningún artículo guardado. */
 function EmptyState() {
   return (
-    <div class="flex h-full flex-col items-center justify-center gap-3 px-8 text-center">
-      <BookOpen size={64} class="text-ink opacity-20" />
-      <p class="max-w-[28rem] text-xl font-medium text-ink">
+    <div class="empty-state">
+      <BookOpen size={64} class="empty-state__icon" />
+      <p class="empty-state__title">
         {chrome.i18n.getMessage('no_articles') || 'Sin artículos guardados'}
       </p>
-      <p class="max-w-sm text-sm text-muted">
+      <p class="empty-state__subtitle">
         Abre cualquier artículo en la web y presiona{' '}
-        <kbd class="rounded bg-line px-1.5 py-0.5 font-mono text-xs">Ctrl+Shift+S</kbd>{' '}
+        <kbd class="kbd">Ctrl+Shift+S</kbd>{' '}
         o usa el botón del popup para guardarlo aquí.
       </p>
     </div>

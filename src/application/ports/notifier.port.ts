@@ -8,16 +8,4 @@ export interface Notifier {
 
   /** Muestra un aviso de error. */
   error(message: string): void;
-
-  /**
-   * Reproduce el sonido de éxito asociado a la notificación.
-   * Se ejecuta junto con success() para feedback auditivo.
-   */
-  playSuccessSound(): void;
-
-  /**
-   * Reproduce el sonido de error asociado a la notificación.
-   * Se ejecuta junto con error() para feedback auditivo.
-   */
-  playErrorSound(): void;
 }

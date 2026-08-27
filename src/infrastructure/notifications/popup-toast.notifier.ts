@@ -12,13 +12,8 @@ export type PopupToastHandler = (kind: PopupToastKind, message: string) => void;
 
 /**
  * Notificador del popup.
- *
- * A diferencia de ChromeToastNotifier (pensado para el clipper, que
- * inyecta un nodo `position: fixed` en la página host), este adaptador
- * NO toca el DOM: en la ventana diminuta del popup ese toast aparecía
- * duplicado (arriba y abajo) o cortado por los límites. Aquí solo se
- * puentea el mensaje al estado de React para que se renderice dentro
- * del árbol del popup, en un único punto.
+ * Solo puentea el mensaje al estado de Preact para que se renderice
+ * dentro del árbol del popup, en un único punto.
  */
 export class PopupToastNotifier implements Notifier {
   constructor(private readonly handler: PopupToastHandler) {}
@@ -30,16 +25,4 @@ export class PopupToastNotifier implements Notifier {
   error(message: string): void {
     this.handler('error', message);
   }
-
-  /**
-   * No-op: el sonido de éxito se reproduce en la UI vía SoundPlayer
-   * (app.soundPlayer), centralizado en el contenedor.
-   */
-  playSuccessSound(): void {}
-
-  /**
-   * No-op: el sonido de error se reproduce en la UI vía SoundPlayer
-   * (app.soundPlayer), centralizado en el contenedor.
-   */
-  playErrorSound(): void {}
 }

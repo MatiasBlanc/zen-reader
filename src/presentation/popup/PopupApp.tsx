@@ -1,104 +1,134 @@
 import { useCallback, useRef, useState } from 'preact/hooks';
-import { createContainer } from '@infrastructure/di/container';
-import type { ApplicationContainer } from '@infrastructure/di/container';
-import { Bookmark, BookOpen, Loader } from '../icons';
-import type { Notifier } from '@application/ports/notifier.port';
+import { Bookmark, BookOpen, Loader, Check, AlertCircle } from '../icons';
+import type { ClipResultMessage } from '@application/messaging/message-types';
 
 /**
- * Aplicación popup de ZenReader.
+ * Aplicación popup de Zen Reader.
  *
- * Dos acciones principales: guardar la pestaña activa y abrir la
- * biblioteca. El toast de confirmación lo muestra el content script
- * en la página host, no el popup.
+ * Dos acciones principales: guardar la pestaña activa/previa y abrir la
+ * biblioteca. Soporta entornos de escritorio (ventana popup flotante)
+ * y navegadores móviles como Firefox para Android (donde el popup se
+ * ejecuta en una pestaña o vista dedicada).
  */
 
 /** Textos del popup con fallback por si falta alguna clave i18n. */
 const messages = {
   savePage: chrome.i18n.getMessage('save_page') || 'Guardar esta página',
   savingPage: chrome.i18n.getMessage('saving_page') || 'Guardando…',
+  savedPage: chrome.i18n.getMessage('clip_success') || 'Artículo guardado',
   viewLibrary: chrome.i18n.getMessage('view_library') || 'Ver biblioteca',
-};
-
-/** Notificador silencioso (el toast lo muestra el content script). */
-const silentNotifier: Notifier = {
-  success: () => {},
-  error: (msg) => console.error('[ZenReader]', msg),
-  playSuccessSound: () => {},
-  playErrorSound: () => {},
+  clipError: chrome.i18n.getMessage('clip_error') || 'Error al guardar',
 };
 
 export function PopupApp() {
   const [clipping, setClipping] = useState(false);
+  const [status, setStatus] = useState<'idle' | 'clipping' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
 
   /** Ref para bloquear clics duplicados de forma síncrona. */
   const clippingRef = useRef(false);
 
-  /** Composición root: contenedor DI, creado una sola vez. */
-  const ctxRef = useRef<{ app: ApplicationContainer } | null>(null);
-  if (ctxRef.current === null) {
-    ctxRef.current = { app: createContainer(silentNotifier) };
-  }
-  const { app } = ctxRef.current;
-
-  /** Solicita al service worker que clippee la pestaña activa. */
+  /** Solicita al service worker que clippee la pestaña activa o previa en móvil. */
   const handleClip = useCallback(async () => {
     if (clippingRef.current) return;
     clippingRef.current = true;
     setClipping(true);
+    setStatus('clipping');
+    setErrorMessage('');
+
     try {
-      const res = await chrome.runtime.sendMessage({ type: 'CLIP_ACTIVE_TAB' });
-      if (res?.ok) {
-        app.soundPlayer.play('success');
-      } else {
-        throw new Error(res?.error ?? 'clip_failed');
+      const res: ClipResultMessage = await chrome.runtime.sendMessage({ type: 'CLIP_ACTIVE_TAB' });
+      if (!res?.ok) {
+        throw new Error(res?.error ?? messages.clipError);
       }
-    } catch {
-      app.soundPlayer.play('error');
+      setStatus('success');
+
+      // Si estamos en un popup de escritorio flotante, cerramos automáticamente tras confirmar
+      try {
+        const currentTab = await chrome.tabs?.getCurrent?.();
+        if (!currentTab?.id) {
+          setTimeout(() => {
+            window.close();
+          }, 1200);
+        }
+      } catch {
+        // En caso de duda o error, mantenemos el popup abierto para ver el feedback
+      }
+    } catch (err) {
+      setStatus('error');
+      setErrorMessage(err instanceof Error ? err.message : messages.clipError);
     } finally {
       clippingRef.current = false;
       setClipping(false);
     }
-  }, [app]);
+  }, []);
 
-  /** Abre la biblioteca en una nueva pestaña. */
+  /** Abre la biblioteca en una pestaña nueva o navega si ya es pestaña. */
   const handleOpenLibrary = useCallback(async () => {
-    await chrome.runtime.sendMessage({ type: 'OPEN_LIBRARY' });
+    const libraryUrl = chrome.runtime.getURL('src/presentation/dashboard/index.html');
+
+    try {
+      // Si el popup se está ejecutando como una pestaña propia (común en Firefox para Android),
+      // navegamos directamente en la pestaña actual para evitar bloqueos y pestañas huérfanas.
+      const currentTab = await chrome.tabs?.getCurrent?.();
+      if (currentTab?.id) {
+        window.location.href = libraryUrl;
+        return;
+      }
+    } catch {}
+
+    try {
+      await chrome.tabs.create({ url: libraryUrl, active: true });
+      window.close();
+    } catch {
+      await chrome.runtime.sendMessage({ type: 'OPEN_LIBRARY' });
+    }
   }, []);
 
   return (
-    <div class="relative flex w-[320px] max-w-full select-none flex-col bg-canvas p-4 text-ink antialiased">
-      <header class="flex items-center gap-2.5">
-        <span
-          class="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-accent text-on-accent shadow-sm"
-          aria-hidden="true"
-        >
+    <div class="popup-root">
+      <header class="popup-header">
+        <span class="popup-icon" aria-hidden="true">
           <BookOpen size={17} />
         </span>
-        <h1 class="min-w-0 truncate text-[15px] font-bold leading-tight text-heading">ZenReader</h1>
+        <h1 class="popup-title">Zen Reader</h1>
       </header>
 
-      <main class="mt-4 flex flex-col gap-2">
+      <main class="popup-main">
         <button
           type="button"
           onClick={handleClip}
-          disabled={clipping}
+          disabled={clipping || status === 'success'}
           aria-busy={clipping}
-          class="inline-flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl bg-accent px-4 py-2.5 text-sm font-semibold text-on-accent shadow-sm transition duration-150 hover:bg-accent-hover hover:shadow-md active:translate-y-px focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent disabled:cursor-not-allowed disabled:opacity-60 disabled:shadow-none"
+          class={`btn ${status === 'success' ? 'btn-success' : 'btn-primary'}`}
         >
           {clipping ? (
             <span class="animate-spin" aria-hidden="true">
               <Loader size={15} />
             </span>
+          ) : status === 'success' ? (
+            <Check size={15} aria-hidden="true" />
           ) : (
             <Bookmark size={15} aria-hidden="true" />
           )}
-          {clipping ? messages.savingPage : messages.savePage}
+          {clipping
+            ? messages.savingPage
+            : status === 'success'
+              ? messages.savedPage
+              : messages.savePage}
         </button>
+
+        {status === 'error' && (
+          <div class="popup-error" role="alert">
+            <AlertCircle size={14} />
+            <span>{errorMessage}</span>
+          </div>
+        )}
 
         <button
           type="button"
           onClick={handleOpenLibrary}
-          class="inline-flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl border border-line bg-card px-4 py-2.5 text-sm font-semibold text-ink transition duration-150 hover:bg-surface active:translate-y-px focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+          class="btn btn-secondary"
         >
           <BookOpen size={15} aria-hidden="true" />
           {messages.viewLibrary}
@@ -107,3 +137,4 @@ export function PopupApp() {
     </div>
   );
 }
+

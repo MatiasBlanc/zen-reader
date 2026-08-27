@@ -1,66 +1,49 @@
-import { useState, useCallback } from 'preact/hooks';
-import type { ArticleMetadata } from '@domain/entities/article';
+import { useCallback, useState } from 'preact/hooks';
 import { useAppStore } from '../store';
-import { Archive, ChevronRight, SidebarLeft, Menu2 } from '../../icons';
+import { SidebarLeft, Menu2, Archive, ChevronRight } from '../../icons';
+import type { ArticleMetadata } from '@domain/entities/article';
 
 interface SidebarProps {
   pending: ArticleMetadata[];
   archived: ArticleMetadata[];
   loading: boolean;
-  /** true = barra comprimida a un rail estrecho con el toggle de expandir. */
   collapsed: boolean;
 }
 
 /**
- * Barra lateral del dashboard con listado de artículos.
- * Muestra los pendientes arriba (scrollable) y los archivados
- * en una sección colapsable abajo.
- *
- * Puede comprimirse a un rail estrecho (44px) con un botón de toggle;
- * la animación de ancho la controla el layout padre (`transition-[width]`).
+ * Barra lateral de Zen Reader.
+ * Tiene dos modos: expandida (lista completa) y comprimida (rail estrecho).
+ * En móvil se comporta como un drawer deslizable sobre el lector.
  */
 export function Sidebar({ pending, archived, loading, collapsed }: SidebarProps) {
   const readerArticleId = useAppStore((s) => s.readerArticleId);
   const openReader = useAppStore((s) => s.openReader);
-  const soundPlayer = useAppStore((s) => s.soundPlayer);
   const toggleSidebar = useAppStore((s) => s.toggleSidebar);
   const [showArchived, setShowArchived] = useState(false);
 
-  const handleSelect = useCallback(
-    (id: string) => {
-      soundPlayer.play('press');
-      openReader(id);
-    },
-    [openReader, soundPlayer],
-  );
+  const handleSelect = useCallback((id: string) => {
+    openReader(id);
+  }, [openReader]);
 
   const toggleArchived = useCallback(() => {
-    soundPlayer.play('tick');
     setShowArchived((v) => !v);
-  }, [soundPlayer]);
+  }, []);
 
   const handleToggleSidebar = useCallback(() => {
-    soundPlayer.play('press');
     toggleSidebar();
-  }, [soundPlayer, toggleSidebar]);
+  }, [toggleSidebar]);
 
   return (
-    <aside
-      class={`shrink-0 border-r border-line bg-bg transition-[width] duration-300 ease-in-out ${
-        collapsed
-          ? 'w-11'
-          : 'absolute inset-y-0 left-0 z-20 w-[280px] shadow-xl md:static md:z-auto md:shadow-none'
-      }`}
-    >
+    <aside class={`sidebar ${collapsed ? 'sidebar--collapsed' : 'sidebar--expanded'}`}>
       {collapsed ? (
         <RailToggle onClick={handleToggleSidebar} pendingCount={pending.length} />
       ) : (
-        <nav class="flex h-full flex-col" aria-label="Barra lateral">
+        <nav class="sidebar-nav" aria-label="Barra lateral">
           {/* ── Cabecera ─────────────────────────────────────────────── */}
-          <header class="flex shrink-0 items-center justify-between p-3 mb-2">
-            <h1 class="m-0 text-lg font-bold tracking-tight text-ink">ZenReader</h1>
+          <header class="sidebar-header">
+            <h1 class="sidebar-title">Zen Reader</h1>
             <button
-              class="inline-flex h-7 w-7 cursor-pointer items-center justify-center rounded-md text-muted transition-colors hover:bg-line hover:text-ink"
+              class="btn-icon"
               onClick={handleToggleSidebar}
               type="button"
               title="Comprimir barra lateral"
@@ -71,21 +54,19 @@ export function Sidebar({ pending, archived, loading, collapsed }: SidebarProps)
           </header>
 
           {/* ── Pendientes ───────────────────────────────────────────── */}
-          <section class="flex min-h-0 flex-1 flex-col overflow-hidden" aria-labelledby="pending-heading">
-            <div id="pending-heading" class="w-full mb-3 flex items-center justify-between gap-2 px-3">
-              <h2 class="text-muted font-semibold uppercase tracking-widest text-[11px]">Pendientes</h2>
+          <section class="sidebar-section" aria-labelledby="pending-heading">
+            <div id="pending-heading" class="sidebar-section-header">
+              <h2 class="sidebar-section-label">Pendientes</h2>
               {pending.length > 0 && (
-                <span class="inline-flex h-[18px] min-w-[18px] items-center justify-center rounded-full bg-accent p-1.5 text-[10px] font-semibold leading-none text-on-accent">
-                  {pending.length}
-                </span>
+                <span class="badge">{pending.length}</span>
               )}
             </div>
 
-            <ul class="flex-1 list-none overflow-y-auto overflow-x-hidden pb-2 m-0" role="list">
+            <ul class="sidebar-list" role="list">
               {loading && pending.length === 0 ? (
-                <li class="px-5 py-3 text-[13px] text-muted opacity-60">Cargando…</li>
+                <li class="sidebar-empty">Cargando…</li>
               ) : pending.length === 0 ? (
-                <li class="px-5 py-3 text-[13px] text-muted opacity-60">Sin artículos pendientes</li>
+                <li class="sidebar-empty">Sin artículos pendientes</li>
               ) : (
                 pending.map((a) => (
                   <SidebarItem
@@ -101,27 +82,25 @@ export function Sidebar({ pending, archived, loading, collapsed }: SidebarProps)
 
           {/* ── Archivados (colapsable) ──────────────────────────────── */}
           {archived.length > 0 && (
-            <section class="max-h-[40vh] shrink-0 border-t border-line" aria-labelledby="archived-heading">
+            <section class="sidebar-archived-section" aria-labelledby="archived-heading">
               <button
                 id="archived-heading"
-                class="flex w-full items-center gap-2 px-5 pb-2 pt-3.5 text-[11px] font-semibold uppercase tracking-widest text-muted transition-colors hover:text-ink"
+                class="sidebar-archived-toggle"
                 onClick={toggleArchived}
                 type="button"
                 aria-expanded={showArchived}
               >
                 <ChevronRight
                   size={12}
-                  class={`transition-transform duration-200 ${showArchived ? 'rotate-90' : ''}`}
+                  class={`chevron ${showArchived ? 'chevron--open' : ''}`}
                 />
                 <Archive size={14} />
                 Leídos
-                <span class="inline-flex h-[18px] min-w-[18px] items-center justify-center rounded-full bg-accent px-1.5 text-[10px] font-semibold leading-none text-on-accent">
-                  {archived.length}
-                </span>
+                <span class="badge">{archived.length}</span>
               </button>
 
               {showArchived && (
-                <ul class="list-none overflow-y-auto overflow-x-hidden pb-2 m-0" role="list">
+                <ul class="sidebar-list" role="list">
                   {archived.map((a) => (
                     <SidebarItem
                       key={a.id}
@@ -154,9 +133,9 @@ interface RailToggleProps {
  */
 function RailToggle({ onClick, pendingCount }: RailToggleProps) {
   return (
-    <nav class="flex h-full flex-col items-center gap-2 pt-4" aria-label="Barra lateral comprimida">
+    <nav class="sidebar-rail" aria-label="Barra lateral comprimida">
       <button
-        class="inline-flex h-8 w-8 cursor-pointer items-center justify-center rounded-md text-muted transition-colors hover:bg-line hover:text-ink"
+        class="btn-icon btn-icon-sm"
         onClick={onClick}
         type="button"
         title="Expandir barra lateral"
@@ -167,7 +146,7 @@ function RailToggle({ onClick, pendingCount }: RailToggleProps) {
 
       {pendingCount > 0 && (
         <span
-          class="inline-flex h-[18px] min-w-[18px] items-center justify-center rounded-full bg-accent px-1.5 text-[10px] font-semibold leading-none text-on-accent"
+          class="badge"
           title={`${pendingCount} pendientes`}
           aria-label={`${pendingCount} artículos pendientes`}
         >
@@ -192,20 +171,16 @@ function SidebarItem({ article, isActive, onSelect }: SidebarItemProps) {
   const relativeDate = formatRelativeDate(article.savedAt);
 
   return (
-    <li class="m-0 p-0">
+    <li style="margin:0;padding:0">
       <button
-        class={`flex w-full flex-col px-3 py-2.5 text-left transition-colors ${isActive ? 'bg-line/30' : 'bg-transparent'}`}
+        class={`sidebar-item-btn${isActive ? ' sidebar-item-btn--active' : ''}`}
         onClick={() => onSelect(article.id)}
         type="button"
         title={article.title}
         aria-current={isActive ? 'page' : undefined}
       >
-        <span class="line-clamp-2 text-[13px] font-medium leading-[1.35] text-ink">
-          {article.title}
-        </span>
-        <span class="text-[11px] text-muted opacity-70">
-          {domain} · {relativeDate}
-        </span>
+        <span class="sidebar-item-title">{article.title}</span>
+        <span class="sidebar-item-meta">{domain} · {relativeDate}</span>
       </button>
     </li>
   );

@@ -5,7 +5,7 @@
 
 ## Contexto
 
-ZenReader es una extensión de navegador pequeña pero con varias superficies de
+Zen Reader es una extensión de navegador pequeña pero con varias superficies de
 entrada (content script, popup, dashboard, service worker) que comparten el
 mismo dominio (artículos, preferencias) y las mismas dependencias externas
 (Dexie/IndexedDB, Readability, DOMPurify, APIs de Chrome).

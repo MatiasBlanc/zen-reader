@@ -1,4 +1,4 @@
-# Desarrollo — ZenReader
+# Desarrollo — Zen Reader
 
 Cómo configurar el entorno, ejecutar la extensión, depurar y empaquetar. Complementa a [`CONTRIBUTING.md`](../CONTRIBUTING.md) (que cubre el flujo de PRs e issues).
 
@@ -54,7 +54,7 @@ web-ext run -s dist
 
 ## Depuración
 
-- **Service worker (background)**: `chrome://extensions` → ZenReader → "service worker" (o "Inspect views"). Ahí viven los logs del SW, incluido el notificador silencioso de errores de clip.
+- **Service worker (background)**: `chrome://extensions` → Zen Reader → "service worker" (o "Inspect views"). Ahí viven los logs del SW, incluido el notificador silencioso de errores de clip.
 - **Content script / toast**: DevTools de la pestaña donde clippeas. El toast vive en un Shadow DOM (`attachShadow({ mode: 'closed' })`), así que no se ve en el árbol DOM normal; para inspeccionarlo, pon un breakpoint en `ToastNotification.tsx`.
 - **Datos (IndexedDB)**: DevTools → Application → IndexedDB → `zen-reader`. Útil para limpiar datos de prueba o verificar migraciones de esquema.
 - **Prefijos de build**: `vite.config.ts` usa variables de entorno (p. ej. `ZENREADER_TARGET=firefox`) para ajustar el manifest por navegador.
@@ -83,6 +83,32 @@ Hoy el proyecto **no tiene suite de tests automatizada**. La verificación manua
 - Si tocas el clipper: probar en al menos 2-3 sitios distintos (noticia, blog, docs técnica).
 
 Si quieres introducir tests, es un cambio bienvenido: la Clean Architecture (dominio puro + ports) está pensada para que `domain/` y `application/` sean directamente testeables.
+
+## Publicar un release (mantenedores)
+
+El registro de cambios vive en **GitHub Releases**, no en un CHANGELOG manual.
+Cada release es un tag en `main` con sus notas (semver).
+
+1. Merge `develop` → `main`.
+2. Asegúrate de que la versión de [`manifest.config.ts`](../manifest.config.ts)
+   sea la que quieres publicar (es la que ven las stores); súbela si hace falta.
+3. Etiqueta y crea el release:
+
+   ```bash
+   git switch main
+   git pull
+   git tag v1.0.0
+   git push origin v1.0.0
+   gh release create v1.0.0 --generate-notes
+   ```
+
+   `--generate-notes` arma las notas desde los PRs mergeados desde el último
+   tag. En el **primer release** no hay PRs históricos que agrupar: edita las
+   notas a mano.
+4. Reutiliza el texto de las notas en AMO y Chrome Web Store.
+
+> Regla: la versión de las stores (`manifest.config.ts`) y el tag deben
+> coincidir siempre. `package.json` se mantiene sincronizada como referencia.
 
 ## Build para revisores de AMO (Firefox Add-ons)
 

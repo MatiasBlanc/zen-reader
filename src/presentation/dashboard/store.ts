@@ -2,7 +2,6 @@ import { create } from 'zustand';
 import type { ArticleMetadata } from '@domain/entities/article';
 import type { Article } from '@domain/entities/article';
 import type { UserPreferences } from '@domain/entities/preferences';
-import type { SoundPlayer } from '@application/ports/sound-player.port';
 import { DEFAULT_PREFERENCES } from '@application/use-cases/update-preferences.use-case';
 import { createContainer } from '@infrastructure/di/container';
 import { ChromeToastNotifier } from '@infrastructure/notifications/chrome-toast.notifier';
@@ -45,10 +44,6 @@ export interface AppState {
   /** true = barra lateral comprimida a un rail estrecho. */
   sidebarCollapsed: boolean;
   toggleSidebar: () => void;
-
-  /* ── Sonidos ─────────────────────────────────────────────────────────── */
-  /** Reproductor de sonidos de interacción. */
-  soundPlayer: SoundPlayer;
 }
 
 export const useAppStore = create<AppState>((set) => ({
@@ -59,7 +54,6 @@ export const useAppStore = create<AppState>((set) => ({
   readerArticle: null,
   readerLoading: false,
   preferences: DEFAULT_PREFERENCES,
-  soundPlayer: app.soundPlayer,
 
   /* ── Layout ──────────────────────────────────────────────────────────── */
   sidebarCollapsed: isMobileViewport(),

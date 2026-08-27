@@ -1,6 +1,6 @@
-# Seguridad — ZenReader
+# Seguridad — Zen Reader
 
-ZenReader es una extensión **100% local**: no realiza peticiones de red y todo
+Zen Reader es una extensión **100% local**: no realiza peticiones de red y todo
 el procesamiento ocurre en el dispositivo. Aun así, maneja contenido HTML de
 páginas de terceros, que es la superficie de riesgo principal (XSS).
 
@@ -32,4 +32,4 @@ El reporte permanece privado hasta que se resuelva o se decida divulgarlo.
 
 - **Críticas** (RCE, fuga de datos): parche y aviso a afectados lo antes posible.
 - **Medias/bajas** (XSS contenido, UX engañosa): resolución en la siguiente
-  versión y mención en el changelog.
+  versión y mención en las notas del release.

@@ -1,7 +1,5 @@
-import { render } from 'preact';
 import { sanitizeHtml } from '@domain/services/text-sanitizer';
 import { parseReadableDocument } from '@infrastructure/parser/readability.parser';
-import { ToastNotification } from './ToastNotification';
 import type { ToastKind } from './toast-types';
 
 /**
@@ -23,7 +21,7 @@ import type { ToastKind } from './toast-types';
         error: chrome.i18n.getMessage('clip_failed') || 'No se detectó artículo en esta página.',
       });
     } catch (err) {
-      console.error('[ZenReader] Error notificando fallo de extracción:', err);
+      console.error('[Zen Reader] Error notificando fallo de extracción:', err);
     }
     showToast('error', chrome.i18n.getMessage('clip_failed') || 'No se detectó artículo en esta página.');
     return;
@@ -51,12 +49,21 @@ import type { ToastKind } from './toast-types';
 
     showToast(isOk ? 'success' : 'error', message);
   } catch (err) {
-    console.error('[ZenReader] Error al enviar al background:', err);
+    console.error('[Zen Reader] Error al enviar al background:', err);
     showToast('error', chrome.i18n.getMessage('clip_failed') || 'Error de conexión');
   }
 })();
 
 /* ── Helpers ─────────────────────────────────────────────────────────────── */
+
+const TOAST_ICONS: Record<ToastKind, string> = {
+  success:
+    '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>',
+  error:
+    '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>',
+  info:
+    '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>',
+};
 
 /** Muestra un toast en la página usando Shadow DOM para aislar estilos. */
 function showToast(kind: ToastKind, message: string): void {
@@ -66,29 +73,43 @@ function showToast(kind: ToastKind, message: string): void {
   document.documentElement.appendChild(host);
 
   // Inyectamos los estilos mínimos del toast dentro del shadow para que
-  // no interfiere con los estilos de la página subyacente.
+  // no interfiera con los estilos de la página subyacente.
   const style = document.createElement('style');
   style.textContent = TOAST_CSS;
   shadow.appendChild(style);
 
-  // Montamos el componente Preact dentro del shadow root.
-  const mountPoint = document.createElement('div');
-  shadow.appendChild(mountPoint);
+  const toast = document.createElement('div');
+  toast.className = 'zen-toast zen-toast--enter';
+  toast.setAttribute('data-kind', kind);
+  toast.setAttribute('role', 'status');
+  toast.setAttribute('aria-live', 'polite');
+  toast.style.animation = 'zenToastIn 220ms ease-out';
 
-  const onDone = () => {
-    requestAnimationFrame(() => host.remove());
-  };
+  const iconSpan = document.createElement('span');
+  iconSpan.className = 'zen-toast__icon';
+  iconSpan.setAttribute('data-kind', kind);
+  iconSpan.innerHTML = TOAST_ICONS[kind] || TOAST_ICONS.info;
 
-  render(
-    <ToastNotification kind={kind} message={message} onDone={onDone} />,
-    mountPoint,
-  );
+  const msgSpan = document.createElement('span');
+  msgSpan.className = 'zen-toast__msg';
+  msgSpan.textContent = message;
+
+  toast.appendChild(iconSpan);
+  toast.appendChild(msgSpan);
+  shadow.appendChild(toast);
+
+  window.setTimeout(() => {
+    toast.style.animation = 'zenToastOut 220ms ease-in forwards';
+    window.setTimeout(() => {
+      host.remove();
+    }, 220);
+  }, 3000);
 }
 
 /** CSS mínimo encapsulado del toast (aislado por Shadow DOM).
  *  Los colores se declaran como variables CSS locales (`--toast-*`) con
  *  fallback en hex: la página host no define los tokens de tema de
- *  ZenReader, así que el toast es autónomo pero sobrescribible. */
+ *  Zen Reader, así que el toast es autónomo pero sobrescribible. */
 const TOAST_CSS = `
 :host {
   all: initial;

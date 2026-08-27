@@ -1,10 +1,10 @@
-# ZenReader
+# Zen Reader
 
 Extensión de navegador minimalista de tipo "read-it-later". Guarda artículos con un clic y léelos después, cómodo y sin distracciones — 100% local, sin cuentas, sin backend.
 
 ## Por qué existe
 
-Pocket cerró en julio de 2025. Omnivore cerró en noviembre de 2024. El mercado post-Pocket quedó con opciones que son o muy completas y de pago (Readwise Reader), o requieren auto-hospedar tu propio servidor (Wallabag). ZenReader apuesta por el extremo minimalista: instalar y usar, sin fricción, sin cuenta, sin que tus artículos salgan nunca de tu dispositivo.
+Pocket cerró en julio de 2025. Omnivore cerró en noviembre de 2024. El mercado post-Pocket quedó con opciones que son o muy completas y de pago (Readwise Reader), o requieren auto-hospedar tu propio servidor (Wallabag). Zen Reader apuesta por el extremo minimalista: instalar y usar, sin fricción, sin cuenta, sin que tus artículos salgan nunca de tu dispositivo.
 
 ## Filosofía
 

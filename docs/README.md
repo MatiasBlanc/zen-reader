@@ -1,4 +1,4 @@
-# Documentación de ZenReader
+# Documentación de Zen Reader
 
 Índice de la documentación del proyecto. Si estás empezando a colaborar, empieza por aquí.
 
@@ -6,7 +6,7 @@
 
 | Documento | Para quién | Qué contiene |
 |---|---|---|
-| [README](../README.md) | Usuarios y devs nuevos | Qué es ZenReader, stack, cómo ejecutarlo |
+| [README](../README.md) | Usuarios y devs nuevos | Qué es Zen Reader, stack, cómo ejecutarlo |
 | [CONTRIBUTING](../CONTRIBUTING.md) | Contribuidores | Flujo de trabajo para abrir tu primer PR |
 | [development.md](development.md) | Contribuidores | Entorno de desarrollo, debugging, build para AMO |
 | [roadmap.md](roadmap.md) | Todos | Features de V1 y plan V2/V3/V4 (resumen enlazado a Issues) |

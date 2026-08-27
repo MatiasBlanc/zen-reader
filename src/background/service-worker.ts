@@ -8,7 +8,7 @@ import type { Article } from '@domain/entities/article';
 import type { Notifier } from '@application/ports/notifier.port';
 
 /**
- * Service Worker del background de ZenReader.
+ * Service Worker del background de Zen Reader.
  *
  * Responsabilidades:
  * - Escucha comandos de teclado (`Ctrl+Shift+S`) y mensajes del popup/content script.
@@ -25,9 +25,7 @@ const CLIP_TIMEOUT_MS = 10_000;
 /** Notificador silencioso (el SW no tiene DOM propio). */
 const silentNotifier: Notifier = {
   success: () => {},
-  error: (msg: string) => console.error('[ZenReader]', msg),
-  playSuccessSound: () => {},
-  playErrorSound: () => {},
+  error: (msg: string) => console.error('[Zen Reader]', msg),
 };
 
 const app = createContainer(silentNotifier);
@@ -45,10 +43,57 @@ const pendingClips = new Map<
   { resolve: (result: ClipResultMessage) => void; timer: ReturnType<typeof setTimeout> }
 >();
 
+/* ── Rastreo de pestaña activa para soporte móvil (Firefox Android) ───────── */
+
+function isExtensionUrl(url?: string): boolean {
+  if (!url) return false;
+  return (
+    url.startsWith('moz-extension://') ||
+    url.startsWith('chrome-extension://') ||
+    url.startsWith('about:') ||
+    url.startsWith('chrome://') ||
+    url.startsWith('edge://') ||
+    url.startsWith('view-source:')
+  );
+}
+
+async function setLastActiveWebTabId(tabId: number): Promise<void> {
+  try {
+    await chrome.storage.local.set({ lastActiveWebTabId: tabId });
+  } catch {}
+}
+
+async function getLastActiveWebTabId(): Promise<number | undefined> {
+  try {
+    const data = await chrome.storage.local.get('lastActiveWebTabId');
+    return typeof data.lastActiveWebTabId === 'number' ? data.lastActiveWebTabId : undefined;
+  } catch {
+    return undefined;
+  }
+}
+
+chrome.tabs.onActivated.addListener(async (activeInfo) => {
+  try {
+    const tab = await chrome.tabs.get(activeInfo.tabId);
+    if (tab?.id && tab.url && !isExtensionUrl(tab.url)) {
+      await setLastActiveWebTabId(tab.id);
+    }
+  } catch {}
+});
+
+chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
+  if (changeInfo.status === 'complete' || changeInfo.url) {
+    const url = changeInfo.url || tab?.url;
+    if (url && !isExtensionUrl(url)) {
+      await setLastActiveWebTabId(tabId);
+    }
+  }
+});
+
 /* ── Comandos de teclado ──────────────────────────────────────────────────── */
 chrome.commands.onCommand.addListener(async (command) => {
   if (command === 'clip-article') {
-    const id = await getActiveTabId();
+    const id = await getTargetTabId();
     if (id !== undefined) {
       await clipActiveTab(id);
     }
@@ -82,15 +127,20 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   }
 
   if (type === 'CLIP_ACTIVE_TAB') {
-    handleClipActiveTab()
+    handleClipActiveTab(sender.tab?.id)
       .then(sendResponse)
       .catch(() => sendResponse({ type: 'CLIP_RESULT', ok: false, error: 'Error al clippear la pestaña' }));
     return true;
   }
 
   if (type === 'OPEN_LIBRARY') {
-    handleOpenLibrary();
-    return false;
+    handleOpenLibrary()
+      .then(() => sendResponse({ ok: true }))
+      .catch((err) => {
+        console.error('[Zen Reader] Error abriendo biblioteca:', err);
+        sendResponse({ ok: false, error: String(err) });
+      });
+    return true;
   }
 
   if (type === 'GET_PREFERENCES') {
@@ -104,13 +154,14 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 /* ── Lógica de clip ───────────────────────────────────────────────────────── */
 
 /**
- * Clippea la pestaña activa y espera el resultado real del content script.
+ * Clippea la pestaña objetivo y espera el resultado real del content script.
+ * @param senderTabId id de la pestaña que originó la petición (si la hay, ej. popup en móvil).
  * @returns el resultado del clip (guardado o error) para responder al popup.
  */
-async function handleClipActiveTab(): Promise<ClipResultMessage> {
-  const id = await getActiveTabId();
+async function handleClipActiveTab(senderTabId?: number): Promise<ClipResultMessage> {
+  const id = await getTargetTabId(senderTabId);
   if (id === undefined) {
-    return { type: 'CLIP_RESULT', ok: false, error: 'No se encontró una pestaña activa' };
+    return { type: 'CLIP_RESULT', ok: false, error: 'No se encontró una página web activa para guardar' };
   }
   return clipActiveTab(id);
 }
@@ -142,17 +193,63 @@ async function clipActiveTab(tabId: number): Promise<ClipResultMessage> {
     });
   } catch (err) {
     clearPendingClip(tabId);
-    console.error('[ZenReader] Error inyectando content script:', err);
+    console.error('[Zen Reader] Error inyectando content script:', err);
     return { type: 'CLIP_RESULT', ok: false, error: 'No se pudo inyectar el content script en esta página' };
   }
 
   return result;
 }
 
-/** Busca el id de la pestaña activa de la ventana actual. */
-async function getActiveTabId(): Promise<number | undefined> {
-  const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-  return tab?.id;
+/**
+ * Determina el ID de la pestaña web que el usuario desea clippear.
+ * En escritorio, suele ser la pestaña activa en la ventana actual.
+ * En navegadores móviles (como Firefox para Android), el popup se abre como una
+ * pestaña independiente o vista modal que se convierte en la pestaña activa,
+ * por lo que debemos identificar la pestaña web previa.
+ */
+async function getTargetTabId(senderTabId?: number): Promise<number | undefined> {
+  // 1. Escritorio: intentar activa en ventana actual
+  try {
+    const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+    if (tab?.id && tab.id !== senderTabId && !isExtensionUrl(tab.url)) {
+      return tab.id;
+    }
+  } catch {}
+
+  // 2. Consulta de pestaña activa sin currentWindow (en Android no aplica el concepto de ventanas)
+  try {
+    const activeTabs = await chrome.tabs.query({ active: true });
+    for (const tab of activeTabs) {
+      if (tab.id && tab.id !== senderTabId && !isExtensionUrl(tab.url)) {
+        return tab.id;
+      }
+    }
+  } catch {}
+
+  // 3. Si el remitente es la pestaña activa (popup en pestaña en Android),
+  // recurrimos a la última pestaña web registrada antes de abrir el popup.
+  const lastActiveId = await getLastActiveWebTabId();
+  if (lastActiveId !== undefined && lastActiveId !== senderTabId) {
+    try {
+      const tab = await chrome.tabs.get(lastActiveId);
+      if (tab?.id && !isExtensionUrl(tab.url)) {
+        return tab.id;
+      }
+    } catch {}
+  }
+
+  // 4. Fallback: buscar entre todas las pestañas abiertas ordenadas por último acceso
+  try {
+    const allTabs = await chrome.tabs.query({});
+    const sorted = [...allTabs].sort((a, b) => (b.lastAccessed ?? 0) - (a.lastAccessed ?? 0));
+    for (const tab of sorted) {
+      if (tab.id && tab.id !== senderTabId && !isExtensionUrl(tab.url)) {
+        return tab.id;
+      }
+    }
+  } catch {}
+
+  return undefined;
 }
 
 /**
@@ -195,8 +292,8 @@ function clearPendingClip(tabId: number): void {
   pendingClips.delete(tabId);
 }
 
-/** Abre la página de la biblioteca en una pestaña nueva. */
+/** Abre la página de la biblioteca en una pestaña nueva o enfocada. */
 async function handleOpenLibrary(): Promise<void> {
   const url = chrome.runtime.getURL('src/presentation/dashboard/index.html');
-  await chrome.tabs.create({ url });
+  await chrome.tabs.create({ url, active: true });
 }

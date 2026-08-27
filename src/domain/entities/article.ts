@@ -1,5 +1,5 @@
 /**
- * Entidad `Article` del dominio ZenReader.
+ * Entidad `Article` del dominio Zen Reader.
  * Representa un artículo guardado en la biblioteca local del usuario.
  * El modelo es deliberadamente simple (estado binario pendiente/leído).
  */

@@ -1,6 +1,6 @@
-# Contribuir a ZenReader
+# Contribuir a Zen Reader
 
-¡Gracias por querer contribuir! ZenReader es un proyecto pequeño y amigable
+¡Gracias por querer contribuir! Zen Reader es un proyecto pequeño y amigable
 para primeras contribuciones. Antes de empezar, lee esto (son 2 minutos) y el
 índice de documentación en [`docs/README.md`](docs/README.md).
 
@@ -61,7 +61,9 @@ markdown. Si quieres proponer o implementar una feature:
 
 ## Pull Requests
 
-- Describe **qué** y **por qué**, no solo cómo.
+- Describe **qué** y **por qué**, no solo cómo. Las notas del release se
+  generan desde las descripciones de PRs mergeados (GitHub Releases; no hay
+  CHANGELOG manual).
 - Referencia el issue que resuelve: `Closes #12`.
 - Mantén los PRs pequeños y revisables.
 - El CI (si existe) debe pasar; si no hay CI, corre `npm run build` y

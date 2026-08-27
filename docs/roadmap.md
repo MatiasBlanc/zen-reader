@@ -1,4 +1,4 @@
-# Roadmap — ZenReader
+# Roadmap — Zen Reader
 
 Resumen del estado de features (V1) y planificación (V2/V3/V4).
 

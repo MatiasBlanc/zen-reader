@@ -1,12 +1,13 @@
 {
   "name": "zen-reader",
   "private": true,
-  "version": "0.0.0",
+  "version": "2.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "build:firefox": "ZENREADER_TARGET=firefox vite build && rm -f dist/zen-reader.xpi && cd dist && zip -r zen-reader.xpi .",
+    "build:watch": "ZENREADER_TARGET=firefox vite build --watch",
+    "build:firefox": "ZENREADER_TARGET=firefox vite build && (cd dist && rm -f zen-reader.xpi && zip -r zen-reader.xpi . -x 'zen-reader.xpi')",
     "preview": "vite preview",
     "arch": "depcruise src --config"
   },

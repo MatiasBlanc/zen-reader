@@ -22,3 +22,10 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Build & archive artifacts
+web-ext-artifacts/
+*.zip
+.vercel
+dist/
+dist-ssr/

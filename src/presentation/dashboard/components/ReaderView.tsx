@@ -6,8 +6,7 @@ import { BookOpen, Check, Undo, Trash, ArrowLeft, ArrowRight } from '../../icons
 /**
  * Panel lector integrado en el layout de dos columnas.
  * Renderiza el `contentHTML` sanitizado de un artículo con tipografía
- * optimizada para lectura prolongada. No ocupa toda la pantalla,
- * sino el espacio restante junto a la barra lateral.
+ * optimizada para lectura prolongada.
  */
 export function ReaderView() {
   const article = useAppStore((s) => s.readerArticle);
@@ -19,10 +18,10 @@ export function ReaderView() {
   // Actualizar título del documento al abrir un artículo.
   useEffect(() => {
     if (article) {
-      document.title = `${article.title} — ZenReader`;
+      document.title = `${article.title} — Zen Reader`;
     }
     return () => {
-      document.title = 'ZenReader — Biblioteca';
+      document.title = 'Zen Reader — Biblioteca';
     };
   }, [article]);
 
@@ -96,7 +95,7 @@ export function ReaderView() {
 
   if (loading) {
     return (
-      <div class="flex h-full items-center justify-center text-muted">
+      <div class="reader-loading">
         <span class="animate-pulse">Cargando artículo…</span>
       </div>
     );
@@ -104,12 +103,12 @@ export function ReaderView() {
 
   if (!article) {
     return (
-      <div class="flex h-full flex-col items-center justify-center gap-4 text-muted">
-        <BookOpen size={40} class="text-ink opacity-20" />
+      <div class="reader-placeholder">
+        <BookOpen size={40} style="color:var(--zen-text);opacity:0.2" />
         <p>Selecciona un artículo para leer</p>
-        <p class="text-sm opacity-60">
-          Usa <kbd class="rounded bg-line px-1 py-0.5 font-mono text-xs">j</kbd>/
-          <kbd class="rounded bg-line px-1 py-0.5 font-mono text-xs">k</kbd> para navegar, <kbd class="rounded bg-line px-1 py-0.5 font-mono text-xs">s</kbd> sidebar, <kbd class="rounded bg-line px-1 py-0.5 font-mono text-xs">d</kbd> eliminar
+        <p style="font-size:14px;opacity:0.6">
+          Usa <kbd class="kbd">j</kbd>/<kbd class="kbd">k</kbd> para navegar,{' '}
+          <kbd class="kbd">s</kbd> sidebar, <kbd class="kbd">d</kbd> eliminar
         </p>
       </div>
     );
@@ -117,23 +116,23 @@ export function ReaderView() {
 
   const fontSizeClass =
     preferences.fontSize === 'small'
-      ? 'text-base'
+      ? 'reader-content--sm'
       : preferences.fontSize === 'large'
-        ? 'text-xl'
-        : 'text-lg';
+        ? 'reader-content--lg'
+        : 'reader-content--md';
 
   return (
-    <div class="flex h-full flex-col">
+    <div class="reader-panel">
       {/* ── Barra de herramientas ─────────────────────────────────── */}
-      <div class="flex shrink-0 items-center justify-between gap-2 border-b border-line bg-reader px-4 py-2 sm:px-5">
-        <div class="min-w-0 flex-1">
-          <span class="block truncate text-xs text-muted opacity-70">{extractDomain(article.url)}</span>
+      <div class="reader-toolbar">
+        <div class="reader-toolbar-domain">
+          <span>{extractDomain(article.url)}</span>
         </div>
 
-        <div class="flex shrink-0 items-center gap-1 sm:gap-2">
+        <div class="reader-toolbar-actions">
           <ThemeToggle />
           <button
-            class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center gap-1.5 rounded-md px-3 py-1.5 text-[13px] font-medium text-muted transition-colors hover:bg-line hover:text-ink sm:min-h-0 sm:min-w-0"
+            class="btn-ghost"
             onClick={handleArchive}
             title={article.isArchived
               ? chrome.i18n.getMessage('mark_as_unread') || 'Volver a pendientes'
@@ -142,7 +141,7 @@ export function ReaderView() {
             {article.isArchived ? <Undo size={16} /> : <Check size={16} />}
           </button>
           <button
-            class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center gap-1.5 rounded-md px-3 py-1.5 text-[13px] font-medium text-danger transition-colors hover:bg-danger hover:text-on-accent sm:min-h-0 sm:min-w-0"
+            class="btn-ghost-danger"
             onClick={handleDelete}
             title={chrome.i18n.getMessage('delete') || 'Eliminar'}
           >
@@ -152,37 +151,34 @@ export function ReaderView() {
       </div>
 
       {/* ── Contenido del artículo ───────────────────────────────── */}
-      <div class="flex-1 overflow-y-auto overflow-x-hidden">
-        <article class="mx-auto max-w-[680px] px-5 pb-12 pt-8 sm:px-10">
-          <h1 class="mb-6 text-[1.75rem] font-bold leading-[1.25] tracking-tight text-heading">
-            {article.title}
-          </h1>
-
-          <SanitizedHTML html={article.contentHTML} class={`prose max-w-none text-ink prose-headings:text-heading prose-a:text-accent prose-blockquote:border-accent prose-pre:bg-line prose-pre:text-ink ${fontSizeClass}`} />
+      <div class="reader-scroll">
+        <article class="reader-article">
+          <h1 class="reader-article-title">{article.title}</h1>
+          <SanitizedHTML html={article.contentHTML} class={`reader-content ${fontSizeClass}`} />
         </article>
 
         {/* ── Navegación inferior ────────────────────────────────── */}
-        <div class="mt-4 flex flex-wrap items-center justify-center gap-3 border-t border-line px-4 py-6 sm:px-10">
+        <div class="reader-nav">
           <button
-            class="inline-flex min-h-[44px] items-center gap-1.5 rounded-md px-3 py-1.5 text-[13px] font-medium text-muted transition-colors hover:bg-line hover:text-ink sm:min-h-0"
+            class="btn-ghost"
             onClick={navigateToPrev}
             title="Anterior (k)"
           >
-            <ArrowLeft size={15} /> <span class="hidden sm:inline">Anterior</span>
+            <ArrowLeft size={15} /> <span class="label">Anterior</span>
           </button>
           <button
-            class="inline-flex min-h-[44px] items-center gap-1.5 rounded-md bg-accent px-3 py-1.5 text-[13px] font-medium text-on-accent transition-opacity hover:opacity-90 sm:min-h-0"
+            class="btn-read-next"
             onClick={() => { archiveArticle(article.id, true); navigateToNext(); }}
             title="Marcar leído y siguiente (Enter)"
           >
-            <Check size={15} /> <span class="hidden sm:inline">Leído, siguiente</span>
+            <Check size={15} /> <span class="label">Leído, siguiente</span>
           </button>
           <button
-            class="inline-flex min-h-[44px] items-center gap-1.5 rounded-md px-3 py-1.5 text-[13px] font-medium text-muted transition-colors hover:bg-line hover:text-ink sm:min-h-0"
+            class="btn-ghost"
             onClick={navigateToNext}
             title="Siguiente (j)"
           >
-            <span class="hidden sm:inline">Siguiente</span> <ArrowRight size={15} />
+            <span class="label">Siguiente</span> <ArrowRight size={15} />
           </button>
         </div>
       </div>

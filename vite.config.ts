@@ -1,6 +1,5 @@
 import { defineConfig, type Plugin } from 'vite';
 import preact from '@preact/preset-vite';
-import tailwindcss from '@tailwindcss/vite';
 import { crx } from '@crxjs/vite-plugin';
 import { resolve } from 'path';
 import manifest from './manifest.config.js';
@@ -61,6 +60,9 @@ function bundleContentScript(): Plugin {
       define: {
         'process.env.NODE_ENV': '"production"',
       },
+      minify: true,
+      treeShaking: true,
+      legalComments: 'none',
     });
   };
 
@@ -70,7 +72,7 @@ function bundleContentScript(): Plugin {
     configureServer(server) {
       server.httpServer?.once('listening', () => {
         runBundle().catch((err: unknown) => {
-          console.error('[ZenReader] Error empaquetando el content script:', err);
+          console.error('[Zen Reader] Error empaquetando el content script:', err);
         });
       });
     },
@@ -78,7 +80,7 @@ function bundleContentScript(): Plugin {
 }
 
 /**
- * Configuración de Vite para la extensión ZenReader.
+ * Configuración de Vite para la extensión Zen Reader.
  *
  * @crxjs/vite-plugin se encarga de:
  *  - Generar el `manifest.json` final a partir de `manifest.config.ts`.
@@ -89,9 +91,12 @@ function bundleContentScript(): Plugin {
  * porque necesita ser un bundle IIFE autocontenido para inyección bajo demanda.
  */
 export default defineConfig({
-  plugins: [tailwindcss(), preact(), crx({ manifest, browser: TARGET }), bundleContentScript()],
+  plugins: [preact(), crx({ manifest, browser: TARGET }), bundleContentScript()],
 
   build: {
+    target: 'es2022',
+    minify: 'esbuild',
+    cssMinify: true,
     rollupOptions: {
       input: {
         popup: 'src/presentation/popup/index.html',
@@ -105,6 +110,10 @@ export default defineConfig({
         assetFileNames: 'assets/[name][extname]',
       },
     },
+  },
+
+  esbuild: {
+    legalComments: 'none',
   },
 
   resolve: {

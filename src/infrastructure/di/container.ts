@@ -1,12 +1,10 @@
 import type { Notifier } from '@application/ports/notifier.port';
-import type { SoundPlayer } from '@application/ports/sound-player.port';
 import { ClipArticleUseCase } from '@application/use-cases/clip-article.use-case';
 import { MarkAsReadUseCase } from '@application/use-cases/mark-as-read.use-case';
 import { DeleteArticleUseCase } from '@application/use-cases/delete-article.use-case';
 import { GetLibraryUseCase } from '@application/use-cases/get-library.use-case';
 import { UpdatePreferencesUseCase } from '@application/use-cases/update-preferences.use-case';
-import { DexieArticleRepository } from '@infrastructure/persistence/dexie-article.repository';
-import { CuelumeSoundPlayer } from '@infrastructure/sound/cuelume-sound-player';
+import { IdbArticleRepository } from '@infrastructure/persistence/idb-article.repository';
 
 /**
  * Composition root (Clean Architecture).
@@ -21,8 +19,6 @@ export interface ApplicationContainer {
   deleteArticle: DeleteArticleUseCase;
   library: GetLibraryUseCase;
   preferences: UpdatePreferencesUseCase;
-  /** Reproductor de sonidos de interacción (Cuelume). */
-  soundPlayer: SoundPlayer;
 }
 
 /**
@@ -30,8 +26,7 @@ export interface ApplicationContainer {
  * @param notifier puerto de notificación del contexto actual (UI o silencioso).
  */
 export function createContainer(notifier: Notifier): ApplicationContainer {
-  const repository = new DexieArticleRepository();
-  const soundPlayer = new CuelumeSoundPlayer();
+  const repository = new IdbArticleRepository();
 
   return {
     clipArticle: new ClipArticleUseCase(repository, notifier),
@@ -39,6 +34,5 @@ export function createContainer(notifier: Notifier): ApplicationContainer {
     deleteArticle: new DeleteArticleUseCase(repository),
     library: new GetLibraryUseCase(repository),
     preferences: new UpdatePreferencesUseCase(repository),
-    soundPlayer,
   };
 }

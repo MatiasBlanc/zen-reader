@@ -1,27 +1,27 @@
-# Política de privacidad — ZenReader
+# Política de privacidad — Zen Reader
 
 **Última actualización:** julio de 2025
 
-ZenReader es una extensión de navegador **100% local**. Esta política explica qué datos maneja y por qué.
+Zen Reader es una extensión de navegador **100% local**. Esta política explica qué datos maneja y por qué.
 
 ## ¿Recopila datos?
 
-**No.** ZenReader no recopila, transmite ni almacena ningún dato fuera de tu dispositivo.
+**No.** Zen Reader no recopila, transmite ni almacena ningún dato fuera de tu dispositivo.
 
 ## ¿Qué datos almacena?
 
-ZenReader guarda artículos en **IndexedDB** (almacenamiento local del navegador). Estos datos nunca salen de tu dispositivo:
+Zen Reader guarda artículos en **IndexedDB** (almacenamiento local del navegador). Estos datos nunca salen de tu dispositivo:
 
 - Título, URL y contenido HTML de los artículos guardados
 - Preferencias de lectura (tema, tamaño de fuente)
 
 ## ¿Realiza peticiones de red?
 
-**No.** ZenReader no hace ninguna petición HTTP. Todo el procesamiento (extracción con Readability.js, sanitización con DOMPurify) ocurre localmente en tu navegador.
+**No.** Zen Reader no hace ninguna petición HTTP. Todo el procesamiento (extracción con Readability.js, sanitización con DOMPurify) ocurre localmente en tu navegador.
 
 ## ¿Usa analíticos, trackers o publicidad?
 
-**No.** ZenReader no incluye ningún sistema de analíticos, tracking, publicidad ni telemetría.
+**No.** Zen Reader no incluye ningún sistema de analíticos, tracking, publicidad ni telemetría.
 
 ## ¿Comparte datos con terceros?
 
