@@ -29,3 +29,4 @@ web-ext-artifacts/
 .vercel
 dist/
 dist-ssr/
+.env*
