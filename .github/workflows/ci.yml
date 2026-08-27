@@ -13,7 +13,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: npm
 
       - name: Instalar dependencias
@@ -22,5 +22,5 @@ jobs:
       - name: Verificar arquitectura (dependency-cruiser)
         run: npm run arch
 
-      - name: Compilar extensión
+      - name: Compilar extensión y landing page
         run: npm run build
