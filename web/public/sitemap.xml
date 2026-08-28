@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://zen-reader.madeinchile.tech/</loc>
-    <lastmod>2026-08-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zen-reader.madeinchile.tech/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://zen-reader.madeinchile.tech/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zen-reader.madeinchile.tech/" />
+    <lastmod>2026-08-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://zen-reader.madeinchile.tech/og-image.png</image:loc>
+      <image:title>Zen Reader — Local, private, distraction-free web reader</image:title>
+    </image:image>
   </url>
 </urlset>
