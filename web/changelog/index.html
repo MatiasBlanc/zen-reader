@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- Primary Meta Tags -->
+  <title>Changelog & Release Notes — Zen Reader</title>
+  <meta name="title" content="Changelog & Release Notes — Zen Reader" />
+  <meta name="description" content="Discover the latest improvements, performance optimizations, and updates in Zen Reader. Read the complete version history." />
+  <meta name="keywords" content="zen reader changelog, zen reader release notes, zen reader updates, read it later changelog" />
+  <meta name="author" content="Matias Blanc — Made in Chile" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <link rel="canonical" href="https://zen-reader.madeinchile.tech/changelog/" />
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" sizes="128x128" href="/icons/icon-128.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="theme-color" content="#954D28" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://zen-reader.madeinchile.tech/changelog/" />
+  <meta property="og:site_name" content="Zen Reader" />
+  <meta property="og:title" content="Changelog & Release Notes — Zen Reader" />
+  <meta property="og:description" content="Detailed release history and continuous improvements for Zen Reader." />
+  <meta property="og:image" content="https://zen-reader.madeinchile.tech/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://zen-reader.madeinchile.tech/changelog/" />
+  <meta name="twitter:title" content="Changelog & Release Notes — Zen Reader" />
+  <meta name="twitter:description" content="Detailed release history and continuous improvements for Zen Reader." />
+  <meta name="twitter:image" content="https://zen-reader.madeinchile.tech/og-image.png" />
+
+  <!-- Fonts & Stylesheet -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../src/style.css" />
+
+  <!-- Structured Data JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://zen-reader.madeinchile.tech/changelog/#webpage",
+        "url": "https://zen-reader.madeinchile.tech/changelog/",
+        "name": "Changelog — Zen Reader",
+        "description": "Version history and changelog for Zen Reader browser extension.",
+        "breadcrumb": {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://zen-reader.madeinchile.tech/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Changelog",
+              "item": "https://zen-reader.madeinchile.tech/changelog/"
+            }
+          ]
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body class="antialiased selection:bg-[#954D28]/15 selection:text-[#954D28]">
+
+  <!-- Reading Progress Bar -->
+  <div id="global-progress-bar" class="fixed top-0 left-0 h-0.5 bg-zen-accent z-50 transition-all duration-150 ease-out" style="width: 0%;"></div>
+
+  <!-- Header -->
+  <header class="sticky top-0 z-40 backdrop-blur-md bg-zen-canvas/90 border-b border-zen transition-colors duration-300">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-3 group focus:outline-none rounded-lg p-1">
+        <div class="w-8 h-8 rounded-full overflow-hidden flex items-center justify-center bg-zen-subtle border border-zen p-1 group-hover:scale-105 transition-transform">
+          <svg class="w-full h-full text-zen-accent" viewBox="0 0 500 500" fill="none"><path d="M401.583 175.476C400.467 172.058 394.63 161.453 392.656 158.175C382.494 141.324 371.059 131.088 355.933 119.451C334.917 103.284 316.595 94.1396 290.737 87.5626C249.527 77.0803 205.629 86.0246 169.531 107.811C134.849 129.374 109.09 166.326 99.1291 205.673C92.8879 230.326 94.0645 246.55 98.372 270.464C102.361 292.612 107.337 303.675 119.333 322.987C136.41 350.479 160.224 370.458 189.688 383.644C196.799 386.774 207.277 388.807 214.945 390.041C220.827 391.03 226.757 391.713 232.71 392.094C248.667 393.047 259.477 392.119 269.511 407.537C272.306 411.884 272.892 417.846 271.447 422.797C263.014 449.807 216.96 442.152 196.598 436.464C189.123 434.377 181.882 432.092 174.974 428.858C86.8651 387.598 38.9014 291.04 65.1757 196.443C78.6292 147.655 110.925 106.194 154.971 81.167C197.216 57.4186 250.809 49.0704 297.713 62.2178C327.223 70.363 354.204 85.8002 376.163 107.104C379.608 110.468 385.247 115.855 387.465 119.804C386.561 119.509 381.851 114.681 380.325 113.517C371.162 106.533 363.629 99.9196 354.01 93.3563L353.168 94.3122C391.25 122.417 418.08 160.81 425.568 208.071C426.099 211.408 427.463 221.825 427.422 225.012C427.986 228.271 428.309 235.124 427.571 238.316L426.924 238.054L427.666 237.934L427.704 237.736L426.849 237.389C426.787 236.19 426.584 233.573 426.655 232.497C420.464 185.454 398.539 143.185 362.12 112.86C360.158 111.229 358.226 109.587 356.244 107.981L354.735 109.132C375.217 125.464 393.95 150.273 403.013 174.898L401.583 175.476Z" fill="currentColor"/></svg>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="font-bold text-lg tracking-tight text-zen-primary font-editorial">Zen Reader</span>
+          <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-zen-subtle border border-zen text-zen-secondary font-semibold">Changelog</span>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-6 text-sm text-zen-secondary font-medium">
+        <a href="/" class="hover:text-zen-accent transition-colors">Home</a>
+        <a href="/pocket-alternative/" class="hover:text-zen-accent transition-colors">Pocket Alternative</a>
+        <a href="/omnivore-alternative/" class="hover:text-zen-accent transition-colors">Omnivore Alternative</a>
+        <a href="/docs/" class="hover:text-zen-accent transition-colors">Docs</a>
+        <a href="/changelog/" class="text-zen-accent font-semibold">Changelog</a>
+        <a href="/privacy/" class="hover:text-zen-accent transition-colors">Privacy</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <a href="https://github.com/MatiasBlanc/zen-reader" target="_blank" rel="noopener noreferrer" aria-label="GitHub Repository" class="inline-flex items-center justify-center w-8 h-8 rounded-full border border-zen bg-zen-surface text-zen-primary hover:border-zen-accent hover:text-zen-accent transition-all zen-shadow">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path></svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Theme Switcher Desktop -->
+  <aside aria-label="Theme selector" class="fixed left-8 xl:left-12 top-1/2 -translate-y-1/2 z-40 hidden md:flex flex-col items-center gap-1.5 p-2 bg-zen-surface/90 backdrop-blur-md border border-zen rounded-2xl zen-shadow-lg">
+    <div class="px-2 py-0.5 text-[10px] font-mono font-bold text-zen-muted uppercase tracking-wider select-none border-b border-zen/50 w-full text-center mb-0.5">Theme</div>
+    <button data-theme-btn="paper" class="w-full px-3 py-1.5 rounded-xl text-zen-secondary hover:text-zen-primary hover:bg-zen-subtle transition-all text-xs font-medium flex items-center gap-2">
+      <span class="w-3 h-3 rounded-full bg-[#F9F7F2] border border-[#E5DFC8]"></span>
+      <span>Paper</span>
+    </button>
+    <button data-theme-btn="sepia" class="w-full px-3 py-1.5 rounded-xl text-zen-secondary hover:text-zen-primary hover:bg-zen-subtle transition-all text-xs font-medium flex items-center gap-2">
+      <span class="w-3 h-3 rounded-full bg-[#EBE1D7] border border-[#DFD3C3]"></span>
+      <span>Sepia</span>
+    </button>
+    <button data-theme-btn="dark" class="w-full px-3 py-1.5 rounded-xl text-zen-secondary hover:text-zen-primary hover:bg-zen-subtle transition-all text-xs font-medium flex items-center gap-2">
+      <span class="w-3 h-3 rounded-full bg-[#161619] border border-[#282830]"></span>
+      <span>Night</span>
+    </button>
+  </aside>
+
+  <main class="max-w-3xl mx-auto px-4 sm:px-6 py-16">
+    
+    <div class="mb-12">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zen-subtle border border-zen text-xs font-semibold text-zen-accent mb-4 zen-shadow">
+        <i data-lucide="clock" class="w-3.5 h-3.5"></i>
+        <span>Release History</span>
+      </div>
+      <h1 class="text-4xl sm:text-5xl font-bold font-editorial text-zen-primary mb-4">
+        Changelog
+      </h1>
+      <p class="text-sm sm:text-base text-zen-secondary leading-relaxed">
+        All notable changes, architectural improvements, and releases of Zen Reader are documented below.
+      </p>
+    </div>
+
+    <!-- Timeline -->
+    <div class="space-y-12">
+      
+      <!-- Version 2.0.0 -->
+      <article class="p-8 rounded-3xl bg-zen-surface border border-zen zen-shadow relative">
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-6">
+          <div class="flex items-center gap-3">
+            <span class="text-2xl font-bold font-editorial text-zen-primary">v2.0.0</span>
+            <span class="px-2.5 py-0.5 rounded-full bg-zen-accent text-white text-xs font-semibold">Latest Release</span>
+          </div>
+          <time class="text-xs font-mono text-zen-muted">August 25, 2026</time>
+        </div>
+
+        <h3 class="text-base font-bold text-zen-primary mb-3 flex items-center gap-2">
+          <i data-lucide="zap" class="w-4 h-4 text-zen-accent"></i>
+          <span>Performance & 72% Bundle Size Reduction</span>
+        </h3>
+        <ul class="list-disc pl-6 space-y-2 text-sm text-zen-secondary mb-6">
+          <li><strong>Lightweight Extension Package:</strong> Compressed <code>.xpi</code> artifact reduced from 192 KB to only 54 KB.</li>
+          <li><strong>Native IndexedDB Persistence:</strong> Replaced Dexie library (~99 KB) with a hand-tuned 3.7 KB native IndexedDB wrapper, preserving high performance and transaction safety.</li>
+          <li><strong>DOMParser Native Sanitizer:</strong> Native browser-based XSS sanitization replacing external library overhead.</li>
+          <li><strong>Vanilla CSS System:</strong> Replaced generic CSS utility bundles with 12 KB of handcrafted serif editorial styles and theme variables.</li>
+          <li><strong>Content Script Optimization:</strong> Extractor runtime reduced from 192 KB to 39 KB.</li>
+        </ul>
+
+        <h3 class="text-base font-bold text-zen-primary mb-3 flex items-center gap-2">
+          <i data-lucide="palette" class="w-4 h-4 text-zen-accent"></i>
+          <span>Brand Identity & Design</span>
+        </h3>
+        <ul class="list-disc pl-6 space-y-2 text-sm text-zen-secondary">
+          <li>Unified official name to <strong>Zen Reader</strong>.</li>
+          <li>Terracotta Ensō identity, vector favicons, and social cards.</li>
+          <li>Paper, Sepia, and Night reading themes.</li>
+        </ul>
+      </article>
+
+      <!-- Version 1.0.0 -->
+      <article class="p-8 rounded-3xl bg-zen-surface border border-zen zen-shadow">
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-6">
+          <div class="flex items-center gap-3">
+            <span class="text-2xl font-bold font-editorial text-zen-primary">v1.0.0</span>
+            <span class="px-2.5 py-0.5 rounded-full bg-zen-subtle border border-zen text-zen-secondary text-xs font-semibold">Initial Release</span>
+          </div>
+          <time class="text-xs font-mono text-zen-muted">August 1, 2026</time>
+        </div>
+
+        <ul class="list-disc pl-6 space-y-2 text-sm text-zen-secondary">
+          <li>Initial release of Zen Reader extension.</li>
+          <li>One-click article extraction powered by Mozilla Readability.</li>
+          <li>Integrated reading dashboard with article queue, archive, and delete.</li>
+          <li>Keyboard navigation support (<code>j</code>/<code>k</code>, <code>Enter</code>, <code>s</code>, <code>d</code>).</li>
+          <li>100% local IndexedDB storage with zero tracking.</li>
+        </ul>
+      </article>
+
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-12 bg-zen-canvas text-zen-secondary text-xs border-t border-zen">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-2">
+        <span class="font-bold text-zen-primary font-editorial text-sm">Zen Reader</span>
+        <span>•</span>
+        <span>Crafted by <a href="https://madeinchile.tech" target="_blank" rel="noopener noreferrer" class="underline hover:text-zen-accent">Made in Chile</a></span>
+      </div>
+      <div class="flex flex-wrap items-center gap-5 text-zen-muted font-medium">
+        <a href="/" class="hover:text-zen-primary transition-colors">Home</a>
+        <a href="/pocket-alternative/" class="hover:text-zen-primary transition-colors">Pocket Alternative</a>
+        <a href="/omnivore-alternative/" class="hover:text-zen-primary transition-colors">Omnivore Alternative</a>
+        <a href="/docs/" class="hover:text-zen-primary transition-colors">Docs</a>
+        <a href="/changelog/" class="text-zen-accent font-semibold">Changelog</a>
+        <a href="/privacy/" class="hover:text-zen-primary transition-colors">Privacy</a>
+        <a href="https://github.com/MatiasBlanc/zen-reader" target="_blank" rel="noopener noreferrer" class="hover:text-zen-primary transition-colors">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="../src/main.ts"></script>
+</body>
+</html>
