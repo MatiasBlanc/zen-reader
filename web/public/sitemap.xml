@@ -2,6 +2,8 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Home Landing Page -->
   <url>
     <loc>https://zen-reader.madeinchile.tech/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://zen-reader.madeinchile.tech/" />
@@ -15,4 +17,80 @@
       <image:title>Zen Reader — Local, private, distraction-free web reader</image:title>
     </image:image>
   </url>
+
+  <!-- Pocket Alternative Landing Page -->
+  <url>
+    <loc>https://zen-reader.madeinchile.tech/pocket-alternative/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zen-reader.madeinchile.tech/pocket-alternative/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://zen-reader.madeinchile.tech/pocket-alternative/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zen-reader.madeinchile.tech/pocket-alternative/" />
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://zen-reader.madeinchile.tech/og-image.png</image:loc>
+      <image:title>Pocket Alternative (100% Local &amp; Free) — Zen Reader</image:title>
+    </image:image>
+  </url>
+
+  <!-- Omnivore Alternative Landing Page -->
+  <url>
+    <loc>https://zen-reader.madeinchile.tech/omnivore-alternative/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zen-reader.madeinchile.tech/omnivore-alternative/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://zen-reader.madeinchile.tech/omnivore-alternative/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zen-reader.madeinchile.tech/omnivore-alternative/" />
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://zen-reader.madeinchile.tech/og-image.png</image:loc>
+      <image:title>Omnivore Alternative (Open Source &amp; Local-First) — Zen Reader</image:title>
+    </image:image>
+  </url>
+
+  <!-- Documentation & User Guide -->
+  <url>
+    <loc>https://zen-reader.madeinchile.tech/docs/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zen-reader.madeinchile.tech/docs/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://zen-reader.madeinchile.tech/docs/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zen-reader.madeinchile.tech/docs/" />
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://zen-reader.madeinchile.tech/og-image.png</image:loc>
+      <image:title>Documentation &amp; User Guide — Zen Reader</image:title>
+    </image:image>
+  </url>
+
+  <!-- Changelog & Release Notes -->
+  <url>
+    <loc>https://zen-reader.madeinchile.tech/changelog/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zen-reader.madeinchile.tech/changelog/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://zen-reader.madeinchile.tech/changelog/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zen-reader.madeinchile.tech/changelog/" />
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://zen-reader.madeinchile.tech/og-image.png</image:loc>
+      <image:title>Changelog &amp; Release Notes — Zen Reader</image:title>
+    </image:image>
+  </url>
+
+  <!-- Privacy Policy -->
+  <url>
+    <loc>https://zen-reader.madeinchile.tech/privacy/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zen-reader.madeinchile.tech/privacy/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://zen-reader.madeinchile.tech/privacy/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zen-reader.madeinchile.tech/privacy/" />
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://zen-reader.madeinchile.tech/og-image.png</image:loc>
+      <image:title>Privacy Policy — Zen Reader</image:title>
+    </image:image>
+  </url>
+
 </urlset>
