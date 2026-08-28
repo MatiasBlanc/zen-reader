@@ -5,11 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <!-- Primary Meta Tags -->
-  <title>Zen Reader — Your local, private, distraction-free web reading sanctuary</title>
-  <meta name="title" content="Zen Reader — Your local, private, distraction-free web reading sanctuary" />
-  <meta name="description" content="Minimalist read-it-later extension for Zen Browser, Firefox, Chrome, and Edge. Save articles with one click and read them offline with zero ads. 100% local, no accounts, no cloud servers." />
-  <meta name="keywords" content="Zen Reader, Pocket alternative, Omnivore alternative, read it later open source, offline reader, minimalist web reader, zen browser extension, chrome reading list, firefox read it later, local-first reader, privacy reading app, Made in Chile" />
+  <title>Zen Reader — Local, Private & Distraction-Free Web Reader</title>
+  <meta name="title" content="Zen Reader — Local, Private & Distraction-Free Web Reader" />
+  <meta name="description" content="Zen Reader is the minimalist read-it-later extension for Zen Browser, Firefox, Chrome, and Edge. Save articles with 1 click, read offline with zero ads, 100% local." />
+  <meta name="keywords" content="Zen Reader, ZenReader, zen reader extension, zen browser reader, zen browser extension, pocket alternative, omnivore alternative, read it later open source, offline web reader, minimalist web reader, chrome reading list, firefox read it later, local-first reader, privacy reading app, Made in Chile" />
   <meta name="author" content="Matias Blanc — Made in Chile" />
+  <meta name="application-name" content="Zen Reader" />
+  <meta name="apple-mobile-web-app-title" content="Zen Reader" />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
   <link rel="canonical" href="https://zen-reader.madeinchile.tech/" />
 
@@ -23,7 +25,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://zen-reader.madeinchile.tech/" />
   <meta property="og:site_name" content="Zen Reader" />
-  <meta property="og:title" content="Zen Reader — Your local, private, distraction-free web reading sanctuary" />
+  <meta property="og:title" content="Zen Reader — Local, Private & Distraction-Free Web Reader" />
   <meta property="og:description" content="Minimalist read-it-later extension. Save articles with one click and read offline with zero noise, ads, or tracking. 100% local, no accounts, no cloud servers." />
   <meta property="og:image" content="https://zen-reader.madeinchile.tech/og-image.png" />
   <meta property="og:image:secure_url" content="https://zen-reader.madeinchile.tech/og-image.png" />
@@ -37,7 +39,7 @@
   <!-- Twitter / X Cards -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:url" content="https://zen-reader.madeinchile.tech/" />
-  <meta name="twitter:title" content="Zen Reader — Your local, private, distraction-free web reading sanctuary" />
+  <meta name="twitter:title" content="Zen Reader — Local, Private & Distraction-Free Web Reader" />
   <meta name="twitter:description" content="100% local & offline read-it-later extension. Zero servers, no accounts, zero ads. Open-source alternative to Pocket and Omnivore." />
   <meta name="twitter:image" content="https://zen-reader.madeinchile.tech/og-image.png" />
   <meta name="twitter:image:alt" content="Zen Reader — Your local, private, distraction-free web reading sanctuary" />
@@ -50,24 +52,39 @@
   <!-- Stylesheet -->
   <link rel="stylesheet" href="./src/style.css" />
 
-  <!-- Structured Data: SoftwareApplication & WebSite -->
+  <!-- Structured Data: SoftwareApplication, WebSite & FAQPage for Rich Snippets -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "SoftwareApplication",
+        "@id": "https://zen-reader.madeinchile.tech/#software",
         "name": "Zen Reader",
-        "headline": "Local, private, and distraction-free web reading sanctuary",
-        "description": "Minimalist read-it-later browser extension. Save articles with one click and read offline, 100% local, zero accounts, zero cloud backend.",
+        "alternateName": ["ZenReader", "Zen Reader Extension", "Zen Reader Web"],
+        "headline": "Zen Reader — Local, private, and distraction-free web reading sanctuary",
+        "description": "Minimalist read-it-later browser extension for Zen Browser, Firefox, Chrome, Brave, and Edge. Save articles with one click and read offline, 100% local, zero accounts, zero cloud backend.",
         "applicationCategory": "BrowserApplication",
-        "operatingSystem": "Zen Browser, Firefox, Google Chrome, Microsoft Edge, Brave",
+        "operatingSystem": "Zen Browser, Firefox, Google Chrome, Microsoft Edge, Brave, Arc, Opera",
         "offers": {
           "@type": "Offer",
           "price": "0",
-          "priceCurrency": "USD"
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock"
         },
         "url": "https://zen-reader.madeinchile.tech/",
+        "downloadUrl": "https://addons.mozilla.org/es-ES/firefox/addon/zenreader/",
+        "softwareVersion": "2.0.0",
+        "image": "https://zen-reader.madeinchile.tech/og-image.png",
+        "screenshot": "https://zen-reader.madeinchile.tech/og-image.png",
+        "featureList": [
+          "100% Local-First with IndexedDB",
+          "Zero telemetry, tracking, or cloud servers",
+          "One-click article clipper (Alt+Shift+S)",
+          "Clean distraction-free typography powered by Mozilla Readability",
+          "Offline reading support with image preservation",
+          "Paper, Sepia, and Night reading themes"
+        ],
         "author": {
           "@type": "Person",
           "name": "Matias Blanc",
@@ -76,7 +93,11 @@
         "publisher": {
           "@type": "Organization",
           "name": "Made in Chile",
-          "url": "https://madeinchile.tech"
+          "url": "https://madeinchile.tech",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://zen-reader.madeinchile.tech/icons/icon-128.png"
+          }
         },
         "license": "https://opensource.org/licenses/MIT"
       },
@@ -85,8 +106,60 @@
         "@id": "https://zen-reader.madeinchile.tech/#website",
         "url": "https://zen-reader.madeinchile.tech/",
         "name": "Zen Reader",
-        "description": "Minimalist, local-first, distraction-free web reader",
-        "inLanguage": "en"
+        "alternateName": "ZenReader",
+        "description": "Minimalist, local-first, distraction-free web reader and Pocket/Omnivore open-source alternative.",
+        "inLanguage": ["en", "es"],
+        "publisher": {
+          "@type": "Organization",
+          "name": "Made in Chile",
+          "url": "https://madeinchile.tech"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://zen-reader.madeinchile.tech/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is Zen Reader and why was it created?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Zen Reader is a 100% local, private, distraction-free read-it-later extension created after the shutdowns of Pocket and Omnivore. It runs entirely on your machine with zero servers, zero subscriptions, and zero tracking."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Where are my articles stored and how is my privacy protected in Zen Reader?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Your articles are stored locally in your browser's native IndexedDB database. No data ever travels to external servers: there is no backend, no telemetry, no analytics, and no URL tracking."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does Zen Reader work completely offline?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, completely. When saving an article, Zen Reader extracts the text, headings, and key images, sanitizes them, and persists them locally so you can read without any internet connection."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Which browsers are supported by Zen Reader?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Zen Reader is built on universal Manifest V3 standards and supports Zen Browser, Mozilla Firefox, Google Chrome, Brave, Microsoft Edge, and Arc."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is Zen Reader free and open source?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, Zen Reader is 100% free and open source under the MIT license with unlimited local article storage."
+            }
+          }
+        ]
       }
     ]
   }
@@ -201,10 +274,16 @@
     <section class="relative pt-20 pb-20 md:pt-28 md:pb-28 overflow-hidden zen-pattern border-b border-zen">
       <div class="max-w-5xl mx-auto px-4 sm:px-6 text-center relative z-10">
         
+        <!-- Eyebrow Badge -->
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zen-subtle border border-zen text-xs font-semibold text-zen-accent mb-6 zen-shadow">
+          <span class="w-2 h-2 rounded-full bg-zen-accent"></span>
+          <span data-i18n="hero.eyebrow">Zen Reader — 100% Local Read-It-Later</span>
+        </div>
+
         <!-- Main Title -->
         <h1 data-i18n-html="hero.title" class="text-4xl sm:text-6xl md:text-7xl font-bold font-editorial tracking-tight text-zen-primary max-w-4xl mx-auto leading-[1.08] mb-6">
-          Read without noise.<br/>
-          <span class="italic text-zen-accent font-normal">Save with a single click.</span>
+          Zen Reader.<br/>
+          <span class="italic text-zen-accent font-normal">Read without noise. Save with a single click.</span>
         </h1>
 
         <!-- Subtitle with strong keywords -->

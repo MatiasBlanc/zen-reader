@@ -67,7 +67,8 @@ export const translations: Record<Language, Record<string, string>> = {
     'theme.dark': 'Night',
 
     // hero
-    'hero.title': 'Read without noise.<br/><span class="italic text-zen-accent font-normal">Save with a single click.</span>',
+    'hero.eyebrow': 'Zen Reader — 100% Local Read-It-Later',
+    'hero.title': 'Zen Reader.<br/><span class="italic text-zen-accent font-normal">Read without noise. Save with a single click.</span>',
     'hero.subtitle': 'The minimalist <em>read-it-later</em> sanctuary that respects your attention. Save articles to read offline without ads, cookie banners, or telemetry. <strong>100% local in your browser</strong>, zero accounts, and zero cloud servers.',
     'hero.cta.firefox': 'Install for Firefox / Zen Browser',
     'hero.cta.chrome': 'For Chrome & Edge',
@@ -249,7 +250,8 @@ export const translations: Record<Language, Record<string, string>> = {
     'theme.dark': 'Noche',
 
     // hero
-    'hero.title': 'Lee sin ruido.<br/><span class="italic text-zen-accent font-normal">Guarda con un solo clic.</span>',
+    'hero.eyebrow': 'Zen Reader — Read-It-Later 100% Local',
+    'hero.title': 'Zen Reader.<br/><span class="italic text-zen-accent font-normal">Lee sin ruido. Guarda con un solo clic.</span>',
     'hero.subtitle': 'El santuario <em>read-it-later</em> minimalista que respeta tu mente. Guarda artículos para leer después sin anuncios, muros de cookies ni telemetría. <strong>100% local en tu navegador</strong>, sin cuentas y sin servidores en la nube.',
     'hero.cta.firefox': 'Instalar para Firefox / Zen Browser',
     'hero.cta.chrome': 'Para Chrome & Edge',
