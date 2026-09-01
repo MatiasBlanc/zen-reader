@@ -12,20 +12,6 @@
 **Tu santuario de lectura web local, privado y sin distracciones.**  
 *Guarda artículos con un solo clic y léelos después 100% offline — sin cuentas, sin telemetría y sin servidores en la nube.*
 
-<br/>
-
-<details>
-  <summary>🇺🇸 <b>Click here to read in English / Read in English</b></summary>
-  <br/>
-
-  **Zen Reader** is a minimalist, local-first, and privacy-focused read-it-later browser extension. Save web articles with one click and read them distraction-free anytime — 100% offline, zero tracking, no accounts, and no cloud dependencies.
-
-  ### ✨ Core Highlights:
-  - 🔒 **100% Local & Offline:** Stored securely in your browser's IndexedDB.
-  - 📖 **Distraction-Free:** Clean reader view removing clutter, ads, and popups.
-  - ⚡ **Zero Cloud Lock-in:** Full data export/import whenever you want.
-</details>
-
 </div>
 
 ---
