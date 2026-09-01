@@ -4,7 +4,7 @@
 
 [![Firefox Add-ons](https://img.shields.io/badge/Firefox_Add--ons-Install_Zen_Reader-orange?logo=firefox-browser&style=for-the-badge)](https://addons.mozilla.org/es-ES/firefox/addon/zenreader/)
 [![Website](https://img.shields.io/badge/Website-zen--reader.madeinchile.tech-954D28?style=for-the-badge)](https://zen-reader.madeinchile.tech/)
-[![Made in Chile](https://img.shields.io/badge/Made%20in-Chile-d52b1e?style=for-the-badge)](https://madeinchile.tech)
+[![Made in Chile](https://madeinchile.tech/badge.svg)](https://madeinchile.tech)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)](LICENSE)
 
 <br/>
