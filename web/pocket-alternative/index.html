@@ -124,14 +124,18 @@
       </a>
 
       <nav class="hidden md:flex items-center gap-6 text-sm text-zen-secondary font-medium">
-        <a href="/" class="hover:text-zen-accent transition-colors">Home</a>
-        <a href="/pocket-alternative/" class="text-zen-accent font-semibold">Pocket Alternative</a>
-        <a href="/omnivore-alternative/" class="hover:text-zen-accent transition-colors">Omnivore Alternative</a>
+        <a href="/" data-i18n-es="Inicio" class="hover:text-zen-accent transition-colors">Home</a>
+        <a href="/pocket-alternative/" data-i18n-es="Alternativa a Pocket" class="text-zen-accent font-semibold">Pocket Alternative</a>
+        <a href="/omnivore-alternative/" data-i18n-es="Alternativa a Omnivore" class="hover:text-zen-accent transition-colors">Omnivore Alternative</a>
         <a href="/docs/" class="hover:text-zen-accent transition-colors">Docs</a>
-        <a href="/changelog/" class="hover:text-zen-accent transition-colors">Changelog</a>
+        <a href="/changelog/" data-i18n-es="Cambios" class="hover:text-zen-accent transition-colors">Changelog</a>
       </nav>
 
       <div class="flex items-center gap-3">
+        <div class="flex items-center p-1 bg-zen-subtle border border-zen rounded-full text-xs" role="group" aria-label="Selector de idioma">
+          <button data-lang-btn="en" class="px-2.5 py-0.5 rounded-full text-zen-secondary hover:text-zen-primary transition-all text-[11px] font-semibold" title="English">EN</button>
+          <button data-lang-btn="es" class="px-2.5 py-0.5 rounded-full text-zen-secondary hover:text-zen-primary transition-all text-[11px] font-semibold" title="Español">ES</button>
+        </div>
         <a href="https://github.com/MatiasBlanc/zen-reader" target="_blank" rel="noopener noreferrer" aria-label="GitHub Repository" class="inline-flex items-center justify-center w-8 h-8 rounded-full border border-zen bg-zen-surface text-zen-primary hover:border-zen-accent hover:text-zen-accent transition-all zen-shadow">
           <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path></svg>
         </a>
@@ -141,10 +145,10 @@
 
   <!-- Theme Switcher Desktop -->
   <aside aria-label="Theme selector" class="fixed left-8 xl:left-12 top-1/2 -translate-y-1/2 z-40 hidden md:flex flex-col items-center gap-1.5 p-2 bg-zen-surface/90 backdrop-blur-md border border-zen rounded-2xl zen-shadow-lg">
-    <div class="px-2 py-0.5 text-[10px] font-mono font-bold text-zen-muted uppercase tracking-wider select-none border-b border-zen/50 w-full text-center mb-0.5">Theme</div>
+    <div data-i18n-es="Tema" class="px-2 py-0.5 text-[10px] font-mono font-bold text-zen-muted uppercase tracking-wider select-none border-b border-zen/50 w-full text-center mb-0.5">Theme</div>
     <button data-theme-btn="paper" class="w-full px-3 py-1.5 rounded-xl text-zen-secondary hover:text-zen-primary hover:bg-zen-subtle transition-all text-xs font-medium flex items-center gap-2">
       <span class="w-3 h-3 rounded-full bg-[#F9F7F2] border border-[#E5DFC8]"></span>
-      <span>Paper</span>
+      <span data-i18n-es="Papel">Paper</span>
     </button>
     <button data-theme-btn="sepia" class="w-full px-3 py-1.5 rounded-xl text-zen-secondary hover:text-zen-primary hover:bg-zen-subtle transition-all text-xs font-medium flex items-center gap-2">
       <span class="w-3 h-3 rounded-full bg-[#EBE1D7] border border-[#DFD3C3]"></span>
@@ -152,7 +156,7 @@
     </button>
     <button data-theme-btn="dark" class="w-full px-3 py-1.5 rounded-xl text-zen-secondary hover:text-zen-primary hover:bg-zen-subtle transition-all text-xs font-medium flex items-center gap-2">
       <span class="w-3 h-3 rounded-full bg-[#161619] border border-[#282830]"></span>
-      <span>Night</span>
+      <span data-i18n-es="Noche">Night</span>
     </button>
   </aside>
 
@@ -162,12 +166,12 @@
     <div class="text-center mb-16">
       <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zen-subtle border border-zen text-xs font-semibold text-zen-accent mb-6 zen-shadow">
         <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
-        <span>The Best Pocket Alternative</span>
+        <span data-i18n-es="La mejor alternativa a Pocket">The Best Pocket Alternative</span>
       </div>
       <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold font-editorial text-zen-primary mb-6 leading-tight">
-        The 100% Local Alternative to Pocket
+        <span data-i18n-es="La alternativa 100% local a Pocket">The 100% Local Alternative to Pocket</span>
       </h1>
-      <p class="text-lg sm:text-xl text-zen-secondary max-w-2xl mx-auto leading-relaxed">
+      <p data-i18n-html-es="Pocket dependía de suscripciones en la nube, cuentas y servidores corporativos. <strong>Zen Reader</strong> devuelve el read-it-later a donde pertenece: tu propio equipo." class="text-lg sm:text-xl text-zen-secondary max-w-2xl mx-auto leading-relaxed">
         Pocket relied on cloud subscriptions, account logins, and corporate servers. 
         <strong>Zen Reader</strong> brings read-it-later back to where it belongs: purely on your machine.
       </p>
@@ -175,52 +179,52 @@
 
     <!-- Comparison Table -->
     <section class="mb-16">
-      <h2 class="text-2xl font-bold font-editorial text-zen-primary mb-6">Feature Comparison: Zen Reader vs. Pocket</h2>
+      <h2 data-i18n-es="Comparación de funciones: Zen Reader vs. Pocket" class="text-2xl font-bold font-editorial text-zen-primary mb-6">Feature Comparison: Zen Reader vs. Pocket</h2>
       
       <div class="overflow-x-auto rounded-2xl border border-zen bg-zen-surface zen-shadow">
         <table class="w-full text-left text-sm">
           <thead>
             <tr class="border-b border-zen bg-zen-subtle/60 text-zen-primary">
-              <th class="p-4 font-semibold">Feature</th>
+              <th data-i18n-es="Función" class="p-4 font-semibold">Feature</th>
               <th class="p-4 font-semibold text-zen-accent">Zen Reader</th>
               <th class="p-4 font-semibold text-zen-secondary">Mozilla Pocket</th>
             </tr>
           </thead>
           <tbody class="divide-y divide-zen text-zen-secondary">
             <tr>
-              <td class="p-4 font-medium text-zen-primary">Data Storage</td>
-              <td class="p-4 text-emerald-600 font-semibold flex items-center gap-1.5"><i data-lucide="check" class="w-4 h-4"></i> 100% Local (IndexedDB)</td>
-              <td class="p-4 text-rose-500">Centralized Cloud Server</td>
+              <td data-i18n-es="Almacenamiento de datos" class="p-4 font-medium text-zen-primary">Data Storage</td>
+              <td class="p-4 text-emerald-600 font-semibold flex items-center gap-1.5"><i data-lucide="check" class="w-4 h-4"></i> <span data-i18n-es="100% local (IndexedDB)">100% Local (IndexedDB)</span></td>
+              <td data-i18n-es="Servidor centralizado en la nube" class="p-4 text-rose-500">Centralized Cloud Server</td>
             </tr>
             <tr>
-              <td class="p-4 font-medium text-zen-primary">Account Required</td>
-              <td class="p-4 text-emerald-600 font-semibold flex items-center gap-1.5"><i data-lucide="check" class="w-4 h-4"></i> No (Zero registration)</td>
-              <td class="p-4 text-rose-500">Yes (Email / Firefox Account)</td>
+              <td data-i18n-es="Cuenta obligatoria" class="p-4 font-medium text-zen-primary">Account Required</td>
+              <td class="p-4 text-emerald-600 font-semibold flex items-center gap-1.5"><i data-lucide="check" class="w-4 h-4"></i> <span data-i18n-es="No (sin registro)">No (Zero registration)</span></td>
+              <td data-i18n-es="Sí (correo o cuenta de Firefox)" class="p-4 text-rose-500">Yes (Email / Firefox Account)</td>
             </tr>
             <tr>
-              <td class="p-4 font-medium text-zen-primary">Pricing & Subscriptions</td>
-              <td class="p-4 text-emerald-600 font-semibold flex items-center gap-1.5"><i data-lucide="check" class="w-4 h-4"></i> Free & Open Source (MIT)</td>
-              <td class="p-4 text-rose-500">Freemium ($4.99/mo for Premium)</td>
+              <td data-i18n-es="Precio y suscripciones" class="p-4 font-medium text-zen-primary">Pricing & Subscriptions</td>
+              <td class="p-4 text-emerald-600 font-semibold flex items-center gap-1.5"><i data-lucide="check" class="w-4 h-4"></i> <span data-i18n-es="Gratis y de código abierto (MIT)">Free & Open Source (MIT)</span></td>
+              <td data-i18n-es="Freemium ($4.99/mes por Premium)" class="p-4 text-rose-500">Freemium ($4.99/mo for Premium)</td>
             </tr>
             <tr>
-              <td class="p-4 font-medium text-zen-primary">Offline Reading</td>
-              <td class="p-4 text-emerald-600 font-semibold flex items-center gap-1.5"><i data-lucide="check" class="w-4 h-4"></i> Full text & images local</td>
-              <td class="p-4">Limited on free tier</td>
+              <td data-i18n-es="Lectura offline" class="p-4 font-medium text-zen-primary">Offline Reading</td>
+              <td class="p-4 text-emerald-600 font-semibold flex items-center gap-1.5"><i data-lucide="check" class="w-4 h-4"></i> <span data-i18n-es="Texto e imágenes completos en local">Full text & images local</span></td>
+              <td data-i18n-es="Limitada en el plan gratuito" class="p-4">Limited on free tier</td>
             </tr>
             <tr>
-              <td class="p-4 font-medium text-zen-primary">Telemetry & Tracking</td>
-              <td class="p-4 text-emerald-600 font-semibold flex items-center gap-1.5"><i data-lucide="check" class="w-4 h-4"></i> Zero trackers / 0 network calls</td>
-              <td class="p-4 text-rose-500">Ad & behavioral telemetry</td>
+              <td data-i18n-es="Telemetría y rastreo" class="p-4 font-medium text-zen-primary">Telemetry & Tracking</td>
+              <td class="p-4 text-emerald-600 font-semibold flex items-center gap-1.5"><i data-lucide="check" class="w-4 h-4"></i> <span data-i18n-es="Cero rastreadores y cero llamadas de red">Zero trackers / 0 network calls</span></td>
+              <td data-i18n-es="Telemetría publicitaria y de comportamiento" class="p-4 text-rose-500">Ad & behavioral telemetry</td>
             </tr>
             <tr>
-              <td class="p-4 font-medium text-zen-primary">Shutdown & Sunset Risk</td>
-              <td class="p-4 text-emerald-600 font-semibold flex items-center gap-1.5"><i data-lucide="check" class="w-4 h-4"></i> Immortal (no server dependencies)</td>
-              <td class="p-4 text-rose-500">Vulnerable to corporate shutdowns</td>
+              <td data-i18n-es="Riesgo de cierre" class="p-4 font-medium text-zen-primary">Shutdown & Sunset Risk</td>
+              <td class="p-4 text-emerald-600 font-semibold flex items-center gap-1.5"><i data-lucide="check" class="w-4 h-4"></i> <span data-i18n-es="Permanente (sin dependencias de servidor)">Immortal (no server dependencies)</span></td>
+              <td data-i18n-es="Vulnerable a cierres corporativos" class="p-4 text-rose-500">Vulnerable to corporate shutdowns</td>
             </tr>
             <tr>
-              <td class="p-4 font-medium text-zen-primary">Keyboard Shortcuts</td>
-              <td class="p-4 text-emerald-600 font-semibold flex items-center gap-1.5"><i data-lucide="check" class="w-4 h-4"></i> Instant (Alt+Shift+S)</td>
-              <td class="p-4">Browser extension button</td>
+              <td data-i18n-es="Atajos de teclado" class="p-4 font-medium text-zen-primary">Keyboard Shortcuts</td>
+              <td class="p-4 text-emerald-600 font-semibold flex items-center gap-1.5"><i data-lucide="check" class="w-4 h-4"></i> <span data-i18n-es="Instantáneo (Alt+Shift+S)">Instant (Alt+Shift+S)</span></td>
+              <td data-i18n-es="Botón de la extensión" class="p-4">Browser extension button</td>
             </tr>
           </tbody>
         </table>
@@ -229,15 +233,15 @@
 
     <!-- Why Zen Reader is the Ideal Alternative -->
     <section class="mb-16">
-      <h2 class="text-2xl font-bold font-editorial text-zen-primary mb-6">Why Switch to Zen Reader?</h2>
+      <h2 data-i18n-es="¿Por qué cambiar a Zen Reader?" class="text-2xl font-bold font-editorial text-zen-primary mb-6">Why Switch to Zen Reader?</h2>
       
       <div class="grid sm:grid-cols-2 gap-6">
         <div class="p-6 rounded-2xl bg-zen-surface border border-zen zen-shadow">
           <div class="w-10 h-10 rounded-xl bg-zen-subtle border border-zen flex items-center justify-center text-zen-accent mb-4">
             <i data-lucide="shield-check" class="w-5 h-5"></i>
           </div>
-          <h3 class="text-lg font-bold font-editorial text-zen-primary mb-2">Absolute Privacy</h3>
-          <p class="text-sm text-zen-secondary leading-relaxed">
+          <h3 data-i18n-es="Privacidad absoluta" class="text-lg font-bold font-editorial text-zen-primary mb-2">Absolute Privacy</h3>
+          <p data-i18n-es="Tus hábitos de lectura reflejan tus pensamientos más profundos. A diferencia de Pocket, que analiza tu lista para ofrecer sugerencias patrocinadas, Zen Reader nunca transmite una URL ni un párrafo." class="text-sm text-zen-secondary leading-relaxed">
             Your reading habits reflect your deepest thoughts. Unlike Pocket which analyzes your reading list for sponsored suggestions, Zen Reader never transmits a single URL or paragraph.
           </p>
         </div>
@@ -246,8 +250,8 @@
           <div class="w-10 h-10 rounded-xl bg-zen-subtle border border-zen flex items-center justify-center text-zen-accent mb-4">
             <i data-lucide="hard-drive" class="w-5 h-5"></i>
           </div>
-          <h3 class="text-lg font-bold font-editorial text-zen-primary mb-2">Local-First Storage</h3>
-          <p class="text-sm text-zen-secondary leading-relaxed">
+          <h3 data-i18n-es="Almacenamiento local-first" class="text-lg font-bold font-editorial text-zen-primary mb-2">Local-First Storage</h3>
+          <p data-i18n-html-es="Todos tus artículos, destacados y cachés offline permanecen en IndexedDB dentro de tu navegador, con soporte para <code>unlimitedStorage</code>." class="text-sm text-zen-secondary leading-relaxed">
             All your articles, highlights, and offline caches reside inside your browser’s IndexedDB engine with <code>unlimitedStorage</code> support.
           </p>
         </div>
@@ -256,8 +260,8 @@
           <div class="w-10 h-10 rounded-xl bg-zen-subtle border border-zen flex items-center justify-center text-zen-accent mb-4">
             <i data-lucide="zap" class="w-5 h-5"></i>
           </div>
-          <h3 class="text-lg font-bold font-editorial text-zen-primary mb-2">Ultra-Fast & Light</h3>
-          <p class="text-sm text-zen-secondary leading-relaxed">
+          <h3 data-i18n-es="Ultrarrápido y ligero" class="text-lg font-bold font-editorial text-zen-primary mb-2">Ultra-Fast & Light</h3>
+          <p data-i18n-es="Menos de 55 KB en total. Sin procesos pesados en segundo plano, sin consumo innecesario de batería y con extracción instantánea mediante Mozilla Readability." class="text-sm text-zen-secondary leading-relaxed">
             Under 55 KB total bundle size. No background bloat, no battery drain, and instantaneous article extraction via Mozilla Readability.
           </p>
         </div>
@@ -266,8 +270,8 @@
           <div class="w-10 h-10 rounded-xl bg-zen-subtle border border-zen flex items-center justify-center text-zen-accent mb-4">
             <i data-lucide="palette" class="w-5 h-5"></i>
           </div>
-          <h3 class="text-lg font-bold font-editorial text-zen-primary mb-2">Book-Grade Typography</h3>
-          <p class="text-sm text-zen-secondary leading-relaxed">
+          <h3 data-i18n-es="Tipografía editorial" class="text-lg font-bold font-editorial text-zen-primary mb-2">Book-Grade Typography</h3>
+          <p data-i18n-es="Fuentes serif cuidadosamente ajustadas, interlineado fluido y tres paletas diseñadas a mano: Papel, Sepia cálido y Noche." class="text-sm text-zen-secondary leading-relaxed">
             Carefully tuned editorial serif fonts, fluid line-heights, and three handcrafted palettes (Paper, Warm Sepia, and Pure Night).
           </p>
         </div>
@@ -276,25 +280,25 @@
 
     <!-- FAQ Section -->
     <section class="mb-16">
-      <h2 class="text-2xl font-bold font-editorial text-zen-primary mb-6">Frequently Asked Questions</h2>
+      <h2 data-i18n-es="Preguntas frecuentes" class="text-2xl font-bold font-editorial text-zen-primary mb-6">Frequently Asked Questions</h2>
       
       <div class="space-y-4">
         <details class="faq-item group p-5 rounded-2xl bg-zen-surface border border-zen zen-shadow">
           <summary class="flex items-center justify-between cursor-pointer font-editorial font-bold text-base text-zen-primary">
-            <span>Can I use Zen Reader on Zen Browser and Firefox?</span>
+            <span data-i18n-es="¿Puedo usar Zen Reader en Zen Browser y Firefox?">Can I use Zen Reader on Zen Browser and Firefox?</span>
             <i data-lucide="chevron-down" class="w-4 h-4 text-zen-accent transition-transform group-open:rotate-180"></i>
           </summary>
-          <div class="mt-3 text-sm text-zen-secondary leading-relaxed pt-2 border-t border-zen">
+          <div data-i18n-es="Sí. Zen Reader está disponible en la tienda oficial de complementos de Mozilla y se instala con un clic en Firefox y Zen Browser. También es compatible con Chrome, Edge, Brave y Arc." class="mt-3 text-sm text-zen-secondary leading-relaxed pt-2 border-t border-zen">
             Yes! Zen Reader is available directly on the official Mozilla Add-ons store and installs with one click in both Firefox and Zen Browser. It also supports Chrome, Edge, Brave, and Arc.
           </div>
         </details>
 
         <details class="faq-item group p-5 rounded-2xl bg-zen-surface border border-zen zen-shadow">
           <summary class="flex items-center justify-between cursor-pointer font-editorial font-bold text-base text-zen-primary">
-            <span>What happens if the website goes down?</span>
-            <summary class="flex items-center justify-between cursor-pointer font-editorial font-bold text-base text-zen-primary">
+            <span data-i18n-es="¿Qué ocurre si el sitio web deja de funcionar?">What happens if the website goes down?</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 text-zen-accent transition-transform group-open:rotate-180"></i>
           </summary>
-          <div class="mt-3 text-sm text-zen-secondary leading-relaxed pt-2 border-t border-zen">
+          <div data-i18n-es="Como Zen Reader es 100% local, no depende de servicios externos. Aunque nuestro sitio o GitHub no estuvieran disponibles, la extensión instalada y tus artículos seguirían funcionando permanentemente." class="mt-3 text-sm text-zen-secondary leading-relaxed pt-2 border-t border-zen">
             Because Zen Reader is 100% local, it has zero reliance on external backends. Even if our website or GitHub were offline, your installed extension and stored articles continue working permanently.
           </div>
         </details>
@@ -303,17 +307,17 @@
 
     <!-- Final CTA -->
     <div class="text-center p-10 rounded-3xl bg-zen-subtle border border-zen zen-shadow-lg">
-      <h2 class="text-3xl font-bold font-editorial text-zen-primary mb-3">Experience Calm Reading Today</h2>
-      <p class="text-sm sm:text-base text-zen-secondary mb-6 max-w-xl mx-auto">
+      <h2 data-i18n-es="Disfruta hoy de una lectura en calma" class="text-3xl font-bold font-editorial text-zen-primary mb-3">Experience Calm Reading Today</h2>
+      <p data-i18n-es="Instala la extensión en cinco segundos y empieza a guardar artículos en tu espacio privado y local." class="text-sm sm:text-base text-zen-secondary mb-6 max-w-xl mx-auto">
         Install the extension in 5 seconds and start saving articles to your private local sanctuary.
       </p>
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
         <a href="https://addons.mozilla.org/es-ES/firefox/addon/zenreader/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-zen-accent text-white font-semibold text-sm hover:bg-zen-accent-hover transition-all shadow-md">
           <i data-lucide="download" class="w-4 h-4"></i>
-          <span>Install for Firefox / Zen Browser</span>
+          <span data-i18n-es="Instalar para Firefox / Zen Browser">Install for Firefox / Zen Browser</span>
         </a>
         <a href="/" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-zen-surface border border-zen text-zen-primary font-semibold text-sm hover:border-zen-accent transition-all zen-shadow">
-          <span>Back to Home</span>
+          <span data-i18n-es="Volver al inicio">Back to Home</span>
         </a>
       </div>
     </div>
@@ -326,15 +330,15 @@
       <div class="flex items-center gap-2">
         <span class="font-bold text-zen-primary font-editorial text-sm">Zen Reader</span>
         <span>•</span>
-        <span>Crafted by <a href="https://madeinchile.tech" target="_blank" rel="noopener noreferrer" class="underline hover:text-zen-accent">Made in Chile</a></span>
+        <span data-i18n-html-es="Creado por <a href=&quot;https://madeinchile.tech&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot; class=&quot;underline hover:text-zen-accent&quot;>Made in Chile</a>">Crafted by <a href="https://madeinchile.tech" target="_blank" rel="noopener noreferrer" class="underline hover:text-zen-accent">Made in Chile</a></span>
       </div>
       <div class="flex flex-wrap items-center gap-5 text-zen-muted font-medium">
-        <a href="/" class="hover:text-zen-primary transition-colors">Home</a>
-        <a href="/pocket-alternative/" class="text-zen-accent font-semibold">Pocket Alternative</a>
-        <a href="/omnivore-alternative/" class="hover:text-zen-primary transition-colors">Omnivore Alternative</a>
+        <a href="/" data-i18n-es="Inicio" class="hover:text-zen-primary transition-colors">Home</a>
+        <a href="/pocket-alternative/" data-i18n-es="Alternativa a Pocket" class="text-zen-accent font-semibold">Pocket Alternative</a>
+        <a href="/omnivore-alternative/" data-i18n-es="Alternativa a Omnivore" class="hover:text-zen-primary transition-colors">Omnivore Alternative</a>
         <a href="/docs/" class="hover:text-zen-primary transition-colors">Docs</a>
-        <a href="/changelog/" class="hover:text-zen-primary transition-colors">Changelog</a>
-        <a href="/privacy/" class="hover:text-zen-primary transition-colors">Privacy</a>
+        <a href="/changelog/" data-i18n-es="Cambios" class="hover:text-zen-primary transition-colors">Changelog</a>
+        <a href="/privacy/" data-i18n-es="Privacidad" class="hover:text-zen-primary transition-colors">Privacy</a>
         <a href="https://github.com/MatiasBlanc/zen-reader" target="_blank" rel="noopener noreferrer" class="hover:text-zen-primary transition-colors">GitHub</a>
       </div>
     </div>

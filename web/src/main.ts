@@ -5,6 +5,9 @@ import {
   ShieldCheck,
   Zap,
   Sparkles,
+  Ban,
+  Cookie,
+  TriangleAlert,
   BookOpen,
   Clock,
   Check,
@@ -28,6 +31,9 @@ export function refreshIcons() {
       ShieldCheck,
       Zap,
       Sparkles,
+      Ban,
+      Cookie,
+      TriangleAlert,
       BookOpen,
       Clock,
       Check,
@@ -50,10 +56,6 @@ export type Language = 'en' | 'es';
 
 export const translations: Record<Language, Record<string, string>> = {
   en: {
-    // announcement
-    'announcement.text': '<strong>Pocket shut down. Omnivore shut down.</strong> Zen Reader is forever: 100% local, zero servers, zero subscriptions.',
-    'announcement.link': 'See comparison →',
-
     // nav
     'nav.philosophy': 'Philosophy',
     'nav.simulator': 'Simulator',
@@ -67,29 +69,20 @@ export const translations: Record<Language, Record<string, string>> = {
     'theme.dark': 'Night',
 
     // hero
-    'hero.eyebrow': 'Zen Reader — 100% Local Read-It-Later',
-    'hero.title': 'Zen Reader.<br/><span class="italic text-zen-accent font-normal">Read without noise. Save with a single click.</span>',
-    'hero.subtitle': 'The minimalist <em>read-it-later</em> sanctuary that respects your attention. Save articles to read offline without ads, cookie banners, or telemetry. <strong>100% local in your browser</strong>, zero accounts, and zero cloud servers.',
+    'hero.title': 'Zen Reader.',
+    'hero.subtitle': 'Minimalist <em>read-it-later</em>. Save articles to read later without ads, cookie banners, or telemetry. <strong>100% local in your browser</strong>, with no accounts and no cloud servers.',
     'hero.cta.firefox': 'Install for Firefox / Zen Browser',
     'hero.cta.chrome': 'For Chrome & Edge',
-    'hero.stat1.val': '0 KB',
-    'hero.stat1.desc': 'On external servers. Zero cloud.',
-    'hero.stat2.val': '100%',
-    'hero.stat2.desc': 'Local-first (Secure IndexedDB).',
-    'hero.stat3.val': '0',
-    'hero.stat3.desc': 'Accounts, logins, or emails requested.',
-    'hero.stat4.val': '< 50ms',
-    'hero.stat4.desc': 'Instant save. Zero RAM impact.',
 
     // simulator
     'sim.title': 'The Cluttered Web vs. Your Zen Sanctuary',
-    'sim.tab.chaos': '🚫 Typical Web (Noisy)',
-    'sim.tab.zen': '✨ Zen Reader (Pure)',
+    'sim.tab.chaos': 'Typical Web Noisy',
+    'sim.tab.zen': 'Zen Reader Pure',
     'sim.btn.clean': 'Clean',
-    'sim.cookie.text': '🍪 We use 48 trackers and cookies to monitor your clicks and serve targeted ads.',
+    'sim.cookie.text': 'We use 48 trackers and cookies to monitor your clicks and serve targeted ads.',
     'sim.cookie.btn1': 'Customize (24 clicks)',
     'sim.cookie.btn2': 'Accept all',
-    'sim.popup.title': '🚨 WAIT! BEFORE READING: SUBSCRIBE TO OUR DAILY NEWSLETTER (TODAY ONLY!)',
+    'sim.popup.title': 'WAIT! BEFORE READING: SUBSCRIBE TO OUR DAILY NEWSLETTER (TODAY ONLY!)',
     'sim.popup.btn': 'Subscribe',
     'sim.chaos.tag': 'Productivity • 8 min read • Sponsored',
     'sim.chaos.headline': 'The Art of Deep Focus in the Age of Digital Saturation',
@@ -114,7 +107,7 @@ export const translations: Record<Language, Record<string, string>> = {
     'sim.zen.footer': 'Article saved in your browser\'s local storage (IndexedDB)',
 
     // philosophy
-    'phil.title': 'Built to last.<br/>Designed for calm.',
+    'phil.title': 'Designed for calm.',
     'phil.subtitle': 'After the shutdowns of Pocket and Omnivore, we built a tool that can never be discontinued: an autonomous extension living inside your browser, with zero hidden costs or servers to maintain.',
     'phil.p1.title': '100% Local & Offline',
     'phil.p1.desc': 'Your articles are stored in <strong>native IndexedDB</strong> with unlimited storage. Never depend on external servers that might go bankrupt or lose your reading list.',
@@ -136,7 +129,7 @@ export const translations: Record<Language, Record<string, string>> = {
     'phil.p6.tag': 'MIT License • Clean Architecture',
 
     // comparison
-    'comp.badge': 'Comparative Analysis',
+
     'comp.title': 'Why Zen Reader over other alternatives?',
     'comp.col.criteria': 'Criteria',
     'comp.col.zen': 'Zen Reader',
@@ -180,7 +173,7 @@ export const translations: Record<Language, Record<string, string>> = {
     'comp.r6.omnivore': 'Shut down',
     'comp.r6.readwise': 'Card setup',
     'comp.r6.wallabag': 'Complex (Docker/SQL)',
-    'comp.callout.text': 'Why pay $12/mo or manage Docker servers when you just want to save articles and read in peace?',
+    'comp.callout.text': 'Why pay $12/mo if all you want is to save and read in peace?',
     'comp.callout.link': 'Get started with Zen Reader →',
 
     // installation
@@ -233,10 +226,6 @@ export const translations: Record<Language, Record<string, string>> = {
     'footer.changelog': 'Changelog',
   },
   es: {
-    // announcement
-    'announcement.text': '<strong>Pocket cerró. Omnivore cerró.</strong> Zen Reader es para siempre: 100% local, sin servidores y sin suscripciones.',
-    'announcement.link': 'Ver comparativa →',
-
     // nav
     'nav.philosophy': 'Filosofía',
     'nav.simulator': 'Simulador',
@@ -249,30 +238,68 @@ export const translations: Record<Language, Record<string, string>> = {
     'theme.sepia': 'Sepia',
     'theme.dark': 'Noche',
 
+    // páginas secundarias
+    'page.nav.home': 'Inicio',
+    'page.nav.pocket': 'Alternativa a Pocket',
+    'page.nav.omnivore': 'Alternativa a Omnivore',
+    'page.nav.docs': 'Docs',
+    'page.nav.changelog': 'Cambios',
+    'page.nav.privacy': 'Privacidad',
+    'page.docs.badge': 'Guía de usuario y referencia',
+    'page.docs.title': 'Documentación',
+    'page.docs.subtitle': 'Todo lo que necesitas para dominar Zen Reader: instalación, atajos, gestión del almacenamiento local y guías para desarrolladores.',
+    'page.docs.nav.installation': 'Instalación',
+    'page.docs.nav.shortcuts': 'Atajos de teclado',
+    'page.docs.nav.dashboard': 'Panel de lectura',
+    'page.docs.nav.developer': 'Desarrollo y arquitectura',
+    'page.docs.installation': '1. Guía de instalación',
+    'page.docs.firefox': 'Firefox y Zen Browser',
+    'page.docs.firefox.desc': 'Instálalo directamente con un clic desde el directorio oficial de complementos de Mozilla. Incluye actualizaciones automáticas.',
+    'page.docs.firefox.button': 'Instalar desde AMO',
+    'page.docs.chromium': 'Chrome, Edge, Brave y Arc',
+    'page.docs.chromium.desc': 'Descarga el ZIP de la versión desde GitHub, visita <code class="text-xs bg-zen-subtle px-1 rounded">chrome://extensions</code>, activa el modo desarrollador y pulsa <em>Cargar descomprimida</em>.',
+    'page.docs.chromium.button': 'Descargar ZIP de la versión',
+    'page.docs.shortcuts': '2. Atajos de teclado',
+    'page.docs.shortcuts.intro': 'Zen Reader está diseñado para trabajar rápido sin usar el ratón:',
+    'page.docs.table.shortcut': 'Atajo',
+    'page.docs.table.context': 'Contexto',
+    'page.docs.table.action': 'Acción',
+    'page.docs.anyPage': 'Cualquier página web',
+    'page.docs.dashboard': 'Panel',
+    'page.docs.reader': 'Vista de lectura',
+    'page.docs.action.save': 'Extraer y guardar el artículo al instante en Zen Reader.',
+    'page.docs.action.navigate': 'Bajar o subir por los artículos de la lista de lectura.',
+    'page.docs.action.open': 'Abrir el artículo seleccionado en la vista de lectura sin distracciones.',
+    'page.docs.action.toggle': 'Alternar el estado guardado o no leído del artículo.',
+    'page.docs.action.delete': 'Eliminar permanentemente el artículo seleccionado de IndexedDB.',
+    'page.docs.action.close': 'Cerrar el artículo y volver a la cola del panel.',
+    'page.docs.storage': '3. Panel de lectura y almacenamiento local',
+    'page.docs.storage.intro': 'Todos los artículos se guardan en la base de datos <strong>IndexedDB</strong> nativa del navegador. Esto garantiza:',
+    'page.docs.storage.offline': '<strong>Disponibilidad offline:</strong> El texto, los encabezados y los archivos multimedia se guardan localmente para leer sin conexión.',
+    'page.docs.storage.limits': '<strong>Sin límites de nube:</strong> Con <code>unlimitedStorage</code>, guarda miles de artículos sin penalizaciones de tamaño.',
+    'page.docs.storage.isolation': '<strong>Aislamiento total:</strong> Ningún sitio o script externo puede acceder a tu biblioteca privada.',
+    'page.docs.developer': '4. Guía para desarrolladores y arquitectura limpia',
+    'page.docs.developer.intro': 'Zen Reader está estructurado como un monorepo de npm con límites estrictos entre capas, verificados mediante <code>dependency-cruiser</code>:',
+    'page.docs.build': 'Comandos de compilación',
+    'page.docs.command.dev': '# Ejecutar el servidor de desarrollo',
+    'page.docs.command.arch': '# Ejecutar el linter de arquitectura (dependency-cruiser)',
+    'page.docs.command.build': '# Compilar la extensión y la web',
+
     // hero
-    'hero.eyebrow': 'Zen Reader — Read-It-Later 100% Local',
-    'hero.title': 'Zen Reader.<br/><span class="italic text-zen-accent font-normal">Lee sin ruido. Guarda con un solo clic.</span>',
-    'hero.subtitle': 'El santuario <em>read-it-later</em> minimalista que respeta tu mente. Guarda artículos para leer después sin anuncios, muros de cookies ni telemetría. <strong>100% local en tu navegador</strong>, sin cuentas y sin servidores en la nube.',
+    'hero.title': 'Zen Reader.',
+    'hero.subtitle': '<em>read-it-later</em> minimalista. Guarda artículos para leer después sin anuncios, muros de cookies ni telemetría. <strong>100% local en tu navegador</strong>, sin cuentas y sin servidores en la nube.',
     'hero.cta.firefox': 'Instalar para Firefox / Zen Browser',
     'hero.cta.chrome': 'Para Chrome & Edge',
-    'hero.stat1.val': '0 KB',
-    'hero.stat1.desc': 'En servidores externos. Cero nube.',
-    'hero.stat2.val': '100%',
-    'hero.stat2.desc': 'Local First (IndexedDB seguro).',
-    'hero.stat3.val': '0',
-    'hero.stat3.desc': 'Cuentas, logins ni correos pedidos.',
-    'hero.stat4.val': '< 50ms',
-    'hero.stat4.desc': 'Carga instantánea. Cero impacto RAM.',
 
     // simulator
     'sim.title': 'La web saturada vs. Tu santuario Zen',
-    'sim.tab.chaos': '🚫 Web Típica (Ruidosa)',
-    'sim.tab.zen': '✨ Zen Reader (Puro)',
+    'sim.tab.chaos': 'Web Típica Ruidosa',
+    'sim.tab.zen': 'Zen Reader Puro',
     'sim.btn.clean': 'Limpiar',
-    'sim.cookie.text': '🍪 Usamos 48 rastreadores y cookies para medir cada uno de tus clics y vender publicidad personalizada.',
+    'sim.cookie.text': 'Usamos 48 rastreadores y cookies para medir cada uno de tus clics y vender publicidad personalizada.',
     'sim.cookie.btn1': 'Configurar (24 clics)',
     'sim.cookie.btn2': 'Aceptar todo',
-    'sim.popup.title': '🚨 ¡ESPERA! ANTES DE LEER: SUSCRÍBETE A NUESTRA NEWSLETTER DIARIA (¡SÓLO HOY!)',
+    'sim.popup.title': '¡ESPERA! ANTES DE LEER: SUSCRÍBETE A NUESTRA NEWSLETTER DIARIA (¡SÓLO HOY!)',
     'sim.popup.btn': 'Suscribirme',
     'sim.chaos.tag': 'Productividad • 8 min de lectura • Patrocinado',
     'sim.chaos.headline': 'El arte del enfoque profundo en la era de la saturación digital',
@@ -297,7 +324,7 @@ export const translations: Record<Language, Record<string, string>> = {
     'sim.zen.footer': 'Artículo guardado en el almacenamiento local de tu navegador (IndexedDB)',
 
     // philosophy
-    'phil.title': 'Construido para durar.<br/>Diseñado para la calma.',
+    'phil.title': 'Diseñado para la calma.',
     'phil.subtitle': 'Tras el cierre sucesivo de servicios como Pocket y Omnivore, decidimos crear una herramienta que no pueda desaparecer jamás: una extensión autónoma que vive en tu navegador, sin costes ocultos ni servidores que mantener.',
     'phil.p1.title': '100% Local y Offline',
     'phil.p1.desc': 'Tus artículos se persisten en <strong>IndexedDB nativo</strong> con almacenamiento ilimitado. No dependes de servidores externos que puedan quebrar o perder tus lecturas.',
@@ -319,7 +346,7 @@ export const translations: Record<Language, Record<string, string>> = {
     'phil.p6.tag': 'Licencia MIT • Clean Architecture',
 
     // comparison
-    'comp.badge': 'Análisis Comparativo',
+
     'comp.title': '¿Por qué Zen Reader frente a otras alternativas?',
     'comp.col.criteria': 'Criterio',
     'comp.col.zen': 'Zen Reader',
@@ -363,7 +390,7 @@ export const translations: Record<Language, Record<string, string>> = {
     'comp.r6.omnivore': 'Cerrado',
     'comp.r6.readwise': 'Rápida con tarjeta',
     'comp.r6.wallabag': 'Compleja (Docker/SQL)',
-    'comp.callout.text': '¿Por qué pagar $12/mes o administrar servidores Docker si solo quieres guardar artículos y leerlos en paz?',
+    'comp.callout.text': 'Por qué pagar $12/mes si solo quieres guardar y leer en paz?',
     'comp.callout.link': 'Empieza con Zen Reader →',
 
     // installation
@@ -439,7 +466,7 @@ function setLanguage(lang: Language) {
     }
   });
 
-  // Update HTML content
+  // Actualiza el contenido HTML
   document.querySelectorAll<HTMLElement>('[data-i18n-html]').forEach(el => {
     const key = el.dataset.i18nHtml;
     if (key && translations[lang][key]) {
@@ -447,7 +474,22 @@ function setLanguage(lang: Language) {
     }
   });
 
-  // Update Language buttons
+  // Traduce el contenido específico de las páginas estáticas
+  document.querySelectorAll<HTMLElement>('[data-i18n-es]').forEach(el => {
+    if (!el.dataset.i18nEn) {
+      el.dataset.i18nEn = el.textContent?.trim() ?? '';
+    }
+    el.textContent = lang === 'es' ? el.dataset.i18nEs ?? '' : el.dataset.i18nEn;
+  });
+
+  document.querySelectorAll<HTMLElement>('[data-i18n-html-es]').forEach(el => {
+    if (!el.dataset.i18nHtmlEn) {
+      el.dataset.i18nHtmlEn = el.innerHTML.trim();
+    }
+    el.innerHTML = lang === 'es' ? el.dataset.i18nHtmlEs ?? '' : el.dataset.i18nHtmlEn;
+  });
+
+  // Actualiza los botones de idioma
   document.querySelectorAll<HTMLButtonElement>('[data-lang-btn]').forEach(btn => {
     const isCurrent = btn.dataset.langBtn === lang;
     btn.setAttribute('aria-pressed', isCurrent ? 'true' : 'false');
