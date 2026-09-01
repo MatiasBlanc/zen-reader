@@ -116,14 +116,18 @@
       </a>
 
       <nav class="hidden md:flex items-center gap-6 text-sm text-zen-secondary font-medium">
-        <a href="/" class="hover:text-zen-accent transition-colors">Home</a>
-        <a href="/pocket-alternative/" class="hover:text-zen-accent transition-colors">Pocket Alternative</a>
-        <a href="/omnivore-alternative/" class="text-zen-accent font-semibold">Omnivore Alternative</a>
+        <a href="/" data-i18n-es="Inicio" class="hover:text-zen-accent transition-colors">Home</a>
+        <a href="/pocket-alternative/" data-i18n-es="Alternativa a Pocket" class="hover:text-zen-accent transition-colors">Pocket Alternative</a>
+        <a href="/omnivore-alternative/" data-i18n-es="Alternativa a Omnivore" class="text-zen-accent font-semibold">Omnivore Alternative</a>
         <a href="/docs/" class="hover:text-zen-accent transition-colors">Docs</a>
-        <a href="/changelog/" class="hover:text-zen-accent transition-colors">Changelog</a>
+        <a href="/changelog/" data-i18n-es="Cambios" class="hover:text-zen-accent transition-colors">Changelog</a>
       </nav>
 
       <div class="flex items-center gap-3">
+        <div class="flex items-center p-1 bg-zen-subtle border border-zen rounded-full text-xs" role="group" aria-label="Selector de idioma">
+          <button data-lang-btn="en" class="px-2.5 py-0.5 rounded-full text-zen-secondary hover:text-zen-primary transition-all text-[11px] font-semibold" title="English">EN</button>
+          <button data-lang-btn="es" class="px-2.5 py-0.5 rounded-full text-zen-secondary hover:text-zen-primary transition-all text-[11px] font-semibold" title="Español">ES</button>
+        </div>
         <a href="https://github.com/MatiasBlanc/zen-reader" target="_blank" rel="noopener noreferrer" aria-label="GitHub Repository" class="inline-flex items-center justify-center w-8 h-8 rounded-full border border-zen bg-zen-surface text-zen-primary hover:border-zen-accent hover:text-zen-accent transition-all zen-shadow">
           <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path></svg>
         </a>
@@ -133,10 +137,10 @@
 
   <!-- Theme Switcher Desktop -->
   <aside aria-label="Theme selector" class="fixed left-8 xl:left-12 top-1/2 -translate-y-1/2 z-40 hidden md:flex flex-col items-center gap-1.5 p-2 bg-zen-surface/90 backdrop-blur-md border border-zen rounded-2xl zen-shadow-lg">
-    <div class="px-2 py-0.5 text-[10px] font-mono font-bold text-zen-muted uppercase tracking-wider select-none border-b border-zen/50 w-full text-center mb-0.5">Theme</div>
+    <div data-i18n-es="Tema" class="px-2 py-0.5 text-[10px] font-mono font-bold text-zen-muted uppercase tracking-wider select-none border-b border-zen/50 w-full text-center mb-0.5">Theme</div>
     <button data-theme-btn="paper" class="w-full px-3 py-1.5 rounded-xl text-zen-secondary hover:text-zen-primary hover:bg-zen-subtle transition-all text-xs font-medium flex items-center gap-2">
       <span class="w-3 h-3 rounded-full bg-[#F9F7F2] border border-[#E5DFC8]"></span>
-      <span>Paper</span>
+      <span data-i18n-es="Papel">Paper</span>
     </button>
     <button data-theme-btn="sepia" class="w-full px-3 py-1.5 rounded-xl text-zen-secondary hover:text-zen-primary hover:bg-zen-subtle transition-all text-xs font-medium flex items-center gap-2">
       <span class="w-3 h-3 rounded-full bg-[#EBE1D7] border border-[#DFD3C3]"></span>
@@ -144,7 +148,7 @@
     </button>
     <button data-theme-btn="dark" class="w-full px-3 py-1.5 rounded-xl text-zen-secondary hover:text-zen-primary hover:bg-zen-subtle transition-all text-xs font-medium flex items-center gap-2">
       <span class="w-3 h-3 rounded-full bg-[#161619] border border-[#282830]"></span>
-      <span>Night</span>
+      <span data-i18n-es="Noche">Night</span>
     </button>
   </aside>
 
@@ -154,12 +158,12 @@
     <div class="text-center mb-16">
       <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zen-subtle border border-zen text-xs font-semibold text-zen-accent mb-6 zen-shadow">
         <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
-        <span>The Sustainable Omnivore Alternative</span>
+        <span data-i18n-es="La alternativa sostenible a Omnivore">The Sustainable Omnivore Alternative</span>
       </div>
       <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold font-editorial text-zen-primary mb-6 leading-tight">
-        A Read-It-Later App That Can Never Shut Down
+        <span data-i18n-es="Una aplicación read-it-later que nunca puede cerrar">A Read-It-Later App That Can Never Shut Down</span>
       </h1>
-      <p class="text-lg sm:text-xl text-zen-secondary max-w-2xl mx-auto leading-relaxed">
+      <p data-i18n-html-es="Omnivore era muy apreciado, pero los servidores centralizados generan costes de alojamiento y riesgos de adquisición. <strong>Zen Reader</strong> elimina por completo el servidor para crear un espacio de lectura local y permanente." class="text-lg sm:text-xl text-zen-secondary max-w-2xl mx-auto leading-relaxed">
         Omnivore was beloved, but centralized cloud servers inevitably incur hosting bills and acquisition risks. 
         <strong>Zen Reader</strong> removes the server entirely to create a permanent, local reading sanctuary.
       </p>
@@ -167,17 +171,17 @@
 
     <!-- The Architectural Lesson -->
     <section class="mb-16 p-8 rounded-3xl bg-zen-surface border border-zen zen-shadow">
-      <h2 class="text-2xl font-bold font-editorial text-zen-primary mb-4">The Lesson from Omnivore's Sunset</h2>
-      <p class="text-sm sm:text-base text-zen-secondary leading-relaxed mb-4">
+      <h2 data-i18n-es="La lección del cierre de Omnivore" class="text-2xl font-bold font-editorial text-zen-primary mb-4">The Lesson from Omnivore's Sunset</h2>
+      <p data-i18n-es="A finales de 2024, Omnivore anunció el cierre de su servicio alojado en la nube. Miles de lectores tuvieron que apresurarse a exportar sus datos antes de que apagaran los servidores." class="text-sm sm:text-base text-zen-secondary leading-relaxed mb-4">
         In late 2024, Omnivore announced the sunset of its hosted cloud service. Thousands of readers who trusted the platform had to scramble to export their data before servers were shut down.
       </p>
-      <p class="text-sm sm:text-base text-zen-secondary leading-relaxed mb-6">
+      <p data-i18n-es="Cuando una aplicación usa una base de datos en la nube para guardar artículos, cada usuario activo aumenta los costes del servidor. Cuando se acaba la financiación, el servicio desaparece." class="text-sm sm:text-base text-zen-secondary leading-relaxed mb-6">
         When an app uses a cloud database to store public web articles, every active user increases server hosting costs. When funding ends, the service dies.
       </p>
       
       <div class="p-4 rounded-2xl bg-zen-subtle border border-zen flex items-start gap-3 text-sm text-zen-primary">
         <i data-lucide="shield-check" class="w-5 h-5 text-zen-accent shrink-0 mt-0.5"></i>
-        <span><strong>The Zen Reader solution:</strong> By storing articles strictly inside your browser’s IndexedDB sandbox, there is zero cloud overhead, zero API latency, and 100% data ownership.</span>
+        <span data-i18n-html-es="<strong>La solución de Zen Reader:</strong> Al guardar los artículos dentro de IndexedDB en tu navegador, no hay costes de nube ni latencia de API y conservas el 100% de la propiedad de tus datos."><strong>The Zen Reader solution:</strong> By storing articles strictly inside your browser’s IndexedDB sandbox, there is zero cloud overhead, zero API latency, and 100% data ownership.</span>
       </div>
     </section>
 
@@ -189,41 +193,41 @@
         <table class="w-full text-left text-sm">
           <thead>
             <tr class="border-b border-zen bg-zen-subtle/60 text-zen-primary">
-              <th class="p-4 font-semibold">Aspect</th>
+              <th data-i18n-es="Aspecto" class="p-4 font-semibold">Aspect</th>
               <th class="p-4 font-semibold text-zen-accent">Zen Reader</th>
-              <th class="p-4 font-semibold text-zen-secondary">Omnivore (Hosted)</th>
+              <th data-i18n-es="Omnivore (alojado)" class="p-4 font-semibold text-zen-secondary">Omnivore (Hosted)</th>
             </tr>
           </thead>
           <tbody class="divide-y divide-zen text-zen-secondary">
             <tr>
-              <td class="p-4 font-medium text-zen-primary">Architecture</td>
-              <td class="p-4 text-emerald-600 font-semibold flex items-center gap-1.5"><i data-lucide="check" class="w-4 h-4"></i> 100% Local (IndexedDB)</td>
-              <td class="p-4 text-rose-500">Cloud API + PostgreSQL backend</td>
+              <td data-i18n-es="Arquitectura" class="p-4 font-medium text-zen-primary">Architecture</td>
+              <td class="p-4 text-emerald-600 font-semibold flex items-center gap-1.5"><i data-lucide="check" class="w-4 h-4"></i> <span data-i18n-es="100% local (IndexedDB)">100% Local (IndexedDB)</span></td>
+              <td data-i18n-es="API en la nube y backend PostgreSQL" class="p-4 text-rose-500">Cloud API + PostgreSQL backend</td>
             </tr>
             <tr>
-              <td class="p-4 font-medium text-zen-primary">Longevity Guarantee</td>
-              <td class="p-4 text-emerald-600 font-semibold flex items-center gap-1.5"><i data-lucide="check" class="w-4 h-4"></i> Cannot be sunset (No backend)</td>
-              <td class="p-4 text-rose-500">Shutdown in Nov 2024</td>
+              <td data-i18n-es="Garantía de continuidad" class="p-4 font-medium text-zen-primary">Longevity Guarantee</td>
+              <td class="p-4 text-emerald-600 font-semibold flex items-center gap-1.5"><i data-lucide="check" class="w-4 h-4"></i> <span data-i18n-es="No puede cerrar (sin backend)">Cannot be sunset (No backend)</span></td>
+              <td data-i18n-es="Cerró en noviembre de 2024" class="p-4 text-rose-500">Shutdown in Nov 2024</td>
             </tr>
             <tr>
-              <td class="p-4 font-medium text-zen-primary">Setup Effort</td>
-              <td class="p-4 text-emerald-600 font-semibold flex items-center gap-1.5"><i data-lucide="check" class="w-4 h-4"></i> 1-click browser install</td>
-              <td class="p-4">Account creation required</td>
+              <td data-i18n-es="Esfuerzo de instalación" class="p-4 font-medium text-zen-primary">Setup Effort</td>
+              <td class="p-4 text-emerald-600 font-semibold flex items-center gap-1.5"><i data-lucide="check" class="w-4 h-4"></i> <span data-i18n-es="Instalación en el navegador con un clic">1-click browser install</span></td>
+              <td data-i18n-es="Requiere crear una cuenta" class="p-4">Account creation required</td>
             </tr>
             <tr>
-              <td class="p-4 font-medium text-zen-primary">Offline Availability</td>
-              <td class="p-4 text-emerald-600 font-semibold flex items-center gap-1.5"><i data-lucide="check" class="w-4 h-4"></i> Works completely offline</td>
-              <td class="p-4">Cached via cloud sync</td>
+              <td data-i18n-es="Disponibilidad offline" class="p-4 font-medium text-zen-primary">Offline Availability</td>
+              <td class="p-4 text-emerald-600 font-semibold flex items-center gap-1.5"><i data-lucide="check" class="w-4 h-4"></i> <span data-i18n-es="Funciona completamente offline">Works completely offline</span></td>
+              <td data-i18n-es="Caché mediante sincronización en la nube" class="p-4">Cached via cloud sync</td>
             </tr>
             <tr>
-              <td class="p-4 font-medium text-zen-primary">Keyboard Navigation</td>
+              <td data-i18n-es="Navegación por teclado" class="p-4 font-medium text-zen-primary">Keyboard Navigation</td>
               <td class="p-4 text-emerald-600 font-semibold flex items-center gap-1.5"><i data-lucide="check" class="w-4 h-4"></i> J / K, Enter, S, D, Esc</td>
-              <td class="p-4 text-emerald-600">Vim-style keybindings</td>
+              <td data-i18n-es="Atajos al estilo Vim" class="p-4 text-emerald-600">Vim-style keybindings</td>
             </tr>
             <tr>
-              <td class="p-4 font-medium text-zen-primary">Clean Architecture</td>
-              <td class="p-4 text-emerald-600 font-semibold flex items-center gap-1.5"><i data-lucide="check" class="w-4 h-4"></i> Verified with dependency-cruiser</td>
-              <td class="p-4">Microservices codebase</td>
+              <td data-i18n-es="Arquitectura limpia" class="p-4 font-medium text-zen-primary">Clean Architecture</td>
+              <td class="p-4 text-emerald-600 font-semibold flex items-center gap-1.5"><i data-lucide="check" class="w-4 h-4"></i> <span data-i18n-es="Verificada con dependency-cruiser">Verified with dependency-cruiser</span></td>
+              <td data-i18n-es="Código basado en microservicios" class="p-4">Microservices codebase</td>
             </tr>
           </tbody>
         </table>
@@ -232,25 +236,25 @@
 
     <!-- FAQ -->
     <section class="mb-16">
-      <h2 class="text-2xl font-bold font-editorial text-zen-primary mb-6">FAQ for Omnivore Migrators</h2>
+      <h2 data-i18n-es="Preguntas frecuentes para usuarios de Omnivore" class="text-2xl font-bold font-editorial text-zen-primary mb-6">FAQ for Omnivore Migrators</h2>
       
       <div class="space-y-4">
         <details class="faq-item group p-5 rounded-2xl bg-zen-surface border border-zen zen-shadow">
           <summary class="flex items-center justify-between cursor-pointer font-editorial font-bold text-base text-zen-primary">
-            <span>Can I customize font size and color palette?</span>
+            <span data-i18n-es="¿Puedo personalizar el tamaño de fuente y la paleta de colores?">Can I customize font size and color palette?</span>
             <i data-lucide="chevron-down" class="w-4 h-4 text-zen-accent transition-transform group-open:rotate-180"></i>
           </summary>
-          <div class="mt-3 text-sm text-zen-secondary leading-relaxed pt-2 border-t border-zen">
+          <div data-i18n-es="Sí. Zen Reader incluye tres temas de lectura —Papel, Sepia y Noche—, tamaño de fuente ajustable y tipografía serif diseñada para leer cómodamente durante más tiempo." class="mt-3 text-sm text-zen-secondary leading-relaxed pt-2 border-t border-zen">
             Yes. Zen Reader includes three custom reading themes (Paper, Sepia, and Night) along with adjustable font sizing and serif typography designed for extended reading comfort.
           </div>
         </details>
 
         <details class="faq-item group p-5 rounded-2xl bg-zen-surface border border-zen zen-shadow">
           <summary class="flex items-center justify-between cursor-pointer font-editorial font-bold text-base text-zen-primary">
-            <span>Is Zen Reader open source?</span>
+            <span data-i18n-es="¿Zen Reader es de código abierto?">Is Zen Reader open source?</span>
             <i data-lucide="chevron-down" class="w-4 h-4 text-zen-accent transition-transform group-open:rotate-180"></i>
           </summary>
-          <div class="mt-3 text-sm text-zen-secondary leading-relaxed pt-2 border-t border-zen">
+          <div data-i18n-es="Sí, es 100% código abierto bajo la licencia MIT. Puedes revisar cada línea, crear un fork o compilar la extensión desde cero en GitHub." class="mt-3 text-sm text-zen-secondary leading-relaxed pt-2 border-t border-zen">
             Yes, 100% open source under the permissive MIT license. You can inspect every line of code, fork the repository, or build the extension from scratch on GitHub.
           </div>
         </details>
@@ -259,17 +263,17 @@
 
     <!-- CTA -->
     <div class="text-center p-10 rounded-3xl bg-zen-subtle border border-zen zen-shadow-lg">
-      <h2 class="text-3xl font-bold font-editorial text-zen-primary mb-3">Never Lose Your Reading List Again</h2>
-      <p class="text-sm sm:text-base text-zen-secondary mb-6 max-w-xl mx-auto">
+      <h2 data-i18n-es="No vuelvas a perder tu lista de lectura" class="text-3xl font-bold font-editorial text-zen-primary mb-3">Never Lose Your Reading List Again</h2>
+      <p data-i18n-es="Cambia a la lectura local-first y disfruta de un espacio rápido y permanente." class="text-sm sm:text-base text-zen-secondary mb-6 max-w-xl mx-auto">
         Switch to local-first reading and enjoy a fast, permanent sanctuary.
       </p>
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
         <a href="https://addons.mozilla.org/es-ES/firefox/addon/zenreader/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-zen-accent text-white font-semibold text-sm hover:bg-zen-accent-hover transition-all shadow-md">
           <i data-lucide="download" class="w-4 h-4"></i>
-          <span>Install for Firefox / Zen Browser</span>
+          <span data-i18n-es="Instalar para Firefox / Zen Browser">Install for Firefox / Zen Browser</span>
         </a>
         <a href="/" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-zen-surface border border-zen text-zen-primary font-semibold text-sm hover:border-zen-accent transition-all zen-shadow">
-          <span>Back to Home</span>
+          <span data-i18n-es="Volver al inicio">Back to Home</span>
         </a>
       </div>
     </div>
@@ -282,15 +286,15 @@
       <div class="flex items-center gap-2">
         <span class="font-bold text-zen-primary font-editorial text-sm">Zen Reader</span>
         <span>•</span>
-        <span>Crafted by <a href="https://madeinchile.tech" target="_blank" rel="noopener noreferrer" class="underline hover:text-zen-accent">Made in Chile</a></span>
+        <span data-i18n-html-es="Creado por <a href=&quot;https://madeinchile.tech&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot; class=&quot;underline hover:text-zen-accent&quot;>Made in Chile</a>">Crafted by <a href="https://madeinchile.tech" target="_blank" rel="noopener noreferrer" class="underline hover:text-zen-accent">Made in Chile</a></span>
       </div>
       <div class="flex flex-wrap items-center gap-5 text-zen-muted font-medium">
-        <a href="/" class="hover:text-zen-primary transition-colors">Home</a>
-        <a href="/pocket-alternative/" class="hover:text-zen-primary transition-colors">Pocket Alternative</a>
-        <a href="/omnivore-alternative/" class="text-zen-accent font-semibold">Omnivore Alternative</a>
+        <a href="/" data-i18n-es="Inicio" class="hover:text-zen-primary transition-colors">Home</a>
+        <a href="/pocket-alternative/" data-i18n-es="Alternativa a Pocket" class="hover:text-zen-primary transition-colors">Pocket Alternative</a>
+        <a href="/omnivore-alternative/" data-i18n-es="Alternativa a Omnivore" class="text-zen-accent font-semibold">Omnivore Alternative</a>
         <a href="/docs/" class="hover:text-zen-primary transition-colors">Docs</a>
-        <a href="/changelog/" class="hover:text-zen-primary transition-colors">Changelog</a>
-        <a href="/privacy/" class="hover:text-zen-primary transition-colors">Privacy</a>
+        <a href="/changelog/" data-i18n-es="Cambios" class="hover:text-zen-primary transition-colors">Changelog</a>
+        <a href="/privacy/" data-i18n-es="Privacidad" class="hover:text-zen-primary transition-colors">Privacy</a>
         <a href="https://github.com/MatiasBlanc/zen-reader" target="_blank" rel="noopener noreferrer" class="hover:text-zen-primary transition-colors">GitHub</a>
       </div>
     </div>

@@ -170,15 +170,6 @@
   <!-- Reading Progress Bar -->
   <div id="global-progress-bar" class="fixed top-0 left-0 h-0.5 bg-zen-accent z-50 transition-all duration-150 ease-out" style="width: 0%;"></div>
 
-  <!-- Announcement Bar -->
-  <aside aria-label="Announcement" class="bg-zen-subtle border-b border-zen text-xs py-2 px-4 text-center text-zen-secondary font-medium">
-    <div class="max-w-6xl mx-auto flex items-center justify-center gap-2 flex-wrap">
-      <span class="inline-block w-2 h-2 rounded-full bg-zen-accent animate-pulse"></span>
-      <span data-i18n-html="announcement.text"><strong>Pocket shut down. Omnivore shut down.</strong> Zen Reader is forever: 100% local, zero servers, zero subscriptions.</span>
-      <a href="#comparison" data-i18n="announcement.link" class="underline underline-offset-2 hover:text-zen-accent transition-colors font-semibold ml-1">See comparison &rarr;</a>
-    </div>
-  </aside>
-
   <!-- Navigation Bar -->
   <header class="sticky top-0 z-40 backdrop-blur-md bg-zen-canvas/90 border-b border-zen transition-colors duration-300">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
@@ -272,59 +263,29 @@
 
   <main>
     <!-- HERO SECTION -->
-    <section class="relative pt-20 pb-20 md:pt-28 md:pb-28 overflow-hidden zen-pattern border-b border-zen">
-      <div class="max-w-5xl mx-auto px-4 sm:px-6 text-center relative z-10">
-        
-        <!-- Eyebrow Badge -->
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zen-subtle border border-zen text-xs font-semibold text-zen-accent mb-6 zen-shadow">
-          <span class="w-2 h-2 rounded-full bg-zen-accent"></span>
-          <span data-i18n="hero.eyebrow">Zen Reader — 100% Local Read-It-Later</span>
-        </div>
-
+    <section class="relative flex min-h-[90vh] items-center overflow-hidden border-b border-zen bg-zen-canvas zen-pattern">
+      <div class="relative z-10 mx-auto w-full max-w-5xl px-4 py-16 text-center sm:px-6 md:py-24">
         <!-- Main Title -->
-        <h1 data-i18n-html="hero.title" class="text-4xl sm:text-6xl md:text-7xl font-bold font-editorial tracking-tight text-zen-primary max-w-4xl mx-auto leading-[1.08] mb-6">
-          Zen Reader.<br/>
-          <span class="italic text-zen-accent font-normal">Read without noise. Save with a single click.</span>
+        <h1 data-i18n-html="hero.title" class="mx-auto mb-6 max-w-4xl text-4xl font-bold leading-[1.08] tracking-tight text-zen-primary font-editorial sm:text-6xl md:text-7xl">
+          Zen Reader.
         </h1>
 
         <!-- Subtitle with strong keywords -->
-        <p data-i18n-html="hero.subtitle" class="text-lg sm:text-xl text-zen-secondary max-w-2xl mx-auto leading-relaxed mb-10 font-normal">
-          The minimalist <em>read-it-later</em> sanctuary that respects your attention. Save articles to read offline without ads, cookie banners, or telemetry.
-          <strong>100% local in your browser</strong>, zero accounts, and zero cloud servers.
+        <p data-i18n-html="hero.subtitle" class="mx-auto mb-10 max-w-2xl text-lg font-normal leading-relaxed text-zen-secondary sm:text-xl">
+          Minimalist <em>read-it-later</em>. Save articles to read later without ads, cookie banners, or telemetry. <strong>100% local in your browser</strong>, with no accounts and no cloud servers.
         </p>
 
         <!-- CTA Action Buttons -->
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-xl mx-auto mb-14">
-          <a href="https://addons.mozilla.org/es-ES/firefox/addon/zenreader/" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full bg-zen-accent text-white font-semibold text-sm hover:bg-zen-accent-hover transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
-            <i data-lucide="download" class="w-5 h-5"></i>
+        <div class="mx-auto flex max-w-xl flex-col items-center justify-center gap-4 sm:flex-row">
+          <a href="https://addons.mozilla.org/es-ES/firefox/addon/zenreader/" target="_blank" rel="noopener noreferrer" class="inline-flex w-full items-center justify-center gap-2.5 rounded-full bg-zen-accent px-7 py-3.5 text-sm font-semibold text-white shadow-md transition-all hover:-translate-y-0.5 hover:bg-zen-accent-hover hover:shadow-lg sm:w-auto">
+            <i data-lucide="download" class="h-5 w-5"></i>
             <span data-i18n="hero.cta.firefox">Install for Firefox / Zen Browser</span>
           </a>
-          <a href="#installation" class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-full bg-zen-surface border border-zen text-zen-primary font-semibold text-sm hover:border-zen-accent hover:text-zen-accent transition-all zen-shadow">
-            <svg class="w-5 h-5 text-zen-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="4"></circle><line x1="21.17" y1="8" x2="12" y2="8"></line><line x1="3.95" y1="6.06" x2="8.54" y2="14"></line><line x1="10.88" y1="21.94" x2="15.46" y2="14"></line></svg>
+          <a href="#installation" class="inline-flex w-full items-center justify-center gap-2.5 rounded-full border border-zen bg-zen-surface px-6 py-3.5 text-sm font-semibold text-zen-primary transition-all hover:border-zen-accent hover:text-zen-accent zen-shadow sm:w-auto">
+            <svg class="h-5 w-5 text-zen-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="4"></circle><line x1="21.17" y1="8" x2="12" y2="8"></line><line x1="3.95" y1="6.06" x2="8.54" y2="14"></line><line x1="10.88" y1="21.94" x2="15.46" y2="14"></line></svg>
             <span data-i18n="hero.cta.chrome">For Chrome & Edge</span>
           </a>
         </div>
-
-        <!-- Trust & Philosophy Matrix -->
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto text-left">
-          <div class="p-4 rounded-xl bg-zen-surface border border-zen zen-shadow">
-            <div data-i18n="hero.stat1.val" class="text-2xl font-bold font-editorial text-zen-accent mb-0.5">0 KB</div>
-            <div data-i18n="hero.stat1.desc" class="text-xs text-zen-secondary font-medium">On external servers. Zero cloud.</div>
-          </div>
-          <div class="p-4 rounded-xl bg-zen-surface border border-zen zen-shadow">
-            <div data-i18n="hero.stat2.val" class="text-2xl font-bold font-editorial text-zen-accent mb-0.5">100%</div>
-            <div data-i18n="hero.stat2.desc" class="text-xs text-zen-secondary font-medium">Local-first (Secure IndexedDB).</div>
-          </div>
-          <div class="p-4 rounded-xl bg-zen-surface border border-zen zen-shadow">
-            <div data-i18n="hero.stat3.val" class="text-2xl font-bold font-editorial text-zen-accent mb-0.5">0</div>
-            <div data-i18n="hero.stat3.desc" class="text-xs text-zen-secondary font-medium">Accounts, logins, or emails requested.</div>
-          </div>
-          <div class="p-4 rounded-xl bg-zen-surface border border-zen zen-shadow">
-            <div data-i18n="hero.stat4.val" class="text-2xl font-bold font-editorial text-zen-accent mb-0.5">&lt; 50ms</div>
-            <div data-i18n="hero.stat4.desc" class="text-xs text-zen-secondary font-medium">Instant save. Zero RAM impact.</div>
-          </div>
-        </div>
-
       </div>
     </section>
 
@@ -339,11 +300,13 @@
 
           <!-- Interactive View Switcher Tabs -->
           <div class="inline-flex items-center p-1.5 mt-2 rounded-full bg-zen-surface border border-zen zen-shadow text-xs" role="tablist">
-            <button id="sim-btn-chaos" role="tab" aria-selected="false" data-i18n="sim.tab.chaos" class="px-5 py-2 rounded-full transition-all text-zen-muted font-medium hover:text-zen-primary">
-              🚫 Typical Web (Noisy)
+            <button id="sim-btn-chaos" role="tab" aria-selected="false" class="inline-flex items-center gap-2 whitespace-nowrap px-5 py-2 rounded-full transition-all text-zen-muted font-medium hover:text-zen-primary">
+              <i data-lucide="ban" class="w-4 h-4"></i>
+              <span data-i18n="sim.tab.chaos">Typical Web Noisy</span>
             </button>
-            <button id="sim-btn-zen" role="tab" aria-selected="true" data-i18n="sim.tab.zen" class="px-5 py-2 rounded-full transition-all bg-zen-surface font-semibold zen-shadow text-zen-primary border border-zen/50">
-              ✨ Zen Reader (Pure)
+            <button id="sim-btn-zen" role="tab" aria-selected="true" class="inline-flex items-center gap-2 whitespace-nowrap px-5 py-2 rounded-full transition-all bg-zen-surface font-semibold zen-shadow text-zen-primary border border-zen/50">
+              <i data-lucide="sparkles" class="w-4 h-4"></i>
+              <span data-i18n="sim.tab.zen">Zen Reader Pure</span>
             </button>
           </div>
         </div>
@@ -382,7 +345,8 @@
             <!-- Simulated Fake Cookie Notice Banner -->
             <div class="absolute bottom-4 left-4 right-4 z-20 p-3.5 rounded-lg bg-gray-900 text-white text-xs shadow-2xl flex flex-col sm:flex-row items-center justify-between gap-3 border border-gray-700">
               <div class="flex items-center gap-2">
-                <span data-i18n="sim.cookie.text">🍪 We use 48 trackers and cookies to monitor your clicks and serve targeted ads.</span>
+                <i data-lucide="cookie" class="w-4 h-4 shrink-0"></i>
+                <span data-i18n="sim.cookie.text">We use 48 trackers and cookies to monitor your clicks and serve targeted ads.</span>
               </div>
               <div class="flex gap-2 shrink-0">
                 <button data-i18n="sim.cookie.btn1" class="px-3 py-1 bg-gray-700 rounded text-[11px] hover:bg-gray-600">Customize (24 clicks)</button>
@@ -392,7 +356,10 @@
 
             <!-- Fake Newsletter Popup -->
             <div class="mb-6 p-4 rounded-lg bg-yellow-50 border-2 border-dashed border-yellow-400 text-center animate-bounce">
-              <span data-i18n="sim.popup.title" class="text-xs font-bold text-yellow-900">🚨 WAIT! BEFORE READING: SUBSCRIBE TO OUR DAILY NEWSLETTER (TODAY ONLY!)</span>
+              <span class="inline-flex items-center gap-2 text-xs font-bold text-yellow-900">
+                <i data-lucide="triangle-alert" class="w-4 h-4 shrink-0"></i>
+                <span data-i18n="sim.popup.title">WAIT! BEFORE READING: SUBSCRIBE TO OUR DAILY NEWSLETTER (TODAY ONLY!)</span>
+              </span>
               <div class="mt-2 flex max-w-sm mx-auto gap-2">
                 <input type="email" placeholder="you@example.com" class="border p-1 text-xs rounded flex-1" disabled />
                 <button data-i18n="sim.popup.btn" class="bg-red-600 text-white text-xs px-3 py-1 rounded font-bold">Subscribe</button>
@@ -627,7 +594,6 @@
       <div class="max-w-6xl mx-auto px-4 sm:px-6">
         
         <div class="text-center max-w-3xl mx-auto mb-14">
-          <span data-i18n="comp.badge" class="text-xs font-mono uppercase tracking-widest text-zen-accent font-semibold">Comparative Analysis</span>
           <h2 data-i18n="comp.title" class="text-3xl sm:text-5xl font-bold font-editorial text-zen-primary mt-2 mb-4">
             Why Zen Reader over other alternatives?
           </h2>
@@ -708,7 +674,7 @@
         </div>
 
         <div class="mt-8 p-5 sm:p-6 rounded-2xl bg-zen-surface border border-zen flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm text-zen-secondary">
-          <span data-i18n="comp.callout.text">Why pay $12/mo or manage Docker servers when you just want to save articles and read in peace?</span>
+          <span data-i18n="comp.callout.text">Why pay $12/mo if all you want is to save and read in peace?</span>
           <a href="#installation" data-i18n="comp.callout.link" class="font-bold text-zen-accent hover:underline shrink-0">Get started with Zen Reader &rarr;</a>
         </div>
 
